@@ -19,13 +19,17 @@ public class TestDriverClass {
 		p1.addAPet(myPet);
 		System.out.println("I have a person object : " + p1.toString());
 		
-		// create test case 2 - another person owing a pet dog
+		// create test case 2 - another person owing a spider
 		Person p2 = new Person("12 curly avenue","Fred", "3350");
-		Animal anotherPet = new Animal("Big Mother Fucking Spider","Leonard");
-		p2.addAPet(anotherPet);
+		Animal p2Pet = new Animal("Big Mother Fucking Spider","Leonard");
+		p2.addAPet(p2Pet);
 		System.out.println("I have a second person object : " + p2);
-		
 
+		// create test case 3 - another person owing a pet dog
+		Person p3 = new Person("12 curly avenue","Fred", "3350");
+		Animal p3Pet = new Animal("Big Mother Fucking Spider","Leonard");
+		p3.addAPet(p3Pet);
+		System.out.println("I have a second person object : " + p2);
 	}
 
 }
