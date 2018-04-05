@@ -21,7 +21,7 @@ public class TestDriverClass {
 
         // create test case 2 - another person owing a spider
         Person p2 = new Person("12 curly avenue", "Fred", "3350");
-        Animal p2Pet = new Animal("Big Mother Fucking Spider", "Leonard");
+        Animal p2Pet = new Animal("Spider", "Leonard");
         p2.addAPet(p2Pet);
         System.out.println("I have a second person object : " + p2);
 
