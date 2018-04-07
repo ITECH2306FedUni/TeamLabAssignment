@@ -8,10 +8,10 @@ package lab1ass;
  */
 public class Animal {
 
+    private static int nextValidRegistrationID = 1;
     private String breed;
     private String name;
     private int registrationID;
-    private static int nextValidRegistrationID = 1;
 
     /**
      * @param breed

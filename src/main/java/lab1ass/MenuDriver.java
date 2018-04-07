@@ -8,6 +8,13 @@ import java.util.Scanner;
 public class MenuDriver {
     boolean stillRunning;
 
+    // PROGRAM ENTRY POINT:
+    public static void main(String[] args) {
+        MenuDriver theProgram = new MenuDriver();
+        theProgram.start();
+
+    }
+
     private void start() {
         int choice;
         String fileNameToLoad;
@@ -94,7 +101,6 @@ public class MenuDriver {
         }
     }
 
-
     // METHOD:  getUserSelection
     // PURPOSE: To obtain from the user a selection (an integer) from a range of values
     // PASSED:
@@ -124,12 +130,5 @@ public class MenuDriver {
         System.out.println();        // put a space before the next output
 
         return userInput;
-    }
-
-    // PROGRAM ENTRY POINT:
-    public static void main(String[] args) {
-        MenuDriver theProgram = new MenuDriver();
-        theProgram.start();
-
     }
 }
