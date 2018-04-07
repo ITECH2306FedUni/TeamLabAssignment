@@ -29,7 +29,7 @@ public class TestDriverClass {
         Person p3 = new Person("12 curly avenue", "Fred", "3350");
         Animal p3Pet = new Animal("Big Mother Fucking Spider", "Leonard");
         p3.addAPet(p3Pet);
-        System.out.println("I have a second person object : " + p2);
+        System.out.println("I have a third person object : " + p3);
     }
 
 }

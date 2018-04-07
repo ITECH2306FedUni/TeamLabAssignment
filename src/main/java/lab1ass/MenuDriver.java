@@ -84,8 +84,7 @@ public class MenuDriver {
                 break;
             case 7:
                 System.out.println("7");
-                // menu option 7
-                break;
+                TestDriverClass.main(null);
             case 0:
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 break;
