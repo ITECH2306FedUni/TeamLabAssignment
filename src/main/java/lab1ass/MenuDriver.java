@@ -45,7 +45,7 @@ public class MenuDriver {
     public void showMainMenu() {
         System.out.println();        // ensure a break between previous output and the menu
         System.out.println("What would you like to do?");
-        System.out.println("1.	Add a new rate payer");
+        System.out.println("1.  Add a new rate payer");
         System.out.println("2.  Register an Animal to a rate payer");
         System.out.println("3.  Create a new course offering");
         System.out.println("4.  Enrol a student in a course");
