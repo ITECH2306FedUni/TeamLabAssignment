@@ -17,7 +17,7 @@ public class MenuDriver {
 
     private void start() {
         int choice;
-        String fileNameToLoad;
+        //String fileNameToLoad;
 
         // Ask for file name to load. Keeps trying
 /*		do {
@@ -122,7 +122,9 @@ public class MenuDriver {
             System.out.print("Enter a selection (" + lower + "-" + upper + "):");
             Scanner in = new Scanner(System.in);
             userInput = in.nextInt(); // obtain the input
-            in.nextLine();                // gets rid of the newline after the number we just read
+            in.nextLine();
+            // gets rid of the newline after the number we just read
+            in.close();
 
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
