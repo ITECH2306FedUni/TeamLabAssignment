@@ -8,8 +8,10 @@ public class Course {
     private String name;
     private float price;
     private int runtime;
+    private int studentID;
 
-    public Course(String _name, float _price, int _runtime) {
+    public Course(int _studentID, String _name, float _price, int _runtime) {
+        this.studentID = _studentID;
         this.name = _name;
         this.price = _price;
         this.runtime = _runtime;

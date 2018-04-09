@@ -10,19 +10,21 @@ public class Person {
     String name;  // name of person
     String address; // address of person
     String postcode; // postcode of person's address
+    String city; // city of person's address
     Animal pet; // associate a pet that is an Animal object with the Person
     Course currentCourse;
 
     // constructor - create Person given name, address and a Pet object
-
     /**
      * @param name
      * @param address
+     * @param city
      * @param pet
      */
-    public Person(String name, String address, Animal pet) {
+    public Person(String name, String address, String city, Animal pet) {
         this.name = name;
         this.address = address;
+        this.city = city;
         this.pet = pet;
     }
 
@@ -32,11 +34,13 @@ public class Person {
      * @param _address
      * @param _name
      * @param _postcode
+     * @param _city
      */
-    Person(String _address, String _name, String _postcode) {
+    Person(String _address, String _name, String _postcode, String _city) {
         this.setAddress(_address);
         this.setName(_name);
         this.setPostcode(_postcode);
+        this.setCity(_city);
     }
 
     /**
@@ -74,7 +78,12 @@ public class Person {
         this.postcode = _postcode;
 
     }
-
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
     /**
      * @param _pet the pet animal to associate
      */
