@@ -51,7 +51,7 @@ public class Person {
     }
 
     /**
-     * @param name the name to set
+     * @param _name the name to set
      */
     public void setName(String _name) {
         this.name = _name;
@@ -65,24 +65,24 @@ public class Person {
     }
 
     /**
-     * @param address the address to set
+     * @param _address the address to set
      */
     public void setAddress(String _address) {
         this.address = _address;
     }
 
     /**
-     * @param postcode the postcode to set
+     * @param _postcode the postcode to set
      */
     private void setPostcode(String _postcode) {
         this.postcode = _postcode;
 
     }
     /**
-     * @param city the city to set
+     * @param _city the city to set
      */
-    public void setCity(String city) {
-        this.city = city;
+    public void setCity(String _city) {
+        this.city = _city;
     }
     /**
      * @param _pet the pet animal to associate
@@ -100,6 +100,5 @@ public class Person {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode +
                 ",\n pet=" + pet + "]";
     }
-//Temp
 
 }
