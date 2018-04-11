@@ -15,6 +15,7 @@ public class Person {
     Course currentCourse;
 
     // constructor - create Person given name, address and a Pet object
+
     /**
      * @param name
      * @param address
@@ -78,12 +79,14 @@ public class Person {
         this.postcode = _postcode;
 
     }
+
     /**
      * @param _city the city to set
      */
     public void setCity(String _city) {
         this.city = _city;
     }
+
     /**
      * @param _pet the pet animal to associate
      */

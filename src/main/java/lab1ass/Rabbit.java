@@ -8,7 +8,7 @@ public class Rabbit extends Animal {
      * @param _dob    dob of the animal DD MMM YYYY
      * @param _regdue date that reg is due DD MMM YYYY
      */
-    public Rabbit(String _breed, String _name, String _gender, String _dob, String _regdue) {
+    Rabbit(String _breed, String _name, String _gender, String _dob, String _regdue) {
         super(_breed, _name, _gender, _dob, _regdue);
     }
 }

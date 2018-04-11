@@ -10,23 +10,23 @@ public abstract class Animal {
 
     private static int nextValidRegistrationID = 1;
     // General Animal Attributes
-    private int registrationID;
-    private String breed;
-    private String name;
-    private String dob;
-    private String gender;
-    private String regdue;
+    int registrationID;
+    String breed;
+    String name;
+    String dob;
+    String gender;
+    String regdue;
     // TODO Breed specific attributes
     private String[] allowedAnimals = {"Dog", "Cat", "Rabbit"};
-    private String[] restrictedDogBreed = {"American Pit Bull Terrier", "Pit Bull Terrier", "Dogo Argentino, Fila Brasileiro", "Japanese Tosa", "Perro de Presa Canario", "Presa Canario"};
+
     /**
-     * @param _breed breed of the animal
-     * @param _name name of the animal
-     * @param _dob dob of the animal DD MMM YYYY
+     * @param _breed  breed of the animal
+     * @param _name   name of the animal
+     * @param _dob    dob of the animal DD MMM YYYY
      * @param _gender gender of the animal
      * @param _regdue date that reg is due DD MMM YYYY
      */
-    public Animal(String _breed, String _name, String _gender, String _dob, String _regdue) {
+    Animal(String _breed, String _name, String _gender, String _dob, String _regdue) {
         this.breed = _breed;
         this.name = _name;
         this.gender = _gender;
@@ -39,9 +39,14 @@ public abstract class Animal {
         this.registrationID = nextValidRegistrationID++;
     }
 
-    @Override
     public String toString() {
-        return "Animal [breed=" + breed + ", name=" + name +  ", dob=" + dob +   ", gender=" + gender +  ", regdue=" + regdue + ", registrationID=" + registrationID + "]";
+        return "Pet [breed=" + breed
+                + ", name=" + name
+                + ", dob=" + dob
+                + ", gender=" + gender
+                + ", regdue=" + regdue
+                + ", registrationID=" + registrationID
+                + "]";
     }
 
 }
