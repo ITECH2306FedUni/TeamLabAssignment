@@ -15,7 +15,7 @@ public class TestDriverClass {
     public static void main(String[] args) {
         // create test case 1 - a person owning a pet dog
         Person p1 = new Person("25 somewhere Street", "Kathleen", "2000", "Casey");
-        Animal myPet = new Dog("Dog", "Fido", "F","05 01 1998", "05 01 1998");
+        Animal myPet = new Dog("Dog", "Fido", "F","05 01 1998", "05 01 1998", false);
         p1.addAPet(myPet);
         System.out.println("I have a person object : " + p1.toString());
 

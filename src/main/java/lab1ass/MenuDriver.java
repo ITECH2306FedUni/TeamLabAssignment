@@ -122,14 +122,13 @@ public class MenuDriver {
             System.out.print("Enter a selection (" + lower + "-" + upper + "):");
             Scanner in = new Scanner(System.in);
             userInput = in.nextInt(); // obtain the input
-            in.nextLine();
-            // gets rid of the newline after the number we just read
+            in.nextLine(); // gets rid of the newline after the number we just read
             in.close();
 
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
         } while (userInput < lower || userInput > upper);
-        System.out.println();        // put a space before the next output
+        System.out.println(); // put a space before the next output
 
         return userInput;
     }
