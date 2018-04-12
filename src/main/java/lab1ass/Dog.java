@@ -10,6 +10,7 @@ public class Dog extends Animal {
      * @param _desexed whether on not the pet is desexed or not
      */
     boolean desexed;
+    boolean vaccinated;
     String[] restricted_breeds = {
             "American Pit Bull Terrier",
             "Pit Bull Terrier",
@@ -21,9 +22,10 @@ public class Dog extends Animal {
     };
 
 
-    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip, boolean _desexed) {
+    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         this.desexed = _desexed;
+        this.vaccinated = _vaccinated;
     }
 
     @Override

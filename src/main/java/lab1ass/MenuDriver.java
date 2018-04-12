@@ -7,7 +7,6 @@ import java.util.Scanner;
  */
 public class MenuDriver {
     boolean stillRunning;
-
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -66,9 +65,18 @@ public class MenuDriver {
     public void processChoiceMainMenu(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("1");
                 // menu option 1
-                break;
+                Scanner in = new Scanner(System.in);
+                System.out.println("Enter rate payer name: ");
+                String name = in.nextLine(); // obtain the input
+                System.out.println("Enter rate payer address: ");
+                String address = in.nextLine(); // obtain the input
+                System.out.println("Enter rate payer postcode: ");
+                String postcode = in.nextLine(); // obtain the input
+                System.out.println("Enter rate payer city: ");
+                String city = in.nextLine(); // obtain the input
+                Person p1 = new Person(address, name, postcode, city);
+                System.out.println("I have a person object : " + p1.toString());
             case 2:
                 System.out.println("2");
                 // menu option 2
@@ -119,11 +127,10 @@ public class MenuDriver {
             return 0;
 
         do {
-            System.out.print("Enter a selection (" + lower + "-" + upper + "):");
             Scanner in = new Scanner(System.in);
+            System.out.print("Enter a selection (" + lower + "-" + upper + "):");
             userInput = in.nextInt(); // obtain the input
             in.nextLine(); // gets rid of the newline after the number we just read
-            in.close();
 
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
