@@ -21,8 +21,8 @@ public class Dog extends Animal {
     };
 
 
-    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, boolean _desexed) {
-        super(_breed, _name, _gender, _dob, _regdue);
+    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip, boolean _desexed) {
+        super(_breed, _name, _gender, _dob, _regdue, _microchip);
         this.desexed = _desexed;
     }
 
@@ -33,8 +33,9 @@ public class Dog extends Animal {
                 + ", dob=" + dob
                 + ", gender=" + gender
                 + ", regdue=" + regdue
-                + ", registrationID=" + registrationID
+                + ", microchip=" + microchip
                 + ", desexed=" + desexed
+                + ", registrationID=" + registrationID
                 + "]";
     }
 }
