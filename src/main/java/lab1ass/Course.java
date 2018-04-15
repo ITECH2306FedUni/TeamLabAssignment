@@ -1,21 +1,30 @@
 package lab1ass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author RAWR xD
  */
 public class Course {
-
+	
+    private static int nextValidCourseID = 1;
+	//List<Course> courseList = new ArrayList<>();
+    List courseList = new ArrayList<>();
+	
+    private int courseID; 
     private String name;
     private float price;
     private int runtime;
     private int studentID;
 
     public Course(int _studentID, String _name, float _price, int _runtime) {
-        this.studentID = _studentID;
+        this.setCourseID();
+    	this.studentID = _studentID;
         this.name = _name;
         this.price = _price;
         this.runtime = _runtime;
-
+        
     }
 
     public void finalize() throws Throwable {
@@ -52,9 +61,17 @@ public class Course {
     public String runTimeToString(int runtime) {
         return String.valueOf(runtime);
     }
-
+    private void setCourseID() { // allocate next available ID
+        this.courseID = nextValidCourseID++;
+    }
+    public void diffrentCourses(Course courseAddToList)
+    {
+    	courseList.add(courseAddToList);
+    	System.out.println(courseList.toString() + "Yo");
+    	System.out.println(courseList.size());
+    }
     @Override
     public String toString() {
-        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + "]";
+        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID + "]";
     }
 }

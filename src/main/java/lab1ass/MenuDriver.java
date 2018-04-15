@@ -30,7 +30,7 @@ public class MenuDriver {
 
         while (stillRunning) {
             showMainMenu();
-            choice = getUserSelection(0, 7);
+            choice = getUserSelection(0, 8);
             processChoiceMainMenu(choice);
         }
 
@@ -51,6 +51,7 @@ public class MenuDriver {
         System.out.println("5.  List details of a particular available course");
         System.out.println("6.  Calculate registration renewal notice for a particular rate payer who has previously registered an animal");
         System.out.println("7.  Run system tests");
+        System.out.println("8.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
 
@@ -83,8 +84,21 @@ public class MenuDriver {
                 break;
             case 3:
                 System.out.println("3");
-                // menu option 3
-                break;
+                // menu option 3 New Course
+                Scanner in3 = new Scanner(System.in);
+                System.out.println("Enter the Name of new Course:");
+                String courseName = in3.nextLine();
+                System.out.println("Enter the Price of " + courseName + ":");
+                float coursePrice = in3.nextFloat();
+                System.out.println("Enter the RunTime of " + courseName + ":");
+                int courseRuntime = in3.nextInt();
+                System.out.println("Enter the Lecturer's Id of " + courseName +":");
+                int courseLecturerID = in3.nextInt();
+                Course c1 = new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+                
+                System.out.println("A New Course "+ courseName + "have been Created with the following values [ " + c1.toString() + " ]");
+                
+               
             case 4:
                 System.out.println("4");
                 // menu option 4
@@ -98,8 +112,16 @@ public class MenuDriver {
                 // menu option 6
                 break;
             case 7:
-                System.out.println("7");
+                stillRunning = false;
+            	System.out.println("7");
                 TestDriverClass.main(null);
+                
+                break;
+                
+            case 8:
+            	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
+            	System.out.println("Gaining access to Lizard Deep Web.");
+            	
             case 0:
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 break;

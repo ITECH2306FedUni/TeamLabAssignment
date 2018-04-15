@@ -103,5 +103,9 @@ public class Person {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode +
                 ",\n pet=" + pet + "]";
     }
+    public String toStringWithCourse() {
+        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode +
+                ",\n pet=" + pet + "\n course=" +currentCourse +  "]";
+    }
 
 }
