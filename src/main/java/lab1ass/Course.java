@@ -10,7 +10,7 @@ public class Course {
 	
     private static int nextValidCourseID = 1;
 	//List<Course> courseList = new ArrayList<>();
-    List courseList = new ArrayList<>();
+    ArrayList<Course> courseList = new ArrayList<>();
 	
     private int courseID; 
     private String name;
@@ -27,7 +27,10 @@ public class Course {
         
     }
 
-    public void finalize() throws Throwable {
+    
+	
+
+	public void finalize() throws Throwable {
 
     }
 
@@ -67,8 +70,9 @@ public class Course {
     public void diffrentCourses(Course courseAddToList)
     {
     	courseList.add(courseAddToList);
-    	System.out.println(courseList.toString() + "Yo");
+    	System.out.println("\n " + courseList.toString() + "Yo");
     	System.out.println(courseList.size());
+    	
     }
     @Override
     public String toString() {

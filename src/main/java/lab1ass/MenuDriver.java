@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class MenuDriver {
     private boolean stillRunning;
+   public Course cMain = new Course(0, null, 0, 0);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -16,6 +17,7 @@ public class MenuDriver {
 
     private void start() {
         int choice;
+      
         //String fileNameToLoad;
 
         // Ask for file name to load. Keeps trying
@@ -87,9 +89,10 @@ public class MenuDriver {
                 System.out.println("Enter the Lecturer's Id of " + courseName +":");
                 int courseLecturerID = in3.nextInt();
                 Course c1 = new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+                cMain.diffrentCourses(c1);
                 
                 System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");
-                in3.close();
+                //in3.close();
                
             case 4:
                 System.out.println("4");
