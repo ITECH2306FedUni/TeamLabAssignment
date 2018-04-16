@@ -67,18 +67,8 @@ public class MenuDriver {
         switch (choice) {
             case 1:
                 // menu option 1
-                Scanner in1 = new Scanner(System.in);
-                System.out.println("Enter rate payer name: ");
-                String name = in1.nextLine(); // obtain the input
-                System.out.println("Enter rate payer address: ");
-                String address = in1.nextLine(); // obtain the input
-                System.out.println("Enter rate payer postcode: ");
-                String postcode = in1.nextLine(); // obtain the input
-                System.out.println("Enter rate payer city: ");
-                String city = in1.nextLine(); // obtain the input
-                Person p1 = new Person(address, name, postcode, city);
+                Person p1 = personWizard();
                 System.out.println("I have a person object : " + p1.toString());
-                in1.close();
                 break;
             case 2:
                 System.out.println("2");
@@ -159,5 +149,19 @@ public class MenuDriver {
         System.out.println(); // put a space before the next output
 
         return userInput;
+    }
+    
+    private Person personWizard () {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter rate payer name: ");
+        String name = input.nextLine(); // obtain the input
+        System.out.println("Enter rate payer address: ");
+        String address = input.nextLine(); // obtain the input
+        System.out.println("Enter rate payer postcode: ");
+        String postcode = input.nextLine(); // obtain the input
+        System.out.println("Enter rate payer city: ");
+        String city = input.nextLine(); // obtain the input
+        //input.close();
+    	return new Person(address, name, postcode, city);
     }
 }
