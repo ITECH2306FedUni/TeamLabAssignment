@@ -70,7 +70,7 @@ public class Course {
     public void diffrentCourses(Course courseAddToList)
     {
     	courseList.add(courseAddToList);
-    	System.out.println("\n " + courseList.toString() + "Yo");
+    	System.out.println("\n " + courseList.toString() + "Yo");//
     	System.out.println(courseList.size());
     	
     }

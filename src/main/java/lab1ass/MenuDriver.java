@@ -82,7 +82,7 @@ public class MenuDriver {
                 Scanner in3 = new Scanner(System.in);
                 System.out.println("Enter the Name of new Course:");
                 String courseName = in3.nextLine();
-                System.out.println("Enter the Price of " + courseName + ":");
+                System.out.println("Enter the Price of " + courseName + ":");//
                 float coursePrice = in3.nextFloat();
                 System.out.println("Enter the RunTime of " + courseName + ":");
                 int courseRuntime = in3.nextInt();
