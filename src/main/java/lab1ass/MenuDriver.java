@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author RAWR xD
  */
 public class MenuDriver {
-    boolean stillRunning;
+    private boolean stillRunning;
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -67,17 +67,18 @@ public class MenuDriver {
         switch (choice) {
             case 1:
                 // menu option 1
-                Scanner in = new Scanner(System.in);
+                Scanner in1 = new Scanner(System.in);
                 System.out.println("Enter rate payer name: ");
-                String name = in.nextLine(); // obtain the input
+                String name = in1.nextLine(); // obtain the input
                 System.out.println("Enter rate payer address: ");
-                String address = in.nextLine(); // obtain the input
+                String address = in1.nextLine(); // obtain the input
                 System.out.println("Enter rate payer postcode: ");
-                String postcode = in.nextLine(); // obtain the input
+                String postcode = in1.nextLine(); // obtain the input
                 System.out.println("Enter rate payer city: ");
-                String city = in.nextLine(); // obtain the input
+                String city = in1.nextLine(); // obtain the input
                 Person p1 = new Person(address, name, postcode, city);
                 System.out.println("I have a person object : " + p1.toString());
+                in1.close();
             case 2:
                 System.out.println("2");
                 // menu option 2
@@ -96,8 +97,8 @@ public class MenuDriver {
                 int courseLecturerID = in3.nextInt();
                 Course c1 = new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
                 
-                System.out.println("A New Course "+ courseName + "have been Created with the following values [ " + c1.toString() + " ]");
-                
+                System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");
+                in3.close();
                
             case 4:
                 System.out.println("4");
@@ -112,12 +113,9 @@ public class MenuDriver {
                 // menu option 6
                 break;
             case 7:
-                stillRunning = false;
             	System.out.println("7");
                 TestDriverClass.main(null);
-                
                 break;
-                
             case 8:
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
@@ -149,10 +147,10 @@ public class MenuDriver {
             return 0;
 
         do {
-            Scanner in = new Scanner(System.in);
+            Scanner in0 = new Scanner(System.in);
             System.out.print("Enter a selection (" + lower + "-" + upper + "):");
-            userInput = in.nextInt(); // obtain the input
-            in.nextLine(); // gets rid of the newline after the number we just read
+            userInput = in0.nextInt(); // obtain the input
+            in0.nextLine(); // gets rid of the newline after the number we just read
 
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
