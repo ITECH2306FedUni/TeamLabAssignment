@@ -98,14 +98,18 @@ public class Person {
         this.currentCourse = _currentCourse;
     }
 
-    @Override
-    public String toString() {
-        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode +
-                ",\n pet=" + pet + "]";
+    public String toStringWhole() {
+        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
+    };
+
+    public String toStringPerson(){
+        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
     }
-    public String toStringWithCourse() {
-        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode +
-                ",\n pet=" + pet + "\n course=" +currentCourse +  "]";
+    public String toStringCourse(){
+        return "Course [course=" +currentCourse +  "]";
+    }
+    public String toStringPet() {
+        return "Pet [pet=" +pet +  "]";
     }
 
 }
