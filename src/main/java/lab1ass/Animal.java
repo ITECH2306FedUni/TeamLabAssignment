@@ -16,9 +16,56 @@ public abstract class Animal {
     String dob;
     String gender;
     String regdue;
-    Integer microchip;
+
+    public Integer getRegistrationID() {
+        return registrationID;
+    }
+
+    public void setRegistrationID() { // allocate next available ID
+        this.registrationID = nextValidRegistrationID++;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getRegdue() {
+        return regdue;
+    }
+
+    public void setRegdue(String regdue) {
+        this.regdue = regdue;
+    }
+
     // TODO Breed specific attributes
-    private String[] allowedAnimals = {"Dog", "Cat", "Rabbit"};
 
     /**
      * @param _breed  breed of the animal
@@ -28,30 +75,16 @@ public abstract class Animal {
      * @param _regdue date that reg is due DD MMM YYYY
      * @param _microchip microchip id for the pet
      */
-    Animal(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
-        this.setRegistrationID();
-        this.breed = _breed;
-        this.name = _name;
-        this.gender = _gender;
-        this.dob = _dob;
-        this.regdue = _regdue;
-        this.microchip = _microchip;
+   // Animal(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
+      //  this.setRegistrationID();
+       // this.breed = _breed;
+       // this.name = _name;
+       // this.gender = _gender;
+       // this.dob = _dob;
+       // this.regdue = _regdue;
+       // this.microchip = _microchip;
 
-    }
+   // }
 
-    private void setRegistrationID() { // allocate next available ID
-        this.registrationID = nextValidRegistrationID++;
-    }
-
-    public String toString() {
-        return "Pet [breed=" + breed
-                + ", name=" + name
-                + ", dob=" + dob
-                + ", gender=" + gender
-                + ", regdue=" + regdue
-                + ", microchip=" + microchip
-                + ", registrationID=" + registrationID
-                + "]";
-    }
 
 }
