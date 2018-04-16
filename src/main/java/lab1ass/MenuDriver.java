@@ -79,6 +79,7 @@ public class MenuDriver {
                 Person p1 = new Person(address, name, postcode, city);
                 System.out.println("I have a person object : " + p1.toString());
                 in1.close();
+                break;
             case 2:
                 System.out.println("2");
                 // menu option 2
@@ -119,7 +120,7 @@ public class MenuDriver {
             case 8:
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
-            	
+            	break;
             case 0:
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 break;
