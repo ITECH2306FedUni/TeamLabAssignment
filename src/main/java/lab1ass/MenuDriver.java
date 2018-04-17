@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class MenuDriver {
     Person p1;
     private boolean stillRunning;
-    public Course cMain = new Course(0, null, 0, 0);
-    public Person pMain = new Person();
+    public static Course cMain = new Course(0, null, 0, 0);
+    public static Person pMain = new Person();
     Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
