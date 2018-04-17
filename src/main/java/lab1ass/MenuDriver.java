@@ -111,6 +111,7 @@ public class MenuDriver {
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
             	Shh lol = new Shh().dontDoIt();
+            	
             	break;
             case 0:
                 //quit
