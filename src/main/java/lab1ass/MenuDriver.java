@@ -70,35 +70,20 @@ public class MenuDriver {
     public void processChoiceMainMenu(int choice) {
         switch (choice) {
             case 1:
-                // menu option 1
+                // menu option 1: register tax slave
                 p1 = personWizard();
                 System.out.println("I have a person object : " + p1.toString());
                 break;
             case 2:
-                // menu option 2
-                //if (p1 != null) {
-                    p1.addAPet(petWizard());
-                    System.out.println("Person p1's pet is:" + p1.pet.toString());
-                //} else {
-                //    System.out.println("there are no people to register pets to");
-                //}
+                // menu option 2: register pet
+                p1.addAPet(petWizard());
+                System.out.println("Person p1's pet is : " + p1.pet.toString());
                 break;
             case 3:
-                System.out.println("3");
-                // menu option 3 New Course
-                Scanner input = new Scanner(System.in);
-                System.out.println("Enter the Name of new Course:");
-                String courseName = input.nextLine();
-                System.out.println("Enter the Price of " + courseName + ":");//
-                float coursePrice = input.nextFloat();
-                System.out.println("Enter the RunTime of " + courseName + ":");
-                int courseRuntime = input.nextInt();
-                System.out.println("Enter the Lecturer's Id of " + courseName +":");
-                int courseLecturerID = input.nextInt();
-                Course c1 = new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
-                cMain.diffrentCourses(c1);
-                
-                System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");               
+                // menu option 3: create new course
+                Course c = courseWizard();
+                cMain.diffrentCourses(c);
+                System.out.println("New course : " + c.toString());               
             case 4:
                 System.out.println("4");
                 // menu option 4
@@ -171,7 +156,6 @@ public class MenuDriver {
 
     //Wraps Animal creation method in command line interface
     private Animal petWizard () {
-        Scanner input = new Scanner(System.in);
         System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
         String creature = input.nextLine();
         System.out.println("what is the breed?");
@@ -201,5 +185,18 @@ public class MenuDriver {
             default:
                 return null;
         }
+    }
+
+    //Wraps Course creation method in command line interface
+    private Course courseWizard () {
+        System.out.println("Enter the Name of new Course:");
+        String courseName = input.nextLine();
+        System.out.println("Enter the Price of " + courseName + ":");//
+        float coursePrice = input.nextFloat();
+        System.out.println("Enter the RunTime of " + courseName + ":");
+        int courseRuntime = input.nextInt();
+        System.out.println("Enter the Lecturer's Id of " + courseName +":");
+        int courseLecturerID = input.nextInt();
+        return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
     }
 }
