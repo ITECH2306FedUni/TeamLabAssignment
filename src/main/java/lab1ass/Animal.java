@@ -26,7 +26,7 @@ public abstract class Animal {
      * @param _regdue date that reg is due DD MMM YYYY
      * @param _microchip microchip id for the pet
      */
-    Animal(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
+    Animal(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
         this.setRegistrationID();
         this.breed = _breed;
         this.name = _name;

@@ -9,8 +9,8 @@ public class Cat extends Animal {
         setMicrochip(_microchip);
     }
 
-    public void setMicrochip(Integer microchip) throws IllegalArgumentException {
-        if (microchip != null | microchip != 0){
+    public void setMicrochip(int microchip) throws IllegalArgumentException {
+        if (microchip >= 0){
             this.microchip = microchip;
         } else {
             throw new IllegalArgumentException("Microchip should not be null");
