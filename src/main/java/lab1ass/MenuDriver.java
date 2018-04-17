@@ -167,10 +167,8 @@ public class MenuDriver {
 
     //Wraps Animal creation method in command line interface
     private Animal petWizard () {
-        System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
-        String creature = input.nextLine();
-        if(!creature.equalsIgnoreCase("c" )&& !creature.equalsIgnoreCase("d" ) && !creature.equalsIgnoreCase("r")){
-            System.out.println ("A valid pet type is required!");
+        String creature = "";
+        while(!creature.equalsIgnoreCase("c")&& !creature.equalsIgnoreCase("d") && !creature.equalsIgnoreCase("r")){
             System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
             creature = input.nextLine();
         }
@@ -178,10 +176,8 @@ public class MenuDriver {
         String breed = input.nextLine();
         System.out.println ("What is the pet's name?");
         String name = input.nextLine();
-        System.out.println("What is the pet's gender? (m/f)");
-        String gender = input.nextLine();
-        if(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f")){
-            System.out.println ("A valid gender is required!");
+        String gender = "";
+        while(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f")){
             System.out.println("What is the pet's gender? (m/f)");
             gender = input.nextLine();
         }
@@ -189,18 +185,16 @@ public class MenuDriver {
         String regdue = input.nextLine();
         System.out.println("what is the animal's date of birth? (DD MMM YYYY)");
         String dob = input.nextLine();
-        System.out.println ("Is the pet microchipped (y)es or (n)o?");
-        String chipped = input.nextLine();
-        if(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
-            System.out.println ("A valid microchipped status is required!");
+        String chipped = "";
+        while(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
             System.out.println ("Is the pet microchipped (y)es or (n)o?");
             chipped = input.nextLine();
         }
         int microchip;
-        if(chipped.equals("y")){
+        if(chipped.equalsIgnoreCase("y")){
             System.out.println("Microchip number of animal? (null if not applicable)");
             microchip = input.nextInt();
-        }else {
+        }else{
             microchip = 0;
         }
         switch (creature.toLowerCase()) {
@@ -214,7 +208,6 @@ public class MenuDriver {
                 return new Cat(breed, name, gender, dob, regdue, microchip);
             case "r":
                 return new Rabbit(breed, name, gender, dob, regdue, microchip);
-
         }
         return null;
     }

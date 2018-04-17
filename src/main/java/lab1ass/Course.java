@@ -18,24 +18,16 @@ public class Course {
     private int studentID;
 
     public Course(int _studentID, String _name, float _price, int _runtime) {
-        
     	this.studentID = _studentID;
         this.name = _name;
         this.price = _price;
         this.runtime = _runtime;
-        
     }
-
-    
-	
 
 	public Course() {
 		// TODO Auto-generated constructor stub
 		this.setCourseID();
 	}
-
-
-
 
 	public void finalize() throws Throwable {
 
@@ -65,7 +57,6 @@ public class Course {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
         }
-
     }
 
     public String runTimeToString(int runtime) {
@@ -80,14 +71,14 @@ public class Course {
     	courseList.add(courseAddToList);
     	System.out.println("\n " + courseList.toString() + "Yo");//
     	System.out.println(courseList.size());
-    	
     }
+
     @Override
     public String toString() {
         return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID + "]";
     }
+    
     public String toStringShort() {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
     }
-    
 }
