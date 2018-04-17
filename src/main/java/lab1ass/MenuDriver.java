@@ -6,6 +6,7 @@ import java.util.Scanner;
  * @author RAWR xD
  */
 public class MenuDriver {
+    Person p1;
     private boolean stillRunning;
     public Course cMain = new Course(0, null, 0, 0);
     Scanner input = new Scanner(System.in);
@@ -70,31 +71,34 @@ public class MenuDriver {
         switch (choice) {
             case 1:
                 // menu option 1
-                Person p1 = personWizard();
+                p1 = personWizard();
                 System.out.println("I have a person object : " + p1.toString());
                 break;
             case 2:
-                System.out.println("2");
                 // menu option 2
+                //if (p1 != null) {
+                    p1.addAPet(petWizard());
+                    System.out.println("Person p1's pet is:" + p1.pet.toString());
+                //} else {
+                //    System.out.println("there are no people to register pets to");
+                //}
                 break;
             case 3:
                 System.out.println("3");
                 // menu option 3 New Course
-                Scanner in3 = new Scanner(System.in);
+                Scanner input = new Scanner(System.in);
                 System.out.println("Enter the Name of new Course:");
-                String courseName = in3.nextLine();
+                String courseName = input.nextLine();
                 System.out.println("Enter the Price of " + courseName + ":");//
-                float coursePrice = in3.nextFloat();
+                float coursePrice = input.nextFloat();
                 System.out.println("Enter the RunTime of " + courseName + ":");
-                int courseRuntime = in3.nextInt();
+                int courseRuntime = input.nextInt();
                 System.out.println("Enter the Lecturer's Id of " + courseName +":");
-                int courseLecturerID = in3.nextInt();
+                int courseLecturerID = input.nextInt();
                 Course c1 = new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
                 cMain.diffrentCourses(c1);
                 
-                System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");
-                in3.close();
-               
+                System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");               
             case 4:
                 System.out.println("4");
                 // menu option 4
@@ -117,7 +121,6 @@ public class MenuDriver {
             	break;
             case 0:
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
-                input.close();
                 break;
             default:
                 System.out.println("Unexpected selection made. Doing nothing.");
@@ -166,28 +169,37 @@ public class MenuDriver {
     	return new Person(address, name, postcode, city);
     }
 
-    /*//Wraps Animal creation method in command line interface
+    //Wraps Animal creation method in command line interface
     private Animal petWizard () {
-        Scanner in = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
-        String creature = in.nextLine();
-        System.out.println ("What is the animals name?");
-        String name = in.nextLine();
+        String creature = input.nextLine();
         System.out.println("what is the breed?");
-        String breed = in.nextLine();
+        String breed = input.nextLine();
+        System.out.println ("What is the animals name?");
+        String name = input.nextLine();
         System.out.println("What is the animals sex (m/f)?");
-        String gender = in2.nextLine();
+        String gender = input.nextLine();
+        System.out.println("when is the animal's registration due?");
+        String regdue = input.nextLine();
+        System.out.println("what is the animal's date of birth?");
+        String dob = input.nextLine();
+        //FIXME: why does this have to be an integer?? causes crashes.
         System.out.println("has the animal been microchipped (y/n)?");
-        boolean chipped = (in2.nextLine() == "y");
+        Integer chipped = Integer.parseInt(input.nextLine());
         switch (creature) {
             case "d":
                 System.out.println("has the animal been desexed(y/n)?");
-                boolean desexed = (in2.nextLine() == "y");
-                return new Dog(breed, name, gender, regdue, chipped);
+                boolean desexed = (input.nextLine() == "y");
+                System.out.println("has the animal been vaccinated(y/n)?");
+                boolean vaccinated = (input.nextLine() == "y");
+                return new Dog(breed, name, gender, regdue, dob, chipped, desexed, vaccinated);
             case "c":
-                return new Cat(breed, name, );
+                return new Cat(breed, name, gender, regdue, dob, chipped);
             case "r":
-                return new Rabbit();
+                return new Rabbit(breed, name, gender, regdue, dob, chipped);
+            default:
+                return null;
         }
-    }*/
+    }
 }
