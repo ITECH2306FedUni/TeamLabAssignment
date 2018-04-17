@@ -124,14 +124,8 @@ public class Person {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
     };
 
-    public String toStringPerson(){
+    @Override
+    public String toString(){
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
     }
-    public String toStringCourse(){
-        return "Course [course=" +currentCourse +  "]";
-    }
-    public String toStringPet() {
-        return "Pet [pet=" +pet +  "]";
-    }
-
 }

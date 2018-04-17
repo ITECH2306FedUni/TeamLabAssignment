@@ -84,5 +84,16 @@ public abstract class Animal {
         this.regdue = regdue;
     }
 
+    @Override
+    public String toString() {
+        return "Animal [breed=" + breed
+        + ", name=" + name
+        + ", dob=" + dob
+        + ", gender=" + gender
+        + ", regdue=" + regdue
+        + ", microchip=" + microchip
+        + ", registrationID=" + registrationID
+        + "]";
+    }
 
 }
