@@ -78,7 +78,7 @@ public class MenuDriver {
             case 2:
                 Person pTest = new Person("25 somewhere Street", "Kathleen", "2000", "Casey");
                 // menu option 2: register pet
-                petWizard(pTest);
+                pTest.addAPet(petWizard());
                 System.out.println("Person p1's pet is : " + pTest.pet.toString());
                 break;
             case 3:
@@ -166,7 +166,7 @@ public class MenuDriver {
     }
 
     //Wraps Animal creation method in command line interface
-    private void petWizard (Person person) {
+    private Animal petWizard () {
         System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
         String creature = input.nextLine();
         if(!creature.equalsIgnoreCase("c" )&& !creature.equalsIgnoreCase("d" ) && !creature.equalsIgnoreCase("r")){
@@ -174,19 +174,28 @@ public class MenuDriver {
             System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
             creature = input.nextLine();
         }
-        System.out.println("what is the breed?");
+        System.out.println("What is the breed of the pet?");
         String breed = input.nextLine();
-        System.out.println ("What is the animals name?");
+        System.out.println ("What is the pet's name?");
         String name = input.nextLine();
-        System.out.println("What is the animals sex (m/f)?");
+        System.out.println("What is the pet's gender? (m/f)");
         String gender = input.nextLine();
-        System.out.println("when is the animal's registration due?");
+        if(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f")){
+            System.out.println ("A valid gender is required!");
+            System.out.println("What is the pet's gender? (m/f)");
+            gender = input.nextLine();
+        }
+        System.out.println("When is the animal's first registration? (DD MMM YYYY)");
         String regdue = input.nextLine();
-        System.out.println("what is the animal's date of birth?");
+        System.out.println("what is the animal's date of birth? (DD MMM YYYY)");
         String dob = input.nextLine();
-        //FIXME: why does this have to be an integer?? causes crashes.
         System.out.println ("Is the pet microchipped (y)es or (n)o?");
         String chipped = input.nextLine();
+        if(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
+            System.out.println ("A valid microchipped status is required!");
+            System.out.println ("Is the pet microchipped (y)es or (n)o?");
+            chipped = input.nextLine();
+        }
         int microchip;
         if(chipped.equals("y")){
             System.out.println("Microchip number of animal? (null if not applicable)");
@@ -196,16 +205,18 @@ public class MenuDriver {
         }
         switch (creature.toLowerCase()) {
             case "d":
-                System.out.println("has the animal been desexed(y/n)?");
+                System.out.println("has the animal been desexed? (true/false)");
                 boolean desexed = input.nextBoolean();
-                System.out.println("has the animal been vaccinated(y/n)?");
+                System.out.println("has the animal been vaccinated? (true/false)");
                 boolean vaccinated = input.nextBoolean();
-                person.addAPet(new Dog(breed, name, gender, regdue, dob, microchip, desexed, vaccinated));
+                return new Dog(breed, name, gender, regdue, dob, microchip, desexed, vaccinated);
             case "c":
-                person.addAPet(new Cat(breed, name, gender, dob, regdue, microchip));
+                return new Cat(breed, name, gender, dob, regdue, microchip);
             case "r":
-                person.addAPet(new Rabbit(breed, name, gender, dob, regdue, microchip));
+                return new Rabbit(breed, name, gender, dob, regdue, microchip);
+
         }
+        return null;
     }
 
     //Wraps Course creation method in command line interface
