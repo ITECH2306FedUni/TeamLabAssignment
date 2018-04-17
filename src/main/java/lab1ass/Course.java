@@ -86,4 +86,8 @@ public class Course {
     public String toString() {
         return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID + "]";
     }
+    public String toStringShort() {
+    	return "Course [ID= " + courseID + ", name= " + name + "]" ;
+    }
+    
 }
