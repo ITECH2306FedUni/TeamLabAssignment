@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class MenuDriver {
     Person p1;
     private boolean stillRunning;
-    public static Course cMain = new Course(0, null, 0, 0);
+    public static Course cMain = new Course();
     public static Person pMain = new Person();
     Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
@@ -73,7 +73,7 @@ public class MenuDriver {
                 // menu option 1: register tax slave
                 p1 = personWizard();
                 pMain.addPerson(p1);
-                System.out.println("I have a person object : " + p1.toString());
+                System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
                 break;
             case 2:
                 Person pTest = new Person("25 somewhere Street", "Kathleen", "2000", "Casey");
@@ -85,7 +85,8 @@ public class MenuDriver {
                 // menu option 3: create new course
                 Course c = courseWizard();
                 cMain.diffrentCourses(c);
-                System.out.println("New course : " + c.toString());               
+                System.out.println("New course : " + c.toString());
+                break;
             case 4:
                 // menu option 4: enroll student
                 enrollmentWizard();
@@ -216,10 +217,16 @@ public class MenuDriver {
         System.out.println("Enter the Lecturer's Id of " + courseName +":");
         int courseLecturerID = input.nextInt();
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+        
     }
 
     private void enrollmentWizard () {
         System.out.println("enter the ID of the student");
+        int studentID = input.nextInt();
         System.out.println("enter the ID of the course you wish to enrol them in");
+        int courseID = input.nextInt();
+        pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID));
+        System.out.println(pMain.personList.get(studentID).toStringWhole());
+        
     }
 }

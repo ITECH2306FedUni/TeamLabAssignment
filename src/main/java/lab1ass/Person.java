@@ -10,7 +10,9 @@ import java.util.ArrayList;
  */
 public class Person {
 	public ArrayList<Person> personList = new ArrayList<>();
-    String name;  // name of person
+	 private static int nextValidPersonID = 0;
+    int personID;
+	String name;  // name of person
     String address; // address of person
     String postcode; // postcode of person's address
     String city; // city of person's address
@@ -26,7 +28,8 @@ public class Person {
      * @param pet
      */
     public Person(String name, String address, String city, Animal pet) {
-        this.name = name;
+        this.setPersonID();
+    	this.name = name;
         this.address = address;
         this.city = city;
         this.pet = pet;
@@ -41,7 +44,8 @@ public class Person {
      * @param _city
      */
     Person(String _address, String _name, String _postcode, String _city) {
-        this.setAddress(_address);
+    	this.setPersonID();
+    	this.setAddress(_address);
         this.setName(_name);
         this.setPostcode(_postcode);
         this.setCity(_city);
@@ -110,6 +114,10 @@ public class Person {
     	personList.add(personAddToList);
     	System.out.println(personList.size());
     	
+    }
+    private void setPersonID() { // allocate next available ID
+        this.personID = nextValidPersonID++;
+        System.out.println(this.personID);
     }
 
     public String toStringWhole() {
