@@ -170,21 +170,21 @@ public class MenuDriver {
 
     //Wraps Animal creation method in command line interface
     private Animal petWizard () {
-        Scanner input = new Scanner(System.in);
+        Scanner in2 = new Scanner(System.in);
         System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
-        String creature = input.nextLine();
+        String creature = in2.nextLine();
         System.out.println ("What is the animals name?")
-        String name = input.nextLine();
+        String name = in2.nextLine();
         System.out.println("what is the breed?");
-        String breed = input.nextLine();
+        String breed = in2.nextLine();
         System.out.println("What is the animals sex (m/f)?");
-        String gender = input.nextLine();
+        String gender = in2.nextLine();
         System.out.println("has the animal been microchipped (y/n)?");
-        boolean chipped = (input.nextLine == "y");
+        boolean chipped = (in2.nextLine() == "y");
         switch (creature) {
             case "d":
                 System.out.println("has the animal been desexed(y/n)?");
-                boolean desexed = (input.nextLine == "y");
+                boolean desexed = (in2.nextLine() == "y");
                 return new Dog(breed, name, gender, regdue, chipped);
             case "c":
                 return new Cat(breed, name, );
