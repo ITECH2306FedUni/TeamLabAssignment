@@ -89,8 +89,10 @@ public class MenuDriver {
                 enrollmentWizard();
                 break;
             case 5:
-                System.out.println("5");
-                // menu option 5: list course
+                // menu option 5: list courses
+                for (Course course: cMain.courseList) {
+                    System.out.println(course.toString());
+                }
                 break;
             case 6:
                 System.out.println("6");
