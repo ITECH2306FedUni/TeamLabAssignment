@@ -8,16 +8,17 @@ import java.util.Scanner;
 public class MenuDriver {
     private boolean stillRunning;
     public Course cMain = new Course(0, null, 0, 0);
+    Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
-
+        
     }
 
     private void start() {
         int choice;
-      
+        
         //String fileNameToLoad;
 
         // Ask for file name to load. Keeps trying
@@ -92,7 +93,7 @@ public class MenuDriver {
                 cMain.diffrentCourses(c1);
                 
                 System.out.println("A New Course "+ courseName + "has been created with the following values [ " + c1.toString() + " ]");
-                //in3.close();
+                in3.close();
                
             case 4:
                 System.out.println("4");
@@ -116,6 +117,7 @@ public class MenuDriver {
             	break;
             case 0:
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
+                input.close();
                 break;
             default:
                 System.out.println("Unexpected selection made. Doing nothing.");
@@ -141,10 +143,9 @@ public class MenuDriver {
             return 0;
 
         do {
-            Scanner in0 = new Scanner(System.in);
             System.out.print("Enter a selection (" + lower + "-" + upper + "):");
-            userInput = in0.nextInt(); // obtain the input
-            in0.nextLine(); // gets rid of the newline after the number we just read
+            userInput = input.nextInt(); // obtain the input
+            input.nextLine(); // gets rid of the newline after the number we just read
 
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
@@ -155,28 +156,26 @@ public class MenuDriver {
     }
     
     private Person personWizard () {
-        Scanner in1 = new Scanner(System.in);
         System.out.println("Enter rate payer name: ");
-        String name = in1.nextLine(); // obtain the input
+        String name = input.nextLine(); // obtain the input
         System.out.println("Enter rate payer address: ");
-        String address = in1.nextLine(); // obtain the input
+        String address = input.nextLine(); // obtain the input
         System.out.println("Enter rate payer postcode: ");
-        String postcode = in1.nextLine(); // obtain the input
+        String postcode = input.nextLine(); // obtain the input
         System.out.println("Enter rate payer city: ");
-        String city = in1.nextLine(); // obtain the input
-        //input.close();
+        String city = input.nextLine(); // obtain the input
     	return new Person(address, name, postcode, city);
     }
 
-    //Wraps Animal creation method in command line interface
+    /*//Wraps Animal creation method in command line interface
     private Animal petWizard () {
-        Scanner in2 = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
-        String creature = in2.nextLine();
-        System.out.println ("What is the animals name?")
-        String name = in2.nextLine();
+        String creature = in.nextLine();
+        System.out.println ("What is the animals name?");
+        String name = in.nextLine();
         System.out.println("what is the breed?");
-        String breed = in2.nextLine();
+        String breed = in.nextLine();
         System.out.println("What is the animals sex (m/f)?");
         String gender = in2.nextLine();
         System.out.println("has the animal been microchipped (y/n)?");
@@ -191,5 +190,5 @@ public class MenuDriver {
             case "r":
                 return new Rabbit();
         }
-    }
+    }*/
 }
