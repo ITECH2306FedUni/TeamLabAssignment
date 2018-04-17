@@ -20,9 +20,9 @@ public class TestDriverClass {
     	try {
             // create test case 1 - a person owning a pet dog which is on the restricted list
             Person p1 = new Person("25 somewhere Street", "Kathleen", "2000", "Casey");
-            Animal p1Pet = new Dog("Presa Canario", "Fido", "F", "05 01 1998", "05 01 1998", 13, true, false);
+            Animal p1Pet = new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, true, false);
             p1.addAPet(p1Pet);
-            System.out.println(" \n I have a third person object : " + p1.toString());
+            System.out.println(" \n I have a first person object : " + p1.toString());
             System.out.println(" \n They have the pet : " + p1.pet.toString());
 
             //Create a Course and give it to P1
