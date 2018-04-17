@@ -9,6 +9,7 @@ public class MenuDriver {
     Person p1;
     private boolean stillRunning;
     public Course cMain = new Course(0, null, 0, 0);
+    public Person pMain = new Person();
     Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
@@ -72,6 +73,7 @@ public class MenuDriver {
             case 1:
                 // menu option 1: register tax slave
                 p1 = personWizard();
+                pMain.addPerson(p1);
                 System.out.println("I have a person object : " + p1.toString());
                 break;
             case 2:
