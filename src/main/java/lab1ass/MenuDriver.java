@@ -85,29 +85,33 @@ public class MenuDriver {
                 cMain.diffrentCourses(c);
                 System.out.println("New course : " + c.toString());               
             case 4:
-                System.out.println("4");
-                // menu option 4
+                // menu option 4: enroll student
+                enrollmentWizard();
                 break;
             case 5:
                 System.out.println("5");
-                // menu option 5
+                // menu option 5: list course
                 break;
             case 6:
                 System.out.println("6");
-                // menu option 6
+                // menu option 6: calculate rego
                 break;
             case 7:
             	System.out.println("7");
+                //menu option 7: system testor
                 TestDriverClass.main(null);
                 break;
             case 8:
+                //menu option 8: lizard eggos
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
             	break;
             case 0:
+                //quit
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 break;
             default:
+                //error
                 System.out.println("Unexpected selection made. Doing nothing.");
                 break;
         }
@@ -191,12 +195,17 @@ public class MenuDriver {
     private Course courseWizard () {
         System.out.println("Enter the Name of new Course:");
         String courseName = input.nextLine();
-        System.out.println("Enter the Price of " + courseName + ":");//
+        System.out.println("Enter the Price of " + courseName + ":");
         float coursePrice = input.nextFloat();
         System.out.println("Enter the RunTime of " + courseName + ":");
         int courseRuntime = input.nextInt();
         System.out.println("Enter the Lecturer's Id of " + courseName +":");
         int courseLecturerID = input.nextInt();
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+    }
+
+    private void enrollmentWizard () {
+        System.out.println("enter the ID of the student");
+        System.out.println("enter the ID of the course you wish to enrol them in");
     }
 }
