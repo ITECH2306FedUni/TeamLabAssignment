@@ -3,10 +3,13 @@
  */
 package lab1ass;
 
+import java.util.ArrayList;
+
 /**
  * @author RAWR xD
  */
 public class Person {
+	public ArrayList<Person> personList = new ArrayList<>();
     String name;  // name of person
     String address; // address of person
     String postcode; // postcode of person's address
@@ -44,7 +47,11 @@ public class Person {
         this.setCity(_city);
     }
 
-    /**
+    public Person() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * @return the name
      */
     public String getName() {
@@ -96,6 +103,13 @@ public class Person {
 
     void enrollInCourse(Course _currentCourse) {
         this.currentCourse = _currentCourse;
+    }
+    
+    public void addPerson(Person personAddToList)
+    {
+    	personList.add(personAddToList);
+    	System.out.println(personList.size());
+    	
     }
 
     public String toStringWhole() {
