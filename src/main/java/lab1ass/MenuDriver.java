@@ -175,22 +175,31 @@ public class MenuDriver {
         System.out.println("what is the animal's date of birth?");
         String dob = input.nextLine();
         //FIXME: why does this have to be an integer?? causes crashes.
-        System.out.println("has the animal been microchipped (y/n)?");
-        Integer chipped = Integer.parseInt(input.nextLine());
-        switch (creature) {
-            case "d":
-                System.out.println("has the animal been desexed(y/n)?");
-                boolean desexed = input.nextLine().equals("y");
-                System.out.println("has the animal been vaccinated(y/n)?");
-                boolean vaccinated = input.nextLine().equals("y");
-                return new Dog(breed, name, gender, regdue, dob, chipped, desexed, vaccinated);
-            case "c":
-                return new Cat(breed, name, gender, regdue, dob, chipped);
-            case "r":
-                return new Rabbit(breed, name, gender, regdue, dob, chipped);
-            default:
-                return null;
+        System.out.println ("Is the pet microchipped (y)es or (n)o?");
+        String chipped = input.nextLine();
+        Integer microchip;
+        if(chipped.equals("y")){
+            System.out.println("Microchip number of animal? (null if not applicable)");
+            microchip = input.nextInt();
+        }else {
+            microchip = null;
+            switch (creature) {
+                case "d":
+                    System.out.println("has the animal been desexed(y/n)?");
+                    boolean desexed = input.nextLine().equals("y");
+                    System.out.println("has the animal been vaccinated(y/n)?");
+                    boolean vaccinated = input.nextLine().equals("y");
+                    return new Dog(breed, name, gender, regdue, dob, microchip, desexed, vaccinated);
+                case "c":
+                    return new Cat(breed, name, gender, dob, regdue, microchip);
+                case "r":
+                    return new Rabbit(breed, name, gender, dob, regdue, microchip);
+                default:
+                    return null;
+            }
         }
+
+
     }
 
     //Wraps Course creation method in command line interface

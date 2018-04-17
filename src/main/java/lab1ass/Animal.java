@@ -34,7 +34,6 @@ public abstract class Animal {
         this.dob = _dob;
         this.regdue = _regdue;
         this.microchip = _microchip;
-
     }
 
     public Integer getRegistrationID() {
