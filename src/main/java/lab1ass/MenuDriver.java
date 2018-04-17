@@ -146,7 +146,6 @@ public class MenuDriver {
             System.out.print("Enter a selection (" + lower + "-" + upper + "):");
             userInput = input.nextInt(); // obtain the input
             input.nextLine(); // gets rid of the newline after the number we just read
-
             if (userInput < lower || userInput > upper)
                 System.out.println("Invalid choice.");
         } while (userInput < lower || userInput > upper);
