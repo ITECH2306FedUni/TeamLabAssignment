@@ -180,9 +180,9 @@ public class MenuDriver {
         switch (creature) {
             case "d":
                 System.out.println("has the animal been desexed(y/n)?");
-                boolean desexed = (input.nextLine() == "y");
+                boolean desexed = input.nextLine().equals("y");
                 System.out.println("has the animal been vaccinated(y/n)?");
-                boolean vaccinated = (input.nextLine() == "y");
+                boolean vaccinated = input.nextLine().equals("y");
                 return new Dog(breed, name, gender, regdue, dob, chipped, desexed, vaccinated);
             case "c":
                 return new Cat(breed, name, gender, regdue, dob, chipped);
