@@ -17,6 +17,14 @@ public abstract class Animal {
     String gender;
     String regdue;
 
+    public Animal (String _breed, String name, String _dob, String _gender, String _regdue) {
+        this.breed = _breed;
+        this.name = _name;
+        this.dob = _dob;
+        this.gender = _gender;
+        this.regdue = _regdue;
+    }
+
     public Integer getRegistrationID() {
         return registrationID;
     }
