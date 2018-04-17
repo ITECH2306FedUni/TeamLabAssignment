@@ -8,8 +8,7 @@ import java.util.List;
  */
 public class Course {
 	
-    private static int nextValidCourseID = 1;
-	//List<Course> courseList = new ArrayList<>();
+    private static int nextValidCourseID = 0;
     ArrayList<Course> courseList = new ArrayList<>();
 	
     private int courseID; 
@@ -19,7 +18,7 @@ public class Course {
     private int studentID;
 
     public Course(int _studentID, String _name, float _price, int _runtime) {
-        this.setCourseID();
+        
     	this.studentID = _studentID;
         this.name = _name;
         this.price = _price;
@@ -29,6 +28,14 @@ public class Course {
 
     
 	
+
+	public Course() {
+		// TODO Auto-generated constructor stub
+		this.setCourseID();
+	}
+
+
+
 
 	public void finalize() throws Throwable {
 
@@ -66,6 +73,7 @@ public class Course {
     }
     private void setCourseID() { // allocate next available ID
         this.courseID = nextValidCourseID++;
+        System.out.println(this.courseID);
     }
     public void diffrentCourses(Course courseAddToList)
     {
