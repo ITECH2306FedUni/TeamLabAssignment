@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class MenuDriver {
     private boolean stillRunning;
-   public Course cMain = new Course(0, null, 0, 0);
+    public Course cMain = new Course(0, null, 0, 0);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -166,5 +166,30 @@ public class MenuDriver {
         String city = input.nextLine(); // obtain the input
         //input.close();
     	return new Person(address, name, postcode, city);
+    }
+
+    //Wraps Animal creation method in command line interface
+    private Animal petWizard () {
+        Scanner input = new Scanner(System.in);
+        System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
+        String creature = input.nextLine();
+        System.out.println ("What is the animals name?")
+        String name = input.nextLine();
+        System.out.println("what is the breed?");
+        String breed = input.nextLine();
+        System.out.println("What is the animals sex (m/f)?");
+        String gender = input.nextLine();
+        System.out.println("has the animal been microchipped (y/n)?");
+        boolean chipped = (input.nextLine == "y");
+        switch (creature) {
+            case "d":
+                System.out.println("has the animal been desexed(y/n)?");
+                boolean desexed = (input.nextLine == "y");
+                return new Dog(breed, name, gender, regdue, chipped);
+            case "c":
+                return new Cat(breed, name, );
+            case "r":
+                return new Rabbit();
+        }
     }
 }
