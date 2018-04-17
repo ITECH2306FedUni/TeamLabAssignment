@@ -16,7 +16,7 @@ public abstract class Animal {
     String dob;
     String gender;
     String regdue;
-    Integer microchip;
+    int microchip;
 
     /**
      * @param _breed  breed of the animal

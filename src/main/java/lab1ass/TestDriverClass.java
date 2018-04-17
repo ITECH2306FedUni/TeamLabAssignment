@@ -37,7 +37,7 @@ public class TestDriverClass {
         try {
             // create test case 2 - another person owning a rabbit
             Person p2 = new Person("12 curly avenue", "Fred", "3350", "Casey");
-            Animal p2Pet = new Rabbit("American Fuzzy Lop", "Leonard", "F", "05 01 1998", "05 01 1998",null);
+            Animal p2Pet = new Rabbit("American Fuzzy Lop", "Leonard", "F", "05 01 1998", "05 01 1998",0);
             p2.addAPet(p2Pet);
             System.out.println(" \n I have a third person object : " + p2.toStringPerson());
             System.out.println(" \n They have the pet : " + p2.toStringPet());
@@ -51,7 +51,7 @@ public class TestDriverClass {
         try {
             // create test case 3 - another person owing a pet cat
             Person p3 = new Person("12 curly avenue", "Mark", "3350", "Casey");
-            Animal p3Pet = new Cat("Siamese", "Leonard", "F", "05 01 1998", "05 01 1998", null);
+            Animal p3Pet = new Cat("Siamese", "Leonard", "F", "05 01 1998", "05 01 1998", 0);
             p3.addAPet(p3Pet);
             System.out.println(" \n I have a third person object : " + p3.toStringPerson());
             System.out.println(" \n They have the pet : " + p3.toStringPet());
