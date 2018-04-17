@@ -215,8 +215,8 @@ public class MenuDriver {
         int studentID = input.nextInt();
         System.out.println("enter the ID of the course you wish to enrol them in");
         int courseID = input.nextInt();
-        pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID));
-        System.out.println(pMain.personList.get(studentID).toStringWhole());
+        pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
+        System.out.println(pMain.personList.get(studentID).toStringWhole()); // DEBUG ONLY
         
     }
 }
