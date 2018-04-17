@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Dog extends Animal {
     boolean desexed;
     boolean vaccinated;
-    Integer microchip;
+    int microchip;
     String[] restricted_breeds = {
             "American Pit Bull Terrier",
             "Pit Bull Terrier",
@@ -17,7 +17,7 @@ public class Dog extends Animal {
             "Presa Canario"
     };
     
-    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip, boolean _desexed, boolean _vaccinated) {
+    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         setBreed(_breed);
         this.desexed = _desexed;
@@ -52,8 +52,8 @@ public class Dog extends Animal {
         }
     }
 
-    public void setMicrochip(Integer microchip) throws IllegalArgumentException {
-        if (microchip != null){
+    public void setMicrochip(int microchip) throws IllegalArgumentException {
+        if (microchip >= 0){
             this.microchip = microchip;
         } else {
             throw new IllegalArgumentException("Microchip should not be null");

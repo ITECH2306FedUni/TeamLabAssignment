@@ -2,15 +2,15 @@ package lab1ass;
 
 
 public class Cat extends Animal {
-    Integer microchip;
+    int microchip;
     
-    Cat(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
+    Cat(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         setMicrochip(_microchip);
     }
 
-    public void setMicrochip(Integer microchip) throws IllegalArgumentException {
-        if (microchip != null){
+    public void setMicrochip(int microchip) throws IllegalArgumentException {
+        if (microchip >= 0){
             this.microchip = microchip;
         } else {
             throw new IllegalArgumentException("Microchip should not be null");
