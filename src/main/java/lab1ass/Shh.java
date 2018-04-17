@@ -3,8 +3,8 @@ package lab1ass;
 public class Shh {
 public Shh dontDoIt()
 {
-	System.out.println("/n /n DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced by Jerry Seinfeld, Christina Steinberg ; written by Jerry Seinfeld and Spike Feresten & Barry Marder & Andy Robin ; directed by Steve Hickner, Simon J. Smith ; head of character animation, Fabio Lignini. (2008). Bee movie. Hollywood, Calif. :Paramount Home Entertainment,"  );
-	System.out.println("According to all known laws of aviation, there is no way a bee should be able to fly.\r\n" + 
+	System.out.println("/n /n /n DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced by Jerry Seinfeld, Christina Steinberg ; written by Jerry Seinfeld and Spike Feresten & Barry Marder & Andy Robin ; directed by Steve Hickner, Simon J. Smith ; head of character animation, Fabio Lignini. (2008). Bee movie. Hollywood, Calif. :Paramount Home Entertainment,"  );
+	System.out.println("/n /n According to all known laws of aviation, there is no way a bee should be able to fly.\r\n" + 
 			"Its wings are too small to get its fat little body off the ground.\r\n" + 
 			"The bee, of course, flies anyway because bees don't care what humans think is impossible.\r\n" + 
 			"Yellow, black. Yellow, black. Yellow, black. Yellow, black.\r\n" + 
