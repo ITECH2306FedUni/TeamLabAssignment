@@ -1,5 +1,6 @@
 package lab1ass;
 
+
 import java.util.Arrays;
 
 public class Dog extends Animal {
@@ -18,8 +19,11 @@ public class Dog extends Animal {
     
     Dog(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
+        setBreed(_breed);
         this.desexed = _desexed;
         this.vaccinated = _vaccinated;
+        setMicrochip(_microchip);
+
     }
 
     public boolean isDesexed() {
@@ -40,19 +44,20 @@ public class Dog extends Animal {
 
 
     @Override
-    public void setBreed(String breed) {
+    public void setBreed(String breed) throws IllegalArgumentException {
         if (Arrays.asList(restricted_breeds).contains(breed)){
-            // restriced breed
-            // TODO handling
+            throw new IllegalArgumentException("Dog is on the Restricted Breed's list");
         } else {
             this.breed = breed;
         }
     }
 
-    public void setMicrochip(Integer microchip) {
+    public void setMicrochip(Integer microchip) throws IllegalArgumentException {
         if (microchip != null){
             this.microchip = microchip;
-        } // TODO handling
+        } else {
+            throw new IllegalArgumentException("Microchip should not be null");
+        }
     }
 
     @Override

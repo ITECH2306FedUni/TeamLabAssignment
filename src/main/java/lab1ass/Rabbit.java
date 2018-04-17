@@ -5,10 +5,7 @@ public class Rabbit extends Animal {
     
     Rabbit(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
-    }
 
-    public void setMicrochip(Integer microchip) {
-        this.microchip = microchip;
     }
     public String toString() {
         return "Rabbit [breed=" + breed

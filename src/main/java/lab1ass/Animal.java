@@ -85,26 +85,5 @@ public abstract class Animal {
         this.regdue = regdue;
     }
 
-    // TODO Breed specific attributes
-
-    /**
-     * @param _breed  breed of the animal
-     * @param _name   name of the animal
-     * @param _dob    dob of the animal DD MMM YYYY
-     * @param _gender gender of the animal
-     * @param _regdue date that reg is due DD MMM YYYY
-     * @param _microchip microchip id for the pet
-     */
-   // Animal(String _breed, String _name, String _gender, String _dob, String _regdue, Integer _microchip) {
-      //  this.setRegistrationID();
-       // this.breed = _breed;
-       // this.name = _name;
-       // this.gender = _gender;
-       // this.dob = _dob;
-       // this.regdue = _regdue;
-       // this.microchip = _microchip;
-
-   // }
-
 
 }
