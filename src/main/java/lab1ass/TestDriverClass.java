@@ -13,9 +13,9 @@ public class TestDriverClass {
      */
 
     public static void main(String[] args) {
-    	
-    	//Person Test
-    	
+
+    	//Person test
+
     	System.out.println("\n PERSON TEST DATA");
     	try {
             // create test case 1 - a person owning a pet dog which is on the restricted list
@@ -57,7 +57,7 @@ public class TestDriverClass {
             System.out.println(" \n They have the pet : " + p3.pet.toString());
 
             //Create Last Course and give it to someone
-            Course c3 = new Course(333, "Euro Beat With Blan3y", 148, 12);
+            Course c3 = new Course(333, "Eurobeat with BLAN3Y", 148, 12);
             p3.enrollInCourse(c3);
             System.out.println(" \n I have a Course Object : " + p3.currentCourse.toString());
         }catch(IllegalArgumentException e ){

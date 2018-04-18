@@ -19,7 +19,7 @@ public class MenuDriver {
 
     private void start() {
         int choice;
-        
+
         //String fileNameToLoad;
 
         // Ask for file name to load. Keeps trying
@@ -104,14 +104,15 @@ public class MenuDriver {
             case 7:
             	System.out.println("7");
                 //menu option 7: system testor
-                TestDriverClass.main(null);
+
+                //TestRunner.main(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
             	Shh lol = new Shh().dontDoIt();
-            	
+
             	break;
             case 0:
                 //quit
@@ -152,7 +153,7 @@ public class MenuDriver {
 
         return userInput;
     }
-    
+
     private Person personWizard () {
         System.out.println("Enter rate payer name: ");
         String name = input.nextLine(); // obtain the input
@@ -223,7 +224,7 @@ public class MenuDriver {
         System.out.println("Enter the Lecturer's Id of " + courseName +":");
         int courseLecturerID = input.nextInt();
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
-        
+
     }
 
     private void enrollmentWizard () {
@@ -233,6 +234,6 @@ public class MenuDriver {
         int courseID = input.nextInt();
         pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
         System.out.println(pMain.personList.get(studentID).toStringWhole()); // DEBUG ONLY
-        
+
     }
 }

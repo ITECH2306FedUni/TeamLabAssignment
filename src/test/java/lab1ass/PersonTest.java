@@ -1,6 +1,5 @@
 package lab1ass;
-import static org.junit.Assert.*;
-import static org.junit.Test.*;
+import org.junit.Assert;
 
 public class PersonTest {
 
@@ -8,6 +7,6 @@ public class PersonTest {
     public void testAddPerson()
     {
         Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
-        assertEquals("Person [name=Kathleen, address=25 Somewhere Street, postcode=2000]", p1test.toString());
+        Assert.assertEquals("Person [name=Kathleen, address=25 Somewhere Street, postcode=2000]", p1test.toString());
     }
 }
