@@ -1,5 +1,9 @@
 package lab1ass;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -182,10 +186,16 @@ public class MenuDriver {
             System.out.println("What is the pet's gender? (m/f)");
             gender = input.nextLine();
         }
-        System.out.println("When is the animal's first registration? (DD MMM YYYY)");
-        String regdue = input.nextLine();
-        System.out.println("what is the animal's date of birth? (DD MMM YYYY)");
-        String dob = input.nextLine();
+        String regdue = "";
+        while(!isValidDate(regdue)){
+            System.out.println("When is the animal's first registration? (DD MMM YYYY)");
+            regdue = input.nextLine();
+        }
+        String dob = "";
+        while(!isValidDate(dob)){
+            System.out.println("What is the animal's date of birth? (DD MMM YYYY)");
+            dob = input.nextLine();
+        }
         String chipped = "";
         while(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
             System.out.println ("Is the pet microchipped (y)es or (n)o?");
@@ -193,7 +203,7 @@ public class MenuDriver {
         }
         int microchip;
         if(chipped.equalsIgnoreCase("y")){
-            System.out.println("Microchip number of animal? (null if not applicable)");
+            System.out.println("Microchip number of animal? (0 if not applicable)");
             microchip = input.nextInt();
         }else{
             microchip = 0;
@@ -235,5 +245,15 @@ public class MenuDriver {
         pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
         System.out.println(pMain.personList.get(studentID).toStringWhole()); // DEBUG ONLY
 
+    }
+    public static boolean isValidDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 }
