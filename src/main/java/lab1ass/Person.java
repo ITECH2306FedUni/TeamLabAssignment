@@ -4,6 +4,9 @@
 package lab1ass;
 
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Calendar;
 
 /**
  * @author RAWR xD
@@ -127,5 +130,28 @@ public class Person {
     @Override
     public String toString(){
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
+    }
+
+    //life would be easier if computers didn't think this was year of our lord 48K+R
+    public double calcRates (String regodate) {
+        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+
+        Calendar _regoDate = Calendar.getInstance();
+        try {
+            _regoDate.setTime(format.parse(regodate));
+        } catch (ParseException e) {
+        }
+        long regoYear = _regoDate.get(Calendar.YEAR);
+        System.out.println("year:"+regoYear);
+        double fee = 20.00;
+        long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
+        
+        if (regoYear == currentYear) {
+            return fee;
+        }
+        for (int i = 0; i < currentYear - regoYear; i++) {
+            fee = fee - (fee*0.01);
+        }
+        return fee;
     }
 }
