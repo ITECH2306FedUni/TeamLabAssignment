@@ -8,9 +8,11 @@ import java.util.List;
  */
 public class Course {
 	
+	public static Person personToAdd = new Person();
     private static int nextValidCourseID = 0;
     ArrayList<Course> courseList = new ArrayList<>();
-	
+	ArrayList<Person> personToaddList = new ArrayList<Person>(); 
+    
     private int courseID; 
     private String name;
     private float price;
@@ -72,10 +74,15 @@ public class Course {
     	System.out.println("\n " + courseList.toString() + "Yo");//
     	System.out.println(courseList.size());
     }
+    public void enrollstudent(Person personAddToList)
+    {
+    	personToaddList.add(personAddToList);
+    	System.out.println("\n yoo " + personAddToList.toString());
+    }
 
     @Override
     public String toString() {
-        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID + "]";
+        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ personToaddList.toString() + "]";
     }
     
     public String toStringShort() {
