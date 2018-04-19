@@ -80,10 +80,17 @@ public class MenuDriver {
                 System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
                 break;
             case 2:
-                Person pTest = new Person("25 somewhere Street", "Kathleen", "2000", "Casey");
                 // menu option 2: register pet
-                pTest.addAPet(petWizard());
-                System.out.println("Person p1's pet is : " + pTest.pet.toString());
+                //print a list of people
+                pMain.addPerson(new Person("25 somewhere Street", "Kathleen", "2000", "Casey"));
+                for (Person person: pMain.personList) {
+                    System.out.println("" + person.toString());
+                }
+                //figure out who to give a pet to
+                Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
+                //add dat pet
+                petOwner.addAPet(petWizard());
+                //System.out.println("Person p1's pet is : " + pTest.pet.toString());
                 break;
             case 3:
                 // menu option 3: create new course
@@ -99,32 +106,34 @@ public class MenuDriver {
                 // menu option 5: list courses
                 for (Course course: cMain.courseList) {
                     System.out.println(course.toStringShort());
-                    
+
                 }
                 System.out.println("Enter In a Course ID: ");
                 int selectCourse = input.nextInt();
                 System.out.println(cMain.courseList.get(selectCourse).toString());
-                
+
                 break;
             case 6:
-                System.out.println("6");
                 // menu option 6: calculate rego
+                for (Person ratePayer: pMain.personList) {
+                    System.out.println(ratePayer.name + ratePayer.calcRates());
+                }
                 break;
             case 7:
-            	System.out.println("7");
+                System.out.println("7");
                 //menu option 7: system testor
 
                 //CityTestRunner.runTests(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
-            	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
-            	System.out.println("Gaining access to Lizard Deep Web.");
-            	System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
-            	String Input = input.nextLine(); // obtain the input
-            	Shh lol = new Shh().dontDoIt();
+                System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
+                System.out.println("Gaining access to Lizard Deep Web.");
+                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
+                String Input = input.nextLine(); // obtain the input
+                Shh lol = new Shh().dontDoIt();
 
-            	break;
+                break;
             case 0:
                 //quit
                 stillRunning = false;// causes the main loop of program to end (i.e. quits)
@@ -174,7 +183,7 @@ public class MenuDriver {
         String postcode = input.nextLine(); // obtain the input
         System.out.println("Enter rate payer city: ");
         String city = input.nextLine(); // obtain the input
-    	return new Person(address, name, postcode, city);
+        return new Person(address, name, postcode, city);
     }
 
     //Wraps Animal creation method in command line interface
@@ -252,7 +261,7 @@ public class MenuDriver {
         cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
         pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
         System.out.println(pMain.personList.toString()); // DEBUG ONLY
-        
+
 
     }
     public static boolean isValidDate(String date) {
