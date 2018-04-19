@@ -133,15 +133,15 @@ public class Person {
     }
 
     //life would be easier if computers didn't think this was year of our lord 48K+R
-    public double calcRates (String regodate) {
+    public double calcRates () {
         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
 
-        Calendar _regoDate = Calendar.getInstance();
+        Calendar regoDate = Calendar.getInstance();
         try {
-            _regoDate.setTime(format.parse(regodate));
+            regoDate.setTime(format.parse(this.pet.regdue));
         } catch (ParseException e) {
         }
-        long regoYear = _regoDate.get(Calendar.YEAR);
+        long regoYear = regoDate.get(Calendar.YEAR);
         System.out.println("year:"+regoYear);
         double fee = 20.00;
         long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
