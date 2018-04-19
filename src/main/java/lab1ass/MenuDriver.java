@@ -102,11 +102,12 @@ public class MenuDriver {
                 }
                 break;
             case 6:
-                System.out.println("6");
                 // menu option 6: calculate rego
+                for (Person ratePayer: pMain.personList) {
+                    System.out.println(ratePayer.name + ratePayer.calcRates());
+                }
                 break;
             case 7:
-            	System.out.println("7");
                 //menu option 7: system testor
 
                 //TestRunner.main(null);
