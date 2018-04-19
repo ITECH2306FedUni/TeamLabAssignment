@@ -110,7 +110,7 @@ public class MenuDriver {
             case 7:
                 //menu option 7: system testor
 
-                TestRunner.main(null);
+                TestRunner.runTests(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
