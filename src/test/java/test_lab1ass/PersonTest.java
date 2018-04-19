@@ -1,5 +1,7 @@
-package lab1ass;
+package test_lab1ass;
 import org.junit.Assert;
+
+import lab1ass.Person;
 
 public class PersonTest {
 

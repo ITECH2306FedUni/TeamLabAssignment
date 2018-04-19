@@ -5,7 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import lab1ass.TestRunner;
+
+import test_lab1ass.CityTestRunner;
 /**
  * @author RAWR xD
  */
@@ -110,7 +111,7 @@ public class MenuDriver {
             case 7:
                 //menu option 7: system testor
 
-                TestRunner.runTests(null);
+                CityTestRunner.runTests(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos

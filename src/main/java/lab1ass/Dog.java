@@ -17,7 +17,7 @@ public class Dog extends Animal {
             "Presa Canario"
     };
     
-    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
+    public Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         setBreed(_breed);
         this.desexed = _desexed;

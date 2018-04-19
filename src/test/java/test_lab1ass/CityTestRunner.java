@@ -1,9 +1,9 @@
-package lab1ass;
+package test_lab1ass;
 
 import org.junit.runner.*;
 import org.junit.runner.notification.Failure;
 
-public class TestRunner {
+public class CityTestRunner {
     public static void runTests(String[] args) {
         Result result = JUnitCore.runClasses(PersonTest.class, PetTest.class, CourseTest.class);
         for (Failure failure : result.getFailures()) {
