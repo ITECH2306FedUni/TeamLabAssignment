@@ -4,7 +4,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation "junit:junit:4.12"
+    compile 'junit:junit:4.12'
 }
 jar {
     manifest {

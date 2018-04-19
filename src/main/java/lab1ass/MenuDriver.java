@@ -1,7 +1,5 @@
 package lab1ass;
 
-import lab1ass.Test.CityTestRunner;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
