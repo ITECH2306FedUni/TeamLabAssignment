@@ -1,5 +1,7 @@
 package lab1ass;
 
+import lab1ass.Test.CityTestRunner;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -114,7 +116,7 @@ public class MenuDriver {
             	System.out.println("7");
                 //menu option 7: system testor
 
-                // TestRunner.main(null);
+                CityTestRunner.runTests(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
