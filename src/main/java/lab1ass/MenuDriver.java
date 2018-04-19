@@ -114,12 +114,14 @@ public class MenuDriver {
             	System.out.println("7");
                 //menu option 7: system testor
 
-                CityTestRunner.runTests(null);
+                //CityTestRunner.runTests(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
             	System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
             	System.out.println("Gaining access to Lizard Deep Web.");
+            	System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
+            	String Input = input.nextLine(); // obtain the input
             	Shh lol = new Shh().dontDoIt();
 
             	break;
