@@ -1,5 +1,6 @@
 package lab1ass;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -78,6 +79,7 @@ public class MenuDriver {
                 p1 = personWizard();
                 pMain.addPerson(p1);
                 System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
+                menuReturn();
                 break;
             case 2:
                 // menu option 2: register pet
@@ -91,16 +93,19 @@ public class MenuDriver {
                 //add dat pet
                 petOwner.addAPet(petWizard());
                 //System.out.println("Person p1's pet is : " + pTest.pet.toString());
+                menuReturn();
                 break;
             case 3:
                 // menu option 3: create new course
                 Course c = courseWizard();
                 cMain.diffrentCourses(c);
                 System.out.println("New course : " + c.toString());
+                menuReturn();
                 break;
             case 4:
                 // menu option 4: enroll student
                 enrollmentWizard();
+                menuReturn();
                 break;
             case 5:
                 // menu option 5: list courses
@@ -111,19 +116,25 @@ public class MenuDriver {
                 System.out.println("Enter In a Course ID: ");
                 int selectCourse = input.nextInt();
                 System.out.println(cMain.courseList.get(selectCourse).toString());
-
+                menuReturn();
                 break;
             case 6:
                 // menu option 6: calculate rego
                 for (Person ratePayer: pMain.personList) {
                     System.out.println(ratePayer.name + ratePayer.calcRates());
                 }
+                menuReturn();
                 break;
             case 7:
                 System.out.println("7");
                 //menu option 7: system testor
-
-                //CityTestRunner.runTests(null);
+                System.out.println("Running Person Test's");
+                TestDriverClass.runTestPerson(null);
+                System.out.println("Running Pet Test's");
+                TestDriverClass.runTestPet(null);
+                System.out.println("Running Course Test's");
+                TestDriverClass.runTestCourse(null);
+                menuReturn();
                 break;
             case 8:
                 //menu option 8: lizard eggos
@@ -132,7 +143,7 @@ public class MenuDriver {
                 System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
                 String Input = input.nextLine(); // obtain the input
                 Shh lol = new Shh().dontDoIt();
-
+                menuReturn();
                 break;
             case 0:
                 //quit
@@ -273,5 +284,13 @@ public class MenuDriver {
             return false;
         }
         return true;
+    }
+    public void menuReturn(){
+        try {
+            System.out.println("Click enter to return to the menu");
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
