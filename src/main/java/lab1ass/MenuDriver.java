@@ -98,8 +98,13 @@ public class MenuDriver {
             case 5:
                 // menu option 5: list courses
                 for (Course course: cMain.courseList) {
-                    System.out.println(course.toString());
+                    System.out.println(course.toStringShort());
+                    
                 }
+                System.out.println("Enter In a Course ID: ");
+                int selectCourse = input.nextInt();
+                System.out.println(cMain.courseList.get(selectCourse).toString());
+                
                 break;
             case 6:
                 System.out.println("6");
@@ -109,7 +114,7 @@ public class MenuDriver {
             	System.out.println("7");
                 //menu option 7: system testor
 
-                //TestRunner.main(null);
+                // TestRunner.main(null);
                 break;
             case 8:
                 //menu option 8: lizard eggos
@@ -242,8 +247,10 @@ public class MenuDriver {
         int studentID = input.nextInt();
         System.out.println("enter the ID of the course you wish to enrol them in");
         int courseID = input.nextInt();
+        cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
         pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
-        System.out.println(pMain.personList.get(studentID).toStringWhole()); // DEBUG ONLY
+        System.out.println(pMain.personList.toString()); // DEBUG ONLY
+        
 
     }
     public static boolean isValidDate(String date) {
