@@ -1,5 +1,9 @@
-package lab1ass;
+package lab1ass.Test;
 import org.junit.Assert;
+
+import lab1ass.Animal;
+import lab1ass.Dog;
+import lab1ass.Person;
 
 public class PetTest {
 

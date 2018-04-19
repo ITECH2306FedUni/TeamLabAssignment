@@ -4,7 +4,7 @@ package lab1ass;
 public class Cat extends Animal {
     int microchip;
     
-    Cat(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
+    public Cat(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         setMicrochip(_microchip);
     }
