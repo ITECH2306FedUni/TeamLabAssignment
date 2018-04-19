@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import test_lab1ass.CityTestRunner;
+import lab1ass.Test.CityTestRunner;
 /**
  * @author RAWR xD
  */

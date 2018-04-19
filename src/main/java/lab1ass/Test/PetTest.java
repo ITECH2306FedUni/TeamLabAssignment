@@ -1,4 +1,4 @@
-package test_lab1ass;
+package lab1ass.Test;
 import org.junit.Assert;
 
 import lab1ass.Animal;
