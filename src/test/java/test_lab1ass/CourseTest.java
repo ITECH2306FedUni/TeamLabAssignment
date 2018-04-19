@@ -4,7 +4,7 @@ import org.junit.Assert;
 
 import lab1ass.Course;
 import lab1ass.Person;
-
+import lab1ass.*;
 public class CourseTest {
 
     @org.junit.Test
