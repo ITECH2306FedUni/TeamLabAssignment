@@ -6,9 +6,9 @@ import java.util.Arrays;
  * @version 1.0
  */
 public class Dog extends Animal {
-    boolean desexed;
-    boolean vaccinated;
-    int microchip;
+    private boolean desexed;
+    private boolean vaccinated;
+    private int microchip;
     String[] restricted_breeds = {
             "American Pit Bull Terrier",
             "Pit Bull Terrier",
