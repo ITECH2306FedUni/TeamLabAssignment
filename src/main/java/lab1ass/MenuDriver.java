@@ -23,21 +23,28 @@ public class MenuDriver {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
     }
-
     private void start() {
         int choice;
+        if(pMain.personList.isEmpty()) {
+            System.out.println("What would you like preloaded People and Pet Data (y)es or (n)o?");
+            String preloadchoice = input.nextLine();
+            if(preloadchoice.equalsIgnoreCase("y")){
+                pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
+                pMain.addPerson(new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey"));
+                pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
+            }
+        }
 
-        //String fileNameToLoad;
-
+/*
+        String fileNameToLoad;
         // Ask for file name to load. Keeps trying
-/*		do {
+		do {
 			System.out.print("Which log file do you wish load: ");
 			fileNameToLoad = console.nextLine();
-
 			logs = new LogsData();					// Create the primary data management object of this program (in the loop so that it starts clean for each file attempted)
 		} while (loadFile(fileNameToLoad) == false);
 */
-        stillRunning = true;        // in order to commence program
+        stillRunning = true; // in order to commence program
 
         while (stillRunning) {
             showMainMenu();
@@ -78,7 +85,7 @@ public class MenuDriver {
     private void processChoiceMainMenu(int choice) {
         switch (choice) {
             case 1:
-                // menu option 1: register tax slave
+                // menu option 1: register person
                 Person p1 = personWizard();
                 pMain.addPerson(p1);
                 System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
@@ -87,15 +94,22 @@ public class MenuDriver {
             case 2:
                 // menu option 2: register pet
                 //print a list of people
-                pMain.addPerson(new Person("25 somewhere Street", "Kathleen", "2000", "Casey"));
-                for (Person person: pMain.personList) {
-                    System.out.println("" + person.toString());
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.personID + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    //figure out who to give a pet to
+                    Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
+                    //add dat pet
+                    petOwner.addAPet(petWizard());
+                    System.out.println("The added pet is: " + petOwner.pet.toString());
+                    System.out.println("For the Person: " + petOwner.name);
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
                 }
-                //figure out who to give a pet to
-                Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
-                //add dat pet
-                petOwner.addAPet(petWizard());
-                System.out.println("The added pet is: " + petOwner.pet.toString());
                 menuReturn();
                 break;
             case 3:
@@ -112,18 +126,41 @@ public class MenuDriver {
                 break;
             case 5:
                 // menu option 5: list courses
-                for (Course course: cMain.courseList) {
-                    System.out.println(course.toStringShort());
+                if(!cMain.courseList.isEmpty()) {
+                    for (Course course : cMain.courseList) {
+                        System.out.println("ID " + course.toStringShort());
+                    }
+                    System.out.println("Enter in a Course ID: ");
+                    int selectCourse = input.nextInt();
+                    System.out.println(cMain.courseList.get(selectCourse).toString());
+                }else {
+                    System.out.println("Please add a Course first!");
+                    menuReturn();
+                    break;
                 }
-                System.out.println("Enter In a Course ID: ");
-                int selectCourse = input.nextInt();
-                System.out.println(cMain.courseList.get(selectCourse).toString());
                 menuReturn();
                 break;
             case 6:
                 // menu option 6: calculate rego
-                for (Person ratePayer: pMain.personList) {
-                    System.out.println(ratePayer.name + ratePayer.calcRates());
+                // figure out who to generate rates for
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.personID + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+
+                    Person ratePayer = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
+                    if(ratePayer.hasPet()){
+                        System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
+                        System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
+                        System.out.println("The rate to pay is: " + ratePayer.calcRates());
+                    } else {
+                        System.out.println(ratePayer.name + " does not own a pet!");
+                    }
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
                 }
                 menuReturn();
                 break;
@@ -273,13 +310,13 @@ public class MenuDriver {
      EFFECT:  The user is asked a series of inputs to generate the course
      */
     private Course courseWizard () {
-        System.out.println("Enter the Name of new Course:");
+        System.out.println("Enter the Name of new course:");
         String courseName = input.nextLine();
-        System.out.println("Enter the Price of " + courseName + ":");
+        System.out.println("Enter the price of " + courseName + ":");
         float coursePrice = input.nextFloat();
-        System.out.println("Enter the RunTime of " + courseName + ":");
+        System.out.println("Enter the runtime of " + courseName + ":");
         int courseRuntime = input.nextInt();
-        System.out.println("Enter the Lecturer's Id of " + courseName +":");
+        System.out.println("Enter the lecturer's id for " + courseName +":");
         int courseLecturerID = input.nextInt();
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
 
@@ -292,13 +329,28 @@ public class MenuDriver {
      EFFECT:  The user is asked a series of inputs to add a person to a course
      */
     private void enrollmentWizard () {
-        System.out.println("Enter the ID of the student");
-        int studentID = input.nextInt();
-        System.out.println("Enter the ID of the course you wish to enrol them in");
-        int courseID = input.nextInt();
-        cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
-        pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
-        System.out.println(pMain.personList.toString()); // DEBUG ONLY
+        int studentID;
+        int courseID;
+        if(!pMain.personList.isEmpty()){
+            for (Person person: pMain.personList) {
+                System.out.println("ID " + person.personID + ": " + person.getName());
+            }
+            System.out.println("Enter the ID of the student");
+            studentID = input.nextInt();
+            if(!cMain.courseList.isEmpty()) {
+                for (Course course : cMain.courseList) {
+                    System.out.println("ID: " + course.getID() + " Name: " + course.getName());
+                }
+                System.out.println("Enter the ID of the course you wish to enrol them in: ");
+                courseID = input.nextInt();
+                cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
+                pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
+            }else {
+                System.out.println("Please add a Course first!");
+            }
+        }else {
+            System.out.println("Please add a Person first!");
+        }
     }
     /**
      METHOD:  isValidDate

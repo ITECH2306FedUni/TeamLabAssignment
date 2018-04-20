@@ -34,6 +34,9 @@ public class Course {
 	public void finalize() throws Throwable {
 
     }
+    public int getID() {
+        return courseID;
+    }
 
     public String getName() {
         return name;
@@ -77,7 +80,7 @@ public class Course {
     public void enrollstudent(Person personAddToList)
     {
     	personToaddList.add(personAddToList);
-    	System.out.println("\n yoo " + personAddToList.toString());
+    	System.out.println(personAddToList.name + " added to course");
     }
 
     @Override

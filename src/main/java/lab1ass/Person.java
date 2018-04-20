@@ -108,6 +108,13 @@ public class Person {
         this.pet = _pet;
     }
 
+    public boolean hasPet() {
+        if(this.pet == null){
+            return false;
+        }
+        return true;
+    }
+
     public void enrollInCourse(Course _currentCourse) {
         this.currentCourse = _currentCourse;
     }
@@ -142,10 +149,9 @@ public class Person {
         } catch (ParseException e) {
         }
         long regoYear = regoDate.get(Calendar.YEAR);
-        System.out.println("year:"+regoYear);
         double fee = 20.00;
         long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
-        
+        // TODO Dog vaccine thing
         if (regoYear == currentYear) {
             return fee;
         }
