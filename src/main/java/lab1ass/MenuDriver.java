@@ -79,7 +79,7 @@ public class MenuDriver {
                 // menu option 1: register person
                 Person p1 = personWizard();
                 pMain.addPerson(p1);
-                System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
+                System.out.println("I have a person object ID: " + p1.getPersonID() + " " + p1.toString());
                 menuReturn();
                 break;
             case 2:
@@ -87,7 +87,7 @@ public class MenuDriver {
                 //print a list of people
                 if(!pMain.personList.isEmpty()){
                     for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.personID + ": " + person.getName());
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
                     //figure out who to give a pet to
@@ -95,7 +95,7 @@ public class MenuDriver {
                     //add dat pet
                     petOwner.addAPet(petWizard());
                     System.out.println("The added pet is: " + petOwner.pet.toString());
-                    System.out.println("For the Person: " + petOwner.name);
+                    System.out.println("For the Person: " + petOwner.getName());
                 }else {
                     System.out.println("Please add a Person first!");
                     menuReturn();
@@ -136,7 +136,7 @@ public class MenuDriver {
                 // figure out who to generate rates for
                 if(!pMain.personList.isEmpty()){
                     for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.personID + ": " + person.getName());
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
 
@@ -146,7 +146,7 @@ public class MenuDriver {
                         System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
                         System.out.println("The rate to pay is: " + ratePayer.calcRates());
                     } else {
-                        System.out.println(ratePayer.name + " does not own a pet!");
+                        System.out.println(ratePayer.getName() + " does not own a pet!");
                     }
                 }else {
                     System.out.println("Please add a Person first!");
@@ -304,7 +304,7 @@ public class MenuDriver {
         int courseID;
         if(!pMain.personList.isEmpty()){
             for (Person person: pMain.personList) {
-                System.out.println("ID " + person.personID + ": " + person.getName());
+                System.out.println("ID " + person.getPersonID() + ": " + person.getName());
             }
             System.out.println("Enter the ID of the student");
             studentID = input.nextInt();

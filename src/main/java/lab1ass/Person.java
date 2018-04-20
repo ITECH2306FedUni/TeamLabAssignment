@@ -15,12 +15,12 @@ import java.util.Calendar;
  */
 public class Person {
 	public ArrayList<Person> personList = new ArrayList<>();
-	 private static int nextValidPersonID = 0;
-    int personID;
-	String name;  // name of person
-    String address; // address of person
-    String postcode; // postcode of person's address
-    String city; // city of person's address
+	private static int nextValidPersonID = 0;
+    private int personID;
+	private String name;  // name of person
+    private String address; // address of person
+    private String postcode; // postcode of person's address
+    private String city; // city of person's address
     public Animal pet; // associate a pet that is an Animal object with the Person
     public Course currentCourse;
 
@@ -60,6 +60,13 @@ public class Person {
 		// TODO Auto-generated constructor stub
 	}
 
+    public int getPersonID() {
+        return personID;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
 	/**
      * @return the name
      */

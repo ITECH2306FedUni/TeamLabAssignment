@@ -14,16 +14,15 @@ public class Course {
 	public static Person personToAdd = new Person();
     private static int nextValidCourseID = 0;
     ArrayList<Course> courseList = new ArrayList<>();
-	ArrayList<Person> personToaddList = new ArrayList<Person>(); 
+	private ArrayList<Person> personToaddList = new ArrayList<Person>();
     
     private int courseID; 
     private String name;
     private float price;
     private int runtime;
-    private int studentID;
 
     public Course(int _studentID, String _name, float _price, int _runtime) {
-    	this.studentID = _studentID;
+        int studentID = _studentID;
         this.name = _name;
         this.price = _price;
         this.runtime = _runtime;
@@ -83,7 +82,7 @@ public class Course {
     public void enrollstudent(Person personAddToList)
     {
     	personToaddList.add(personAddToList);
-    	System.out.println(personAddToList.name + " added to course");
+    	System.out.println(personAddToList.getName() + " added to course");
     }
 
     @Override
