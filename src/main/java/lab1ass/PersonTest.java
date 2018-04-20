@@ -1,8 +1,10 @@
 package lab1ass;
-
 import org.junit.Assert;
-
-
+/**
+ * The Person Test Class
+ * @author  RAWR-XD
+ * @version 1.0
+ */
 public class PersonTest {
 
     @org.junit.Test

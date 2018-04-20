@@ -53,12 +53,9 @@ public class MenuDriver {
         }
 
     }
-
-    // METHOD:  showMainMenu
-    // PURPOSE: To present a menu/list of options to the user.
-    // PASSED:  nothing
-    // RETURNS: nothing
-    // EFFECTS: A list of options is displayed on the screen.
+    /**
+    * To present a menu/list of options to the user.
+     */
     private void showMainMenu() {
         System.out.println();        // ensure a break between previous output and the menu
         System.out.println("What would you like to do?");
@@ -73,14 +70,8 @@ public class MenuDriver {
         System.out.println("0.  Exit Program");
     }
     /**
-     METHOD:  processChoiceMainMenu
-     PURPOSE: To dispatch control to a relevant method which handles the user's selected choice.
-     PASSED:
-         @param choice - the code of the menu option selected by the user.
-     RETURNS: nothing
-     EFFECT:  Some action will be performed based on the user's choice. An invalid choice
-         will result in an error message being displayed to the screen.
-     NOTE: This method will invoke a range of other methods to actually achieve the user's choice.
+     * To dispatch control to a relevant method which handles the user's selected choice.
+     * @param choice - the code of the menu option selected by the user.
      */
     private void processChoiceMainMenu(int choice) {
         switch (choice) {
@@ -195,17 +186,10 @@ public class MenuDriver {
         }
     }
     /**
-     METHOD:  getUserSelection
-     PURPOSE: To obtain from the user a selection (an integer) from a range of values
-     PASSED:
-        @param lower - the Lowest permissible value the user can enter as their selection.
-        @param upper - the Highest permissible value the user can enter
-    RETURNS:
-        The value entered by the user, unless the "lower" parameter was higher
-        than the "upper" parameter, in which case 0 is returned.
-     EFFECTS:
-        A prompt is displayed on the screen to ask the user for a value in the range.
-        Input is sought from the user via the keyboard (System.in)
+     * To obtain from the user a selection (an integer) from a range of values
+     * @param lower - the Lowest permissible value the user can enter as their selection.
+     * @param upper - the Highest permissible value the user can enter
+     * @return userInput The value entered by the user, unless the "lower" parameter was higher than the "upper" parameter, in which case 0 is returned.
      */
     private int getUserSelection(int lower, int upper) {
         int userInput;
@@ -225,11 +209,8 @@ public class MenuDriver {
         return userInput;
     }
     /**
-     METHOD:  personWizard
-     PURPOSE: To generate a person.
-     PASSED: null
-     RETURNS: A new person object
-     EFFECT:  The user is asked a series sof inputs to generate the person
+     * To generate a person.
+     * @return A new person object
      */
     private Person personWizard () {
         System.out.println("Enter rate payer name: ");
@@ -243,11 +224,8 @@ public class MenuDriver {
         return new Person(address, name, postcode, city);
     }
     /**
-     METHOD:  personWizard
-     PURPOSE: Wrap Animal creation method in command line interface
-     PASSED: null
-     RETURNS: A new pet object
-     EFFECT:  The user is asked a series of inputs to generate the pwt
+     * Wrap Animal creation method in command line interface
+     * @return A new pet object
      */
     private Animal petWizard () {
         String creature = "";
@@ -303,11 +281,8 @@ public class MenuDriver {
         return null;
     }
     /**
-     METHOD:  courseWizard
-     PURPOSE: To generate a course.
-     PASSED: null
-     RETURNS: A new course object
-     EFFECT:  The user is asked a series of inputs to generate the course
+     * To generate a course.
+     * @return A new course object
      */
     private Course courseWizard () {
         System.out.println("Enter the Name of new course:");
@@ -322,11 +297,7 @@ public class MenuDriver {
 
     }
     /**
-     METHOD:  enrollmentWizard
-     PURPOSE: To enroll a person into a course
-     PASSED: null
-     RETURNS: A new course object
-     EFFECT:  The user is asked a series of inputs to add a person to a course
+     * To enroll a person into a course
      */
     private void enrollmentWizard () {
         int studentID;
@@ -353,12 +324,9 @@ public class MenuDriver {
         }
     }
     /**
-     METHOD:  isValidDate
-     PURPOSE: To check if a date matches the format criteria
-     PASSED:
-        @param date this is the date to be checked
-     RETURNS: A new true or false boolean
-     EFFECT:  The date is checked
+     * To check if a date matches the format criteria
+     * @param date this is the date to be checked
+     * @return A new true or false boolean
      */
     private static boolean isValidDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
@@ -371,11 +339,7 @@ public class MenuDriver {
         }
     }
     /**
-     METHOD:  menuReturn
-     PURPOSE: To return the user to the menu
-     PASSED: null
-     RETURNS: A new true or false boolean
-     EFFECT:  Prompts the user before returning to the menu
+     * To return the user to the menu
      */
     private void menuReturn(){
         try {

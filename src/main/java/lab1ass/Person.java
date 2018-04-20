@@ -9,7 +9,9 @@ import java.text.ParseException;
 import java.util.Calendar;
 
 /**
- * @author RAWR xD
+ * Person
+ * @author  RAWR-XD
+ * @version 1.0
  */
 public class Person {
 	public ArrayList<Person> personList = new ArrayList<>();
@@ -25,10 +27,10 @@ public class Person {
     // constructor - create Person given name, address and a Pet object
 
     /**
-     * @param name
-     * @param address
-     * @param city
-     * @param pet
+     * @param name name of person
+     * @param address address of person
+     * @param city city of person's address
+     * @param pet pet of the person
      */
     public Person(String name, String address, String city, Animal pet) {
         this.setPersonID();
@@ -41,10 +43,10 @@ public class Person {
     // constructor - create Person given address, name and postcode
 
     /**
-     * @param _address
-     * @param _name
-     * @param _postcode
-     * @param _city
+     * @param _name name of person
+     * @param _address address of person
+     * @param _city city of person's address
+     * @param _postcode postcdoe of the person
      */
     public Person(String _address, String _name, String _postcode, String _city) {
     	this.setPersonID();

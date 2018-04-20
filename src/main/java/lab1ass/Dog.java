@@ -1,8 +1,10 @@
 package lab1ass;
-
-
 import java.util.Arrays;
-
+/**
+ * The Dog Class
+ * @author  RAWR-XD
+ * @version 1.0
+ */
 public class Dog extends Animal {
     boolean desexed;
     boolean vaccinated;
@@ -17,19 +19,15 @@ public class Dog extends Animal {
             "Presa Canario"
     };
     /**
-     METHOD:  Dog Construct
-     PURPOSE: To build the animal object
-     PASSED:
-     @param _breed  breed of the animal
-     @param _name   name of the animal
-     @param _dob    dob of the animal DD MMM YYYY
-     @param _gender gender of the animal
-     @param _regdue date that reg is due DD MMM YYYY
-     @param _microchip microchip id for the pet
-     @param _desexed desex status of the pet
-     @param _vaccinated vaccine status of the pet
-     RETURNS: Dog Object
-     EFFECT:  A dog object is built
+     * To build the animal object
+     * @param _breed  breed of the animal
+     * @param _name   name of the animal
+     * @param _dob    dob of the animal DD MMM YYYY
+     * @param _gender gender of the animal
+     * @param _regdue date that reg is due DD MMM YYYY
+     * @param _microchip microchip id for the pet
+     * @param _desexed desex status of the pet
+     * @param _vaccinated vaccine status of the pet
      */
     Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
@@ -74,11 +72,7 @@ public class Dog extends Animal {
         }
     }
     /**
-     METHOD:  toString
-     PURPOSE: Return the dog object
-     PASSED: null
-     RETURNS: Animal Object
-     EFFECT:  An dog object in text
+     * Return the animal object
      */
     @Override
     public String toString() {

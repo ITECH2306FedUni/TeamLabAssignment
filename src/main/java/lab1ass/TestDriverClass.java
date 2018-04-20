@@ -1,8 +1,11 @@
 package lab1ass;
-
 import org.junit.runner.*;
 import org.junit.runner.notification.Failure;
-
+/**
+ * The Test Driver Class
+ * @author  RAWR-XD
+ * @version 1.0
+ */
 public class TestDriverClass {
     public static void runTestPerson(String[] args) {
         Result result = JUnitCore.runClasses(PersonTest.class);

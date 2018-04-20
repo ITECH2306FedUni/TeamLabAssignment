@@ -1,5 +1,11 @@
 package lab1ass;
 
+/**
+ * Ask Lachlan Copsey
+ * @author  Lachlan Copsey
+ * @version 1.0
+ */
+
 public class Shh {
 public Shh dontDoIt()
 {

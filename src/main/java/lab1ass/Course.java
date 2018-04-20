@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author RAWR xD
+ * Course
+ *
+ * @author  RAWR-XD
+ * @version 1.0
  */
 public class Course {
 	

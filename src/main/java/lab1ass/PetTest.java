@@ -1,7 +1,10 @@
 package lab1ass;
-
 import org.junit.Assert;
-
+/**
+ * The Pet Test Class
+ * @author  RAWR-XD
+ * @version 1.0
+ */
 public class PetTest {
 
     @org.junit.Test
