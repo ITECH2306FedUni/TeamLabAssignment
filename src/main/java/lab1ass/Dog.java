@@ -16,8 +16,22 @@ public class Dog extends Animal {
             "Perro de Presa Canario",
             "Presa Canario"
     };
-    
-    public Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
+    /**
+     METHOD:  Dog Construct
+     PURPOSE: To build the animal object
+     PASSED:
+     @param _breed  breed of the animal
+     @param _name   name of the animal
+     @param _dob    dob of the animal DD MMM YYYY
+     @param _gender gender of the animal
+     @param _regdue date that reg is due DD MMM YYYY
+     @param _microchip microchip id for the pet
+     @param _desexed desex status of the pet
+     @param _vaccinated vaccine status of the pet
+     RETURNS: Dog Object
+     EFFECT:  A dog object is built
+     */
+    Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
         setBreed(_breed);
         this.desexed = _desexed;
@@ -52,14 +66,20 @@ public class Dog extends Animal {
         }
     }
 
-    public void setMicrochip(int microchip) throws IllegalArgumentException {
+    private void setMicrochip(int microchip) throws IllegalArgumentException {
         if (microchip >= 0){
             this.microchip = microchip;
         } else {
             throw new IllegalArgumentException("Microchip should not be null");
         }
     }
-
+    /**
+     METHOD:  toString
+     PURPOSE: Return the dog object
+     PASSED: null
+     RETURNS: Animal Object
+     EFFECT:  An dog object in text
+     */
     @Override
     public String toString() {
         return "Dog [breed=" + breed

@@ -8,14 +8,16 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * @author RAWR xD
+ * MenuDriver
+ *
+ * @author  RAWR-XD
+ * @version 1.0
  */
 public class MenuDriver {
-    Person p1;
     private boolean stillRunning;
-    public static Course cMain = new Course();
-    public static Person pMain = new Person();
-    Scanner input = new Scanner(System.in);
+    private static Course cMain = new Course();
+    private static Person pMain = new Person();
+    private Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -50,7 +52,7 @@ public class MenuDriver {
     // PASSED:  nothing
     // RETURNS: nothing
     // EFFECTS: A list of options is displayed on the screen.
-    public void showMainMenu() {
+    private void showMainMenu() {
         System.out.println();        // ensure a break between previous output and the menu
         System.out.println("What would you like to do?");
         System.out.println("1.  Add a new rate payer");
@@ -63,20 +65,21 @@ public class MenuDriver {
         System.out.println("8.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
-
-    // METHOD:  processChoiceMainMenu
-    // PURPOSE: To dispatch control to a relevant method which handles the user's selected choice.
-    // PASSED:
-    //     choice - the code of the menu option selected by the user.
-    // RETURNS: nothing
-    // EFFECT:  Some action will be performed based on the user's choice. An invalid choice
-    //     will result in an error message being displayed to the screen.
-    // NOTE: This method will invoke a range of other methods to actually achieve the user's choice.
-    public void processChoiceMainMenu(int choice) {
+    /**
+     METHOD:  processChoiceMainMenu
+     PURPOSE: To dispatch control to a relevant method which handles the user's selected choice.
+     PASSED:
+         @param choice - the code of the menu option selected by the user.
+     RETURNS: nothing
+     EFFECT:  Some action will be performed based on the user's choice. An invalid choice
+         will result in an error message being displayed to the screen.
+     NOTE: This method will invoke a range of other methods to actually achieve the user's choice.
+     */
+    private void processChoiceMainMenu(int choice) {
         switch (choice) {
             case 1:
                 // menu option 1: register tax slave
-                p1 = personWizard();
+                Person p1 = personWizard();
                 pMain.addPerson(p1);
                 System.out.println("I have a person object ID: " + p1.personID + " " + p1.toString());
                 menuReturn();
@@ -92,7 +95,7 @@ public class MenuDriver {
                 Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
                 //add dat pet
                 petOwner.addAPet(petWizard());
-                //System.out.println("Person p1's pet is : " + pTest.pet.toString());
+                System.out.println("The added pet is: " + petOwner.pet.toString());
                 menuReturn();
                 break;
             case 3:
@@ -111,7 +114,6 @@ public class MenuDriver {
                 // menu option 5: list courses
                 for (Course course: cMain.courseList) {
                     System.out.println(course.toStringShort());
-
                 }
                 System.out.println("Enter In a Course ID: ");
                 int selectCourse = input.nextInt();
@@ -155,19 +157,20 @@ public class MenuDriver {
                 break;
         }
     }
-
-    // METHOD:  getUserSelection
-    // PURPOSE: To obtain from the user a selection (an integer) from a range of values
-    // PASSED:
-    //    lower - the Lowest permissible value the user can enter as their selection.
-    //    upper - the Highest permissible value the user can enter
-    // RETURNS:
-    //    The value entered by the user, unless the "lower" parameter was higher
-    //    than the "upper" parameter, in which case 0 is returned.
-    // EFFECTS:
-    //    A prompt is displayed on the screen to ask the user for a value in the range.
-    //    Input is sought from the user via the keyboard (System.in)
-    public int getUserSelection(int lower, int upper) {
+    /**
+     METHOD:  getUserSelection
+     PURPOSE: To obtain from the user a selection (an integer) from a range of values
+     PASSED:
+        @param lower - the Lowest permissible value the user can enter as their selection.
+        @param upper - the Highest permissible value the user can enter
+    RETURNS:
+        The value entered by the user, unless the "lower" parameter was higher
+        than the "upper" parameter, in which case 0 is returned.
+     EFFECTS:
+        A prompt is displayed on the screen to ask the user for a value in the range.
+        Input is sought from the user via the keyboard (System.in)
+     */
+    private int getUserSelection(int lower, int upper) {
         int userInput;
 
         if (lower > upper)
@@ -184,20 +187,31 @@ public class MenuDriver {
 
         return userInput;
     }
-
+    /**
+     METHOD:  personWizard
+     PURPOSE: To generate a person.
+     PASSED: null
+     RETURNS: A new person object
+     EFFECT:  The user is asked a series sof inputs to generate the person
+     */
     private Person personWizard () {
         System.out.println("Enter rate payer name: ");
-        String name = input.nextLine(); // obtain the input
+        String name = input.nextLine(); // obtain the name
         System.out.println("Enter rate payer address: ");
-        String address = input.nextLine(); // obtain the input
+        String address = input.nextLine(); // obtain the address
         System.out.println("Enter rate payer postcode: ");
-        String postcode = input.nextLine(); // obtain the input
+        String postcode = input.nextLine(); // obtain the postcode
         System.out.println("Enter rate payer city: ");
-        String city = input.nextLine(); // obtain the input
+        String city = input.nextLine(); // obtain the city
         return new Person(address, name, postcode, city);
     }
-
-    //Wraps Animal creation method in command line interface
+    /**
+     METHOD:  personWizard
+     PURPOSE: Wrap Animal creation method in command line interface
+     PASSED: null
+     RETURNS: A new pet object
+     EFFECT:  The user is asked a series of inputs to generate the pwt
+     */
     private Animal petWizard () {
         String creature = "";
         while(!creature.equalsIgnoreCase("c")&& !creature.equalsIgnoreCase("d") && !creature.equalsIgnoreCase("r")){
@@ -224,22 +238,24 @@ public class MenuDriver {
             dob = input.nextLine();
         }
         String chipped = "";
-        while(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
-            System.out.println ("Is the pet microchipped (y)es or (n)o?");
-            chipped = input.nextLine();
+        if(creature.equals("r")){
+            while(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
+                System.out.println ("Is the pet microchipped (y)es or (n)o?");
+                chipped = input.nextLine();
+            }
         }
-        int microchip;
-        if(chipped.equalsIgnoreCase("y")){
-            System.out.println("Microchip number of animal? (0 if not applicable)");
-            microchip = input.nextInt();
-        }else{
-            microchip = 0;
+        int microchip = 0;
+        if(chipped.equalsIgnoreCase("y") || !creature.equalsIgnoreCase("r")){
+            while(microchip <= 0){
+                System.out.println("Microchip number of animal?");
+                microchip = input.nextInt();
+            }
         }
         switch (creature.toLowerCase()) {
             case "d":
-                System.out.println("has the animal been desexed? (true/false)");
+                System.out.println("Has the animal been desexed? (true/false)");
                 boolean desexed = input.nextBoolean();
-                System.out.println("has the animal been vaccinated? (true/false)");
+                System.out.println("Has the animal been vaccinated? (true/false)");
                 boolean vaccinated = input.nextBoolean();
                 return new Dog(breed, name, gender, regdue, dob, microchip, desexed, vaccinated);
             case "c":
@@ -249,8 +265,13 @@ public class MenuDriver {
         }
         return null;
     }
-
-    //Wraps Course creation method in command line interface
+    /**
+     METHOD:  courseWizard
+     PURPOSE: To generate a course.
+     PASSED: null
+     RETURNS: A new course object
+     EFFECT:  The user is asked a series of inputs to generate the course
+     */
     private Course courseWizard () {
         System.out.println("Enter the Name of new Course:");
         String courseName = input.nextLine();
@@ -263,29 +284,48 @@ public class MenuDriver {
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
 
     }
-
+    /**
+     METHOD:  enrollmentWizard
+     PURPOSE: To enroll a person into a course
+     PASSED: null
+     RETURNS: A new course object
+     EFFECT:  The user is asked a series of inputs to add a person to a course
+     */
     private void enrollmentWizard () {
-        System.out.println("enter the ID of the student");
+        System.out.println("Enter the ID of the student");
         int studentID = input.nextInt();
-        System.out.println("enter the ID of the course you wish to enrol them in");
+        System.out.println("Enter the ID of the course you wish to enrol them in");
         int courseID = input.nextInt();
         cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
         pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
         System.out.println(pMain.personList.toString()); // DEBUG ONLY
-
-
     }
-    public static boolean isValidDate(String date) {
+    /**
+     METHOD:  isValidDate
+     PURPOSE: To check if a date matches the format criteria
+     PASSED:
+        @param date this is the date to be checked
+     RETURNS: A new true or false boolean
+     EFFECT:  The date is checked
+     */
+    private static boolean isValidDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
         dateFormat.setLenient(false);
         try {
             dateFormat.parse(date.trim());
+            return true;
         } catch (ParseException pe) {
             return false;
         }
-        return true;
     }
-    public void menuReturn(){
+    /**
+     METHOD:  menuReturn
+     PURPOSE: To return the user to the menu
+     PASSED: null
+     RETURNS: A new true or false boolean
+     EFFECT:  Prompts the user before returning to the menu
+     */
+    private void menuReturn(){
         try {
             System.out.println("Click enter to return to the menu");
             System.in.read();

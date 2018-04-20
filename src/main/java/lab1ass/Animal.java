@@ -7,9 +7,8 @@ package lab1ass;
  * @author Kkeogh
  */
 public abstract class Animal {
-
-    private static int nextValidRegistrationID = 1;
     // General Animal Attributes
+    private static int nextValidRegistrationID = 1;
     Integer registrationID;
     String breed;
     String name;
@@ -19,12 +18,17 @@ public abstract class Animal {
     int microchip;
 
     /**
-     * @param _breed  breed of the animal
-     * @param _name   name of the animal
-     * @param _dob    dob of the animal DD MMM YYYY
-     * @param _gender gender of the animal
-     * @param _regdue date that reg is due DD MMM YYYY
-     * @param _microchip microchip id for the pet
+    METHOD:  Animal Construct
+    PURPOSE: To build the animal object
+    PASSED:
+        @param _breed  breed of the animal
+        @param _name   name of the animal
+        @param _dob    dob of the animal DD MMM YYYY
+        @param _gender gender of the animal
+        @param _regdue date that reg is due DD MMM YYYY
+        @param _microchip microchip id for the pet
+    RETURNS: Animal Object
+    EFFECT:  An animal object is built
      */
     Animal(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
         this.setRegistrationID();
@@ -83,7 +87,13 @@ public abstract class Animal {
     public void setRegdue(String regdue) {
         this.regdue = regdue;
     }
-
+    /**
+     METHOD:  toString
+     PURPOSE: Return the animal object
+     PASSED: null
+     RETURNS: Animal Object
+     EFFECT:  An animal object in text
+     */
     @Override
     public String toString() {
         return "Animal [breed=" + breed
