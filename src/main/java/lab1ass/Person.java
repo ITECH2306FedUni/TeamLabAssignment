@@ -143,6 +143,10 @@ public class Person {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
     };
 
+    public String toStringNameAndCourse()
+    {
+    	return "Person [name= " + name + ", Ccourse= " + currentCourse +"]";
+    }
     @Override
     public String toString(){
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";

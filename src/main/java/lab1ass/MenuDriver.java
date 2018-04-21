@@ -285,7 +285,17 @@ public class MenuDriver {
      */
     private Course courseWizard () {
         System.out.println("Enter the Name of new course:");
-        String courseName = input.nextLine();
+        String tempCourseName = input.nextLine();
+		String courseName = "";
+		if (tempCourseName.length() <= 0 )
+        {
+        	
+        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: ");
+        	courseName = input.nextLine();
+        }
+		else {
+			courseName = tempCourseName;
+		}
         System.out.println("Enter the price of " + courseName + ":");
         float coursePrice = input.nextFloat();
         System.out.println("Enter the runtime of " + courseName + ":");
