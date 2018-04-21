@@ -172,7 +172,6 @@ public class MenuDriver {
                 System.out.println("Gaining access to Lizard Deep Web.");
                 System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
                 String Input = input.nextLine(); // obtain the input
-                Shh lol = new Shh().dontDoIt();
                 menuReturn();
                 break;
             case 0:

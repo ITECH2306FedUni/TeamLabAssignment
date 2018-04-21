@@ -25,7 +25,8 @@ public class Course {
         int studentID = _studentID;
         this.name = _name;
         this.price = _price;
-        this.runtime = _runtime;
+        setRuntime(_runtime);
+       // this.runtime = _runtime;
     }
 
 	public Course() {
@@ -60,9 +61,11 @@ public class Course {
         return runtime;
     }
 
-    public void setRuntime(int runtime) {
+    public void setRuntime(int runtime) throws IllegalArgumentException  {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
+                  } else {
+        	throw new IllegalArgumentException("Runtime Can Not be Lower than 0 or Higer than 10");
         }
     }
 
@@ -71,19 +74,20 @@ public class Course {
     }
     private void setCourseID() { // allocate next available ID
         this.courseID = nextValidCourseID++;
-        System.out.println(this.courseID);
+      
     }
     public void diffrentCourses(Course courseAddToList)
     {
     	courseList.add(courseAddToList);
-    	System.out.println("\n " + courseList.toString() + "Yo");//
-    	System.out.println(courseList.size());
+    	
     }
     public void enrollstudent(Person personAddToList)
     {
     	personToaddList.add(personAddToList);
     	System.out.println(personAddToList.getName() + " added to course");
     }
+    
+      
 
     @Override
     public String toString() {

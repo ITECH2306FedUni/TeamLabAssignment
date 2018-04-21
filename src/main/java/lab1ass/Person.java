@@ -131,12 +131,12 @@ public class Person {
     public void addPerson(Person personAddToList)
     {
     	personList.add(personAddToList);
-    	System.out.println(personList.size());
+    	
     	
     }
     private void setPersonID() { // allocate next available ID
         this.personID = nextValidPersonID++;
-        System.out.println(this.personID);
+     
     }
 
     public String toStringWhole() {
