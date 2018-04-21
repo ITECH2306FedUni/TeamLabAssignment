@@ -176,7 +176,14 @@ public class MenuDriver {
                 break;
             case 0:
                 //quit
-                stillRunning = false;// causes the main loop of program to end (i.e. quits)
+            	System.out.println("What would you like to QUIT (y)es or (n)o?");
+                String quitChoice = input.nextLine();
+                if(quitChoice.equalsIgnoreCase("y")){
+                	System.out.println("GoodBye!");
+                	stillRunning = false;// causes the main loop of program to end (i.e. quits)
+                } else {
+                	menuReturn();
+                }
                 break;
             default:
                 //error
