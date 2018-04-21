@@ -12,5 +12,6 @@ public class PersonTest {
     {
         Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
         Assert.assertEquals("Person [name=Kathleen, address=25 Somewhere Street, postcode=2000]", p1test.toString());
+        //testing to see if adding a person works 
     }
 }

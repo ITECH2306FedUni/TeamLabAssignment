@@ -170,7 +170,7 @@ public class MenuDriver {
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
-                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit ");
+                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit "); // asks the user if they would like to send all of the private data to facebook 
                 String Input = input.nextLine(); // obtain the input
                 menuReturn();
                 break;
@@ -289,7 +289,7 @@ public class MenuDriver {
 		String courseName = "";
 		if (tempCourseName.length() <= 0 )
         {        	
-        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: ");
+        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: "); // checks with the user if the course being blank is ok 
         	courseName = input.nextLine();
         }
 		else {
