@@ -18,7 +18,7 @@ public class CourseTest {
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(0));
         pMain.personList.get(0).enrollInCourse(cMain.courseList.get(0));
         Assert.assertEquals("Course [course=Eurobeat with BLAN3Y, price=148.0, runtime=9, courseID=0, students= [Person [name=Kathleen, address=25 Somewhere Street, postcode=2000]]]", cMain.courseList.get(0).toString());
-        
+        //Tests if the person is added
     }
     
     public void testFailRuntimeAddPerson()
@@ -30,5 +30,6 @@ public class CourseTest {
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(0));
         pMain.personList.get(0).enrollInCourse(cMain.courseList.get(0));
         Assert.assertEquals("Unable to create java.lang.IllegalArgumentException: Runtime Can Not be Lower than 0 or Higer than 10", cMain.courseList.get(0).toString());
+    //Tests if the runtime is longer than 0
     }
 }

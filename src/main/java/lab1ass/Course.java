@@ -93,6 +93,10 @@ public class Course {
     public String toString() {
         return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ personToaddList.toString() + "]";
     }
+    public String toStringNameAndPeople()
+    {
+    	return "Course [course=" + name + ", students= " + personToaddList.toString() + "]";
+    }
     
     public String toStringShort() {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
