@@ -15,8 +15,8 @@ import java.util.Scanner;
  */
 public class MenuDriver {
     private boolean stillRunning;
-    private static Course cMain = new Course();
-    private static Person pMain = new Person();
+    private static Course cMain = new Course(); // Main Course List
+    private static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class MenuDriver {
                 pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
                 pMain.addPerson(new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey"));
                 pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
-            }
+            }//adds Temp testing data into the lists 
         }
 
 /*
@@ -288,8 +288,7 @@ public class MenuDriver {
         String tempCourseName = input.nextLine();
 		String courseName = "";
 		if (tempCourseName.length() <= 0 )
-        {
-        	
+        {        	
         	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: ");
         	courseName = input.nextLine();
         }

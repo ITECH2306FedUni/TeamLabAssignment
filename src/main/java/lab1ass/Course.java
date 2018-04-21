@@ -65,7 +65,7 @@ public class Course {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
                   } else {
-        	throw new IllegalArgumentException("Runtime Can Not be Lower than 0 or Higer than 10");
+        	throw new IllegalArgumentException("Runtime Can Not be Lower than 0 or Higer than 10"); // makes sure the runtime is greater than 0 and lower than 11
         }
     }
 

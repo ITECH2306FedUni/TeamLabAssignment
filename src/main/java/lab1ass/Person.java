@@ -130,7 +130,7 @@ public class Person {
     
     public void addPerson(Person personAddToList)
     {
-    	personList.add(personAddToList);
+    	personList.add(personAddToList); // adding the person to the person list 
     	
     	
     }
