@@ -161,6 +161,7 @@ public class Person {
             regoDate.setTime(format.parse(this.pet.regdue));
         } catch (ParseException e) {
         }
+
         long regoYear = regoDate.get(Calendar.YEAR);
         double fee = 20.00;
         long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);

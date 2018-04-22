@@ -3,6 +3,10 @@
  */
 package lab1ass;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * The Base Animal Class
  * @author  RAWR-XD
@@ -99,6 +103,28 @@ public abstract class Animal {
         + ", microchip=" + microchip
         + ", registrationID=" + registrationID
         + "]";
+    }
+
+    public double calcRates () {
+        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+
+        Calendar regoDate = Calendar.getInstance();
+        try {
+            regoDate.setTime(format.parse(this.regdue));
+        } catch (ParseException e) {
+        }
+
+        long regoYear = regoDate.get(Calendar.YEAR);
+        double fee = 20.00;
+        long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
+        // TODO Dog vaccine thing
+        if (regoYear == currentYear) {
+            return fee;
+        }
+        for (int i = 0; i < currentYear - regoYear; i++) {
+            fee = fee - (fee*0.01);
+        }
+        return fee;
     }
 
 }

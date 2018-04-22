@@ -1,5 +1,10 @@
 package lab1ass;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Arrays;
+import java.util.Calendar;
+
 /**
  * The Dog Class
  * @author  RAWR-XD
@@ -70,6 +75,31 @@ public class Dog extends Animal {
         } else {
             throw new IllegalArgumentException("Microchip should not be null");
         }
+    }
+    @Override
+    public double calcRates () {
+        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+
+        Calendar regoDate = Calendar.getInstance();
+        try {
+            regoDate.setTime(format.parse(this.regdue));
+        } catch (ParseException e) {
+        }
+
+        long regoYear = regoDate.get(Calendar.YEAR);
+        System.out.println(regoYear);
+        double fee = 20.00;
+        if(!isDesexed()){
+            fee = fee * 1.33;
+        }
+        long currentYear = Year.now().getValue();
+        if (regoYear == currentYear) {
+            return fee;
+        }
+        for (int i = 0; i < currentYear - regoYear; i++) {
+            fee = fee - (fee*0.01);
+        }
+        return fee;
     }
     /**
      * Return the animal object

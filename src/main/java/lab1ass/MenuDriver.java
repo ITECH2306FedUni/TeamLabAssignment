@@ -2,6 +2,7 @@ package lab1ass;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class MenuDriver {
     private static Course cMain = new Course(); // Main Course List
     private static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
+    DecimalFormat df = new DecimalFormat("0.00");
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -26,7 +28,7 @@ public class MenuDriver {
     private void start() {
         int choice;
         if(pMain.personList.isEmpty()) {
-            System.out.println("What would you like preloaded People and Pet Data (y)es or (n)o?");
+            System.out.println("What would you like preloaded People data? (y)es or (n)o");
             String preloadchoice = input.nextLine();
             if(preloadchoice.equalsIgnoreCase("y")){
                 pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
@@ -144,7 +146,7 @@ public class MenuDriver {
                     if(ratePayer.hasPet()){
                         System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
                         System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
-                        System.out.println("The rate to pay is: " + ratePayer.calcRates());
+                        System.out.println("The rate to pay is: " + df.format(ratePayer.pet.calcRates()));
                     } else {
                         System.out.println(ratePayer.getName() + " does not own a pet!");
                     }
