@@ -1,7 +1,7 @@
 /**
  *
  */
-package lab1ass;
+package lab2ass;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

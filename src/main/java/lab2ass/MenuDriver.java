@@ -1,11 +1,9 @@
-package lab1ass;
+package lab2ass;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 /**

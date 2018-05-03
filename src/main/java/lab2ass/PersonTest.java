@@ -1,4 +1,4 @@
-package lab1ass;
+package lab2ass;
 import org.junit.Assert;
 /**
  * The Person Test Class
