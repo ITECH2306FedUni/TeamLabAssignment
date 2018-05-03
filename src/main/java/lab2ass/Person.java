@@ -1,12 +1,9 @@
 /**
  *
  */
-package lab1ass;
+package lab2ass;
 
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
-import java.util.Calendar;
 
 /**
  * Person

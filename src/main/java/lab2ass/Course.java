@@ -1,7 +1,6 @@
-package lab1ass;
+package lab2ass;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Course

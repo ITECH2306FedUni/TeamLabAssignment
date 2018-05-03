@@ -11,7 +11,7 @@ task rawrass(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
                 'Implementation-Version': version,
-                'Main-Class': 'lab1ass.MenuDriver'
+                'Main-Class': 'lab2ass.MenuDriver'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
