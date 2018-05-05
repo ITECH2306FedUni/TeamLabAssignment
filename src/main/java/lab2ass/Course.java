@@ -101,5 +101,12 @@ public class Course {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
     }
     
-    
+    // Save all courses to a list
+    public void saveCourses () {
+        File saveLocation = new File ("courses.txt");
+        PrintWriter output = new PrintWriter (saveLocation);
+        for (Course course: this.courseList) {
+            output.println (course.toString());
+        }
+    }
 }
