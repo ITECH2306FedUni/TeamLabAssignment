@@ -229,6 +229,59 @@ public class MenuDriver {
         String city = input.nextLine(); // obtain the city
         return new Person(address, name, postcode, city);
     }
+
+    private void showCourseMenu () {
+        System.out.println();
+        System.out.println("1.  Create a new Course offering");
+        System.out.println("2.  Delete current Course offering");
+        System.out.println("3.  Enroll a Student in a Course");
+        System.out.println("4.  Generate a list of all Courses");
+        System.out.println("5.  Generate Expenses Report");
+        System.out.println("6.  Edit Course Data");
+        System.out.println("7.  Save Course Schema");
+        System.out.println("8.  Load Course Schema");
+        System.out.println("9.  Generate Expenses Report From Course Schema");
+        System.out.println("0.  Return to the Main Menu");
+    }
+
+    private void processChoiceCourseMenu (int choice) {
+        switch(choice) {
+            case 1:
+                //create new course
+                break;
+            case 2:
+                //delete a course
+                break;
+            case 3:
+                // enroll a student in a course
+                break;
+            case 4:
+                // generate a list of courses
+                break;
+            case 5:
+                // generate expenses report
+                break;
+            case 6:
+                // edit course
+                break;
+            case 7:
+                // save course
+                break;
+            case 8:
+                // load course
+                break;
+            case 9:
+                // expenses from file
+                break;
+            case 0:
+                // return to menu
+                break;
+            default:
+                //error
+                System.out.println("Unexpected selection made. Doing nothing.");
+                break;
+        } 
+    }
     /**
      * Wrap Animal creation method in command line interface
      * @return A new pet object
