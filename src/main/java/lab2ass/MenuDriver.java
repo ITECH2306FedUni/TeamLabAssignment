@@ -105,11 +105,16 @@ public class MenuDriver {
                 break;
             case 3:
                 // menu option 3: create new course
-                Course c = courseWizard();
+                while (true) {
+                    showCourseMenu();
+                    int selection = getUserSelection(0,10);
+                    processChoiceCourseMenu (selection);
+                }
+                /*Course c = courseWizard();
                 cMain.diffrentCourses(c);
                 System.out.println("New course : " + c.toString());
                 menuReturn();
-                break;
+                break;*/
             case 4:
                 // menu option 4: enroll student
                 enrollmentWizard();
@@ -233,14 +238,15 @@ public class MenuDriver {
     private void showCourseMenu () {
         System.out.println();
         System.out.println("1.  Create a new Course offering");
-        System.out.println("2.  Delete current Course offering");
-        System.out.println("3.  Enroll a Student in a Course");
-        System.out.println("4.  Generate a list of all Courses");
-        System.out.println("5.  Generate Expenses Report");
-        System.out.println("6.  Edit Course Data");
-        System.out.println("7.  Save Course Schema");
-        System.out.println("8.  Load Course Schema");
-        System.out.println("9.  Generate Expenses Report From Course Schema");
+        System.out.println("2.  View Course Details");
+        System.out.println("3.  Delete current Course offering");
+        System.out.println("4.  Enroll a Student in a Course");
+        System.out.println("5.  Generate a list of all Courses");
+        System.out.println("6.  Generate Expenses Report");
+        System.out.println("7.  Edit Course Data");
+        System.out.println("8.  Save Course Schema");
+        System.out.println("9.  Load Course Schema");
+        System.out.println("10. Generate Expenses Report From Course Schema");
         System.out.println("0.  Return to the Main Menu");
     }
 
@@ -248,33 +254,53 @@ public class MenuDriver {
         switch(choice) {
             case 1:
                 //create new course
+                Course c = courseWizard();
+                cMain.diffrentCourses(c);
+                System.out.println("New course : " + c.toString());
+                menuReturn();
                 break;
             case 2:
+                //get course details
+                if(!cMain.courseList.isEmpty()) {
+                    for (Course course : cMain.courseList) {
+                        System.out.println("ID " + course.toStringShort());
+                    }
+                    System.out.println("Enter in a Course ID: ");
+                    int selectCourse = input.nextInt();
+                    System.out.println(cMain.courseList.get(selectCourse).toString());
+                }else {
+                    System.out.println("Please add a Course first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+            case 3:
                 //delete a course
                 break;
-            case 3:
+            case 4:
                 // enroll a student in a course
                 break;
-            case 4:
+            case 5:
                 // generate a list of courses
                 break;
-            case 5:
+            case 6:
                 // generate expenses report
                 break;
-            case 6:
+            case 7:
                 // edit course
                 break;
-            case 7:
+            case 8:
                 // save course
                 break;
-            case 8:
+            case 9:
                 // load course
                 break;
-            case 9:
+            case 10:
                 // expenses from file
                 break;
             case 0:
                 // return to menu
+                menuReturn();
                 break;
             default:
                 //error
