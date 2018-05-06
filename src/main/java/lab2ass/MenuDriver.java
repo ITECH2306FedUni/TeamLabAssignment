@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class MenuDriver {
     private boolean stillRunning;
+    private boolean subMenu;
     private static Course cMain = new Course(); // Main Course List
     private static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
@@ -61,8 +62,7 @@ public class MenuDriver {
         System.out.println("What would you like to do?");
         System.out.println("1.  Add a new rate payer");
         System.out.println("2.  Register an Animal to a rate payer");
-        System.out.println("3.  Create a new course offering");
-        System.out.println("4.  Enrol a student in a course");
+        System.out.println("3.  Courses Menu");
         System.out.println("5.  List details of a particular available course");
         System.out.println("6.  Calculate registration renewal notice for a particular rate payer who has previously registered an animal");
         System.out.println("7.  Run system tests");
@@ -105,20 +105,15 @@ public class MenuDriver {
                 break;
             case 3:
                 // menu option 3: create new course
-                while (true) {
+                subMenu = true;
+                while (subMenu) {
                     showCourseMenu();
                     int selection = getUserSelection(0,10);
                     processChoiceCourseMenu (selection);
                 }
-                /*Course c = courseWizard();
-                cMain.diffrentCourses(c);
-                System.out.println("New course : " + c.toString());
-                menuReturn();
-                break;*/
+                break;
             case 4:
-                // menu option 4: enroll student
-                enrollmentWizard();
-                menuReturn();
+                // DELETEME
                 break;
             case 5:
                 // menu option 5: list courses
@@ -279,6 +274,8 @@ public class MenuDriver {
                 break;
             case 4:
                 // enroll a student in a course
+                enrollmentWizard();
+                menuReturn();
                 break;
             case 5:
                 // generate a list of courses
@@ -300,6 +297,7 @@ public class MenuDriver {
                 break;
             case 0:
                 // return to menu
+                subMenu = false;
                 menuReturn();
                 break;
             default:
