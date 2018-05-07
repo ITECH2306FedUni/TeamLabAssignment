@@ -22,6 +22,7 @@ public class Course {
     private String name;
     private float price;
     private int runtime;
+    private float cost;
 
     public Course(int _studentID, String _name, float _price, int _runtime) {
         int studentID = _studentID;
@@ -57,6 +58,14 @@ public class Course {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public float getCost () {
+        return cost;
+    }
+
+    public void setCost (float cost) {
+        this.cost = cost;
     }
 
     public int getRuntime() {
