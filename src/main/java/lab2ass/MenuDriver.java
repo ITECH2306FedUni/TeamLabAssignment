@@ -279,6 +279,10 @@ public class MenuDriver {
                 break;
             case 5:
                 // generate a list of courses
+                for (Course course: cMain.courseList) {
+                    System.out.println (course.toString());
+                }
+                menuReturn();
                 break;
             case 6:
                 // generate expenses report
@@ -288,6 +292,7 @@ public class MenuDriver {
                 break;
             case 8:
                 // save course
+                cMain.saveCourses();
                 break;
             case 9:
                 // load course
