@@ -35,16 +35,6 @@ public class MenuDriver {
                 pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
             }//adds Temp testing data into the lists 
         }
-
-/*
-        String fileNameToLoad;
-        // Ask for file name to load. Keeps trying
-		do {
-			System.out.print("Which log file do you wish load: ");
-			fileNameToLoad = console.nextLine();
-			logs = new LogsData();					// Create the primary data management object of this program (in the loop so that it starts clean for each file attempted)
-		} while (loadFile(fileNameToLoad) == false);
-*/
         stillRunning = true; // in order to commence program
 
         while (stillRunning) {
