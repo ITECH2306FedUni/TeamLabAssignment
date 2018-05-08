@@ -18,7 +18,7 @@ public class GenerateInvoice {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 writer.println("The first line");
+		 writer.println("The Cuck");
 		 writer.println("The second line");
 		 writer.close();
 
