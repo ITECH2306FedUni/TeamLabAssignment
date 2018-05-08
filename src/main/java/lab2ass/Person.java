@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Person {
 	public ArrayList<Person> personList = new ArrayList<>();
+	public ArrayList<Animal> personPetList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
@@ -20,6 +21,7 @@ public class Person {
     private String city; // city of person's address
     public Animal pet; // associate a pet that is an Animal object with the Person
     public Course currentCourse;
+    Animal petInList;
 
     // constructor - create Person given name, address and a Pet object
 
@@ -43,7 +45,7 @@ public class Person {
      * @param _name name of person
      * @param _address address of person
      * @param _city city of person's address
-     * @param _postcode postcdoe of the person
+     * @param _postcode postcode of the person
      */
     public Person(String _address, String _name, String _postcode, String _city) {
     	this.setPersonID();
@@ -111,7 +113,7 @@ public class Person {
      * @param _pet the pet animal to associate
      */
     public void addAPet(Animal _pet) {
-        this.pet = _pet;
+        personPetList.add(_pet);
     }
 
     public boolean hasPet() {
@@ -138,7 +140,7 @@ public class Person {
 
     public String toStringWhole() {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
-    };
+    }
 
     public String toStringNameAndCourse()
     {
