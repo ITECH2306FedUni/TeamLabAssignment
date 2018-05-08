@@ -291,8 +291,9 @@ public class MenuDriver {
                     System.out.println("Please enter a Person's ID");
                     Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
                     if(petOwner.hasPet()){
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
                         for (Animal pet : petOwner.personPetList) {
-                            System.out.println(pet.getName() + " the " + pet.getBreed() + " which is a type of " + pet.getType());
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed());
                         }
                     } else {
                         System.out.println(petOwner.getName() + " does not own a pet!");
@@ -307,6 +308,41 @@ public class MenuDriver {
                 break;
             case 3:
             case 4:
+                // menu option 4: remove pet(s)
+                //print a list of pet(s) for a person then give the option to remove
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
+                    if(petOwner.hasPet()){
+                        int index = 0;
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed() + " (" + index++ + ")");
+                        }
+                        System.out.println("Please enter the Pets ID");
+                        int pos = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Are you sure you want to remove the pet (y)es or (n)o?");
+                        String quitChoice = input.nextLine();
+                        if(quitChoice.equalsIgnoreCase("y")){
+                            petOwner.personPetList.remove(pos);
+                        } else {
+                            menuReturn();
+                        }
+                    } else {
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
+
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
             case 5:
                 // menu option 2: calculate rego
                 if(!pMain.personList.isEmpty()){
