@@ -117,10 +117,7 @@ public class Person {
     }
 
     public boolean hasPet() {
-        if(this.pet == null){
-            return false;
-        }
-        return true;
+        return !personPetList.isEmpty();
     }
 
     public void enrollInCourse(Course _currentCourse) {

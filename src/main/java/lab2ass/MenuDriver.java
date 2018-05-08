@@ -30,33 +30,37 @@ public class MenuDriver {
             System.out.println("What would you like preloaded People data? (y)es or (n)o");
             String preloadchoice = input.nextLine();
             if(preloadchoice.equalsIgnoreCase("y")){
-                pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
-                pMain.addPerson(new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey"));
-                pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
-            }//adds Temp testing data into the lists 
+                Person p1Preload = new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey");
+                pMain.addPerson(p1Preload);
+                p1Preload.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
+                p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, true, false));
+                Person p2Preload = new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey");
+                pMain.addPerson(p2Preload);
+                p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998","05 01 1998", 0));
+                Person p3Preload = new Person("56 Torvald Court", "Nine Hall", "3977", "Casey");
+                pMain.addPerson(p3Preload);
+            }//adds Temp testing data into the lists
         }
         stillRunning = true; // in order to commence program
 
         while (stillRunning) {
             showMainMenu();
-            choice = getUserSelection(0, 8);
+            choice = getUserSelection(8);
             processChoiceMainMenu(choice);
         }
 
     }
     /**
-    * To present a menu/list of options to the user.
+    * To present the main menu/list of options to the user.
      */
     private void showMainMenu() {
         System.out.println();        // ensure a break between previous output and the menu
         System.out.println("What would you like to do?");
         System.out.println("1.  Add a new rate payer");
-        System.out.println("2.  Register an Animal to a rate payer");
+        System.out.println("2.  Pet Submenu");
         System.out.println("3.  Courses Menu");
-        System.out.println("5.  List details of a particular available course");
-        System.out.println("6.  Calculate registration renewal notice for a particular rate payer who has previously registered an animal");
-        System.out.println("7.  Run system tests");
-        System.out.println("8.  Facebook Private Infomation");
+        System.out.println("4.  Run system tests");
+        System.out.println("5.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
     /**
@@ -73,80 +77,24 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 2:
-                // menu option 2: register pet
-                //print a list of people
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
-                    }
-                    System.out.println("Please enter a Person's ID");
-                    //figure out who to give a pet to
-                    Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
-                    //add dat pet
-                    petOwner.addAPet(petWizard());
-                    System.out.println("The added pet is: " + petOwner.pet.toString());
-                    System.out.println("For the Person: " + petOwner.getName());
-                }else {
-                    System.out.println("Please add a Person first!");
-                    menuReturn();
-                    break;
+                // menu option 2: pet menu
+                subMenu = true;
+                while (subMenu) {
+                    showPetMenu();
+                    int selection = getUserSelection(10);
+                    processChoicePetMenu(selection);
                 }
-                menuReturn();
                 break;
             case 3:
-                // menu option 3: create new course
+                // menu option 3: course menu
                 subMenu = true;
                 while (subMenu) {
                     showCourseMenu();
-                    int selection = getUserSelection(0,10);
+                    int selection = getUserSelection(10);
                     processChoiceCourseMenu (selection);
                 }
                 break;
             case 4:
-                // DELETEME
-                break;
-            case 5:
-                // menu option 5: list courses
-                if(!cMain.courseList.isEmpty()) {
-                    for (Course course : cMain.courseList) {
-                        System.out.println("ID " + course.toStringShort());
-                    }
-                    System.out.println("Enter in a Course ID: ");
-                    int selectCourse = input.nextInt();
-                    System.out.println(cMain.courseList.get(selectCourse).toString());
-                }else {
-                    System.out.println("Please add a Course first!");
-                    menuReturn();
-                    break;
-                }
-                menuReturn();
-                break;
-            case 6:
-                // menu option 6: calculate rego
-                // figure out who to generate rates for
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
-                    }
-                    System.out.println("Please enter a Person's ID");
-
-                    Person ratePayer = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
-                    if(ratePayer.hasPet()){
-                        System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
-                        System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
-                        System.out.println("The rate to pay is: " + df.format(ratePayer.pet.calcRates()));
-                    } else {
-                        System.out.println(ratePayer.getName() + " does not own a pet!");
-                    }
-                }else {
-                    System.out.println("Please add a Person first!");
-                    menuReturn();
-                    break;
-                }
-                menuReturn();
-                break;
-            case 7:
-                System.out.println("7");
                 //menu option 7: system testor
                 System.out.println("Running Person Test's");
                 TestDriverClass.runTestPerson(null);
@@ -156,7 +104,7 @@ public class MenuDriver {
                 TestDriverClass.runTestCourse(null);
                 menuReturn();
                 break;
-            case 8:
+            case 5:
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
@@ -169,7 +117,7 @@ public class MenuDriver {
             	System.out.println("What would you like to QUIT (y)es or (n)o?");
                 String quitChoice = input.nextLine();
                 if(quitChoice.equalsIgnoreCase("y")){
-                	System.out.println("GoodBye!");
+                	System.out.println("Goodbye!");
                 	stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 } else {
                 	menuReturn();
@@ -183,23 +131,22 @@ public class MenuDriver {
     }
     /**
      * To obtain from the user a selection (an integer) from a range of values
-     * @param lower - the Lowest permissible value the user can enter as their selection.
-     * @param upper - the Highest permissible value the user can enter
-     * @return userInput The value entered by the user, unless the "lower" parameter was higher than the "upper" parameter, in which case 0 is returned.
+     * @param max - the Highest permissible value the user can enter
+     * @return userInput The value entered by the user, unless the "lower" parameter was higher than the "max" parameter, in which case 0 is returned.
      */
-    private int getUserSelection(int lower, int upper) {
+    private int getUserSelection(int max) {
         int userInput;
 
-        if (lower > upper)
+        if (0 > max)
             return 0;
 
         do {
-            System.out.print("Enter a selection (" + lower + "-" + upper + "):");
+            System.out.print("Enter a selection (" + 0 + "-" + max + "):");
             userInput = input.nextInt(); // obtain the input
             input.nextLine(); // gets rid of the newline after the number we just read
-            if (userInput < lower || userInput > upper)
+            if (userInput < 0 || userInput > max)
                 System.out.println("Invalid choice.");
-        } while (userInput < lower || userInput > upper);
+        } while (userInput < 0 || userInput > max);
         System.out.println(); // put a space before the next output
 
         return userInput;
@@ -219,7 +166,10 @@ public class MenuDriver {
         String city = input.nextLine(); // obtain the city
         return new Person(address, name, postcode, city);
     }
-
+    /**
+     * To generate a person.
+     * @return A new person object
+     */
     private void showCourseMenu () {
         System.out.println();
         System.out.println("1.  Create a new Course offering");
@@ -294,7 +244,102 @@ public class MenuDriver {
                 //error
                 System.out.println("Unexpected selection made. Doing nothing.");
                 break;
-        } 
+        }
+    }
+    /**
+     * To present the sub pet menu/list of options to the user.
+     */
+    private void showPetMenu () {
+        System.out.println();
+        System.out.println("1.  Register new Pet");
+        System.out.println("2.  List Pet(s)");
+        System.out.println("3.  Modify Pet(s)");
+        System.out.println("4.  Remove Pet(s)");
+        System.out.println("5.  Generate Registration Costs");
+    }
+
+    private void processChoicePetMenu (int choice) {
+        switch(choice) {
+            case 1:
+                // menu option 1: register pet
+                //print a list of people
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    //figure out who to give a pet to
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
+                    //add dat pet
+                    petOwner.addAPet(petWizard());
+                    System.out.println("The added pet is: " + petOwner.pet.toString());
+                    System.out.println("For the Person: " + petOwner.getName());
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 2:
+                // menu option 2: list pet(s)
+                //print a list of pet(s) for a person
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
+                    if(petOwner.hasPet()){
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println(pet.getName() + " the " + pet.getBreed() + " which is a type of " + pet.getType());
+                        }
+                    } else {
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
+
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 3:
+            case 4:
+            case 5:
+                // menu option 2: calculate rego
+                if(!pMain.personList.isEmpty()){
+                    for (Person person: pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+
+                    Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
+                    if(ratePayer.hasPet()){
+                        System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
+                        System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
+                        System.out.println("The rate to pay is: " + df.format(ratePayer.pet.calcRates()));
+                    } else {
+                        System.out.println(ratePayer.getName() + " does not own a pet!");
+                    }
+                }else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 0:
+                // return to menu
+                subMenu = false;
+                menuReturn();
+                break;
+            default:
+                //error
+                System.out.println("Unexpected selection made. Doing nothing.");
+                break;
+        }
     }
     /**
      * Wrap Animal creation method in command line interface

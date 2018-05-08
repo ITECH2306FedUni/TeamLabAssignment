@@ -18,13 +18,17 @@ public class Rabbit extends Animal {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
 
     }
+    @Override
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     /**
      * Return the animal object
      */
     @Override
     public String toString() {
-        return "Rabbit [breed=" + breed
-                + ", name=" + name
+        return "type=" + this.getClass().getSimpleName()
+                + "[breed=" + breed
                 + ", dob=" + dob
                 + ", gender=" + gender
                 + ", regdue=" + regdue

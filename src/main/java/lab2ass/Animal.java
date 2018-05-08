@@ -90,6 +90,9 @@ public abstract class Animal {
         this.regdue = regdue;
     }
 
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     /**
      * Return the animal object
      */
