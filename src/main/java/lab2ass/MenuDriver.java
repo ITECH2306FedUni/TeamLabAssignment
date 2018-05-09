@@ -269,30 +269,77 @@ public class MenuDriver {
     	 System.out.println();
          System.out.println("1.  View all Students");
          System.out.println("2.  Generate Invoice");
+         System.out.println("3.  Enter In Results");
+         System.out.println("4.  View Results");
+         System.out.println("0.  Return to the Main Menu");
 
     }
     private void processChoiceStudentMenu (int choice) {
         switch(choice) {
         case 1:
+        	
         	 if(!pMain.personList.isEmpty()){
                  for (Person person: pMain.personList) {
                 	 if (!person.CourseList.isEmpty()) {
                      System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                 	 }
-                     
-                   
                  }
         	 }
         	break;
         case 2:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
         	System.out.println("");
         	System.out.println("Enter Student ID:");
         	 int ID = input.nextInt(); // obtain the city
         	 generateStudentInvoice(ID);
-        			 
+        	 }
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}        	
+        	break;
+        case 3:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+        	System.out.println("");
+        	
+        	System.out.println("Enter Student ID:");
+        	int ID1 = input.nextInt();
+        	System.out.println("Enter Course ID:");
+        	int courseID = input.nextInt();
+        	System.out.println("Enter In Result:");
+        	float result = input.nextFloat();
+        	pMain.personList.get(ID1).CourseList.get(courseID).result = result;
+        	}
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}
+        	break;
+        case 4:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+        	System.out.println("");
+        	
+        	System.out.println("Enter Student ID:");
+        	int ID2 = input.nextInt();
+        	System.out.println("Enter Course ID:");
+        	int courseID1 = input.nextInt();
+System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         	
         	break;
         }
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}
+        case 0:
+        	subMenu = false;
+            menuReturn();
+        	break;
+        }
+        
         }
     
     private void processChoiceCourseMenu (int choice) {
