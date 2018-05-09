@@ -1,10 +1,11 @@
 package lab2ass;
-
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * MenuDriver
@@ -15,8 +16,8 @@ import java.util.Scanner;
 public class MenuDriver {
     private boolean stillRunning;
     private boolean subMenu;
-    private static Course cMain = new Course(); // Main Course List
-    private static Person pMain = new Person(); // Main Person List
+    public static Course cMain = new Course(); // Main Course List
+    public static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
     DecimalFormat df = new DecimalFormat("0.00");
     // PROGRAM ENTRY POINT:
@@ -33,6 +34,7 @@ public class MenuDriver {
                 pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
                 pMain.addPerson(new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey"));
                 pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
+              
             }//adds Temp testing data into the lists 
         }
 
@@ -49,7 +51,7 @@ public class MenuDriver {
 
         while (stillRunning) {
             showMainMenu();
-            choice = getUserSelection(0, 8);
+            choice = getUserSelection(0, 11);
             processChoiceMainMenu(choice);
         }
 
@@ -67,6 +69,7 @@ public class MenuDriver {
         System.out.println("6.  Calculate registration renewal notice for a particular rate payer who has previously registered an animal");
         System.out.println("7.  Run system tests");
         System.out.println("8.  Facebook Private Infomation");
+        System.out.println("11.  Thingy");
         System.out.println("0.  Exit Program");
     }
     /**
@@ -174,6 +177,24 @@ public class MenuDriver {
                 String Input = input.nextLine(); // obtain the input
                 menuReturn();
                 break;
+            case 9:
+                if(!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.toStringCleaned());
+                    }
+                    
+                }
+            
+            	break;
+            case 11:
+            	  // menu option 3: create new course
+                subMenu = true;
+                while (subMenu) {
+                	showStudentMenu();
+                    int selection = getUserSelection(0,4);
+                    processChoiceStudentMenu (selection);
+                }
+            	break;
             case 0:
                 //quit
             	System.out.println("What would you like to QUIT (y)es or (n)o?");
@@ -244,7 +265,36 @@ public class MenuDriver {
         System.out.println("10. Generate Expenses Report From Course Schema");
         System.out.println("0.  Return to the Main Menu");
     }
+    private void showStudentMenu() {
+    	 System.out.println();
+         System.out.println("1.  View all Students");
+         System.out.println("2.  Generate Invoice");
 
+    }
+    private void processChoiceStudentMenu (int choice) {
+        switch(choice) {
+        case 1:
+        	 if(!pMain.personList.isEmpty()){
+                 for (Person person: pMain.personList) {
+                	 if (!person.CourseList.isEmpty()) {
+                     System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                	 }
+                     
+                   
+                 }
+        	 }
+        	break;
+        case 2:
+        	System.out.println("");
+        	System.out.println("Enter Student ID:");
+        	 int ID = input.nextInt(); // obtain the city
+        	 generateStudentInvoice(ID);
+        			 
+        	
+        	break;
+        }
+        }
+    
     private void processChoiceCourseMenu (int choice) {
         switch(choice) {
             case 1:
@@ -430,6 +480,31 @@ public class MenuDriver {
             return false;
         }
     }
+    public static void  generateStudentInvoice(int ID) {
+		 PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 writer.println("The Cuck");
+		 writer.println("The second line");
+		
+         if(!pMain.personList.get(ID).CourseList.isEmpty())
+         {
+        	 for (Course course : pMain.personList.get(ID).CourseList )
+        	 {
+        		 writer.println(course.toString());
+        	 }
+         }
+		 
+		 writer.close();
+
+	 }
     /**
      * To return the user to the menu
      */

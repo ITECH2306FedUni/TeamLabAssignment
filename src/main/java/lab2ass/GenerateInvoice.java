@@ -20,6 +20,7 @@ public class GenerateInvoice {
 		}
 		 writer.println("The Cuck");
 		 writer.println("The second line");
+		 writer.println(MenuDriver.pMain.toString());
 		 writer.close();
 
 	 }
