@@ -3,6 +3,7 @@ package lab2ass;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
@@ -112,19 +113,35 @@ public class Course {
     public String toStringShort() {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
     }
+
+    //load courses from file
+    public void loadCourses () {
+        System.out.println ("Loading courses...");
+        try {
+            Scanner input = new Scanner (
+                new File("courses.txt")
+            );
+            while (input.hasNextLine()) {
+                System.out.println (input.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println ("File not Found, please create one");
+        }
+    }
     
     // Save all courses to a list
     public void saveCourses () {
+        System.out.println ("Saving courses...");
         try {
             File saveLocation = new File ("courses.txt");
             PrintWriter output = new PrintWriter (saveLocation);
             for (Course course: this.courseList) {
+                System.out.println (course.toString());
                 output.println (course.toString());
             }
+            output.close();
         } catch (FileNotFoundException e) {
             System.out.println ("we didn't find the file we literally just made FFS java");
-            System.out.println ("do you go out of your way to bet he ugliest language or what???");
-            System.out.println ("if it doesn't compile this time I'm gonna fucking kill myself !!!");
         }
     }
 }
