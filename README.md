@@ -5,9 +5,9 @@ DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced 
 
 # Team Member 1 Copsey
 
-1. [ ] Create code to generate invoices for courses enrolled in by a student and save the invoice to a text file.
-2. [ ] Modify the Course class so that you use an ArrayList to store multiple students to replace the existing array studentList.
-3. [ ] You must modify/add methods so that you can generate a list of enrolled students in a course, enrol a new student into a course and unenrol a student.
+1. [x] Create code to generate invoices for courses enrolled in by a student and save the invoice to a text file.
+2. [x] Modify the Course class so that you use an ArrayList to store multiple students to replace the existing array studentList.
+3. [x] You must modify/add methods so that you can generate a list of enrolled students in a course, enrol a new student into a course and unenrol a student.
 4. [ ] You will need to add code so that it is possible to add in results for a student in a course.
 5. [ ] Write Junit tests to verify that the Course and Student class code is working as expected.
 6. [ ] Write code to read in information from a text file to populate data for courses and students.
