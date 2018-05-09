@@ -21,11 +21,11 @@ public class Course {
     
     private int courseID; 
     private String name;
-    private float price;
+    private double price;
     private int runtime;
-    private float cost;
+    private double cost;
 
-    public Course(int _studentID, String _name, float _price, int _runtime) {
+    public Course(int _studentID, String _name, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
         this.price = _price;
@@ -53,19 +53,19 @@ public class Course {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public float getCost () {
+    public double getCost () {
         return cost;
     }
 
-    public void setCost (float cost) {
+    public void setCost (double cost) {
         this.cost = cost;
     }
 
