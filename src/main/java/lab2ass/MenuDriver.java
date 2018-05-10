@@ -129,12 +129,7 @@ public class MenuDriver {
                         e.printStackTrace();
                     }
                     for (Person person : pMain.personList) {
-                        writer.println(person);
-                        if (person.hasPet()){
-                            for (Animal pet: person.personPetList){
-                                writer.println(pet);
-                            }
-                        }
+                        writer.print(person);
                     }
                     writer.close();
                 } else {
