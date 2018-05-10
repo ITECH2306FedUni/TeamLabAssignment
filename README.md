@@ -23,7 +23,7 @@ payer, register a new animal and remove an animal from the list of registered an
 4. [ ] Add a menu option to the main menu driver class to modify an existing record for a pet to update when an animal is desexed or vaccinated
 5. [ ] Write Junit tests to verify that the RatePayer and Animal class code is working as expected.
 6. [ ] Write code to read in information from a text file to populate data for rate payers and registered animals.
-7. [] Add a menu option to the main menu driver class to read data from a file and to create the registration invoices and save to a file.
+7. [ ] Add a menu option to the main menu driver class to read data from a file and to create the registration invoices and save to a file.
 8. [x] Ensure that you have used polymorphism in your code and highlight where this occurs with comments in your code
 
 # Team Member 3 Nine
