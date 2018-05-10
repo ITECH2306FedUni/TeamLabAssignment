@@ -20,7 +20,7 @@ DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced 
 2. [x] You must modify/add methods so that you can generate a list of registered animals for a rate
 payer, register a new animal and remove an animal from the list of registered animals for a rate payer.
 3. [x] You will need to add code so that it is possible to generate an invoice for a rate payer and save this invoice to a text file.
-4. [ ] Add a menu option to the main menu driver class to modify an existing record for a pet to update when an animal is desexed or vaccinated
+4. [x] Add a menu option to the main menu driver class to modify an existing record for a pet to update when an animal is desexed or vaccinated
 5. [ ] Write Junit tests to verify that the RatePayer and Animal class code is working as expected.
 6. [ ] Write code to read in information from a text file to populate data for rate payers and registered animals.
 7. [ ] Add a menu option to the main menu driver class to read data from a file and to create the registration invoices and save to a file.
