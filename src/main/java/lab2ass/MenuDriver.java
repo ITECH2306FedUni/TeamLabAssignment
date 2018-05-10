@@ -441,6 +441,34 @@ public class MenuDriver {
             return false;
         }
     }
+
+    /**
+     * Is this string a double
+     * @param dub the double to check
+     * @return A boolean
+     */
+    private boolean isDouble(String dub) {
+        try {
+            Double.parseDouble(dub);
+            return true;
+        } catch (ParseException pe) {
+            return false;
+        }
+    }
+        /**
+     * Is this string an int
+     * @param wint the int to check
+     * @return A boolean
+     */
+    private boolean isInt(String wint) {
+        try {
+            Double.parseDouble(dub);
+            return true;
+        } catch (ParseException pe) {
+            return false;
+        }
+    }
+    }
     /**
      * To return the user to the menu
      */
