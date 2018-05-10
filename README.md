@@ -16,8 +16,8 @@ DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced 
 
 # Team Member 2 Blaney
 
-1. [ ] Modify the RatePayer class so that it is possible to add multiple pets to be registered to a rate payer. You may use an array or an ArrayList to store these pets.
-2. [ ] You must modify/add methods so that you can generate a list of registered animals for a rate
+1. [x] Modify the RatePayer class so that it is possible to add multiple pets to be registered to a rate payer. You may use an array or an ArrayList to store these pets.
+2. [x] You must modify/add methods so that you can generate a list of registered animals for a rate
 payer, register a new animal and remove an animal from the list of registered animals for a rate payer.
 3. [ ] You will need to add code so that it is possible to generate an invoice for a rate payer and save this invoice to a text file.
 4. [ ] Add a menu option to the main menu driver class to modify an existing record for a pet to update when an animal is desexed or vaccinated
