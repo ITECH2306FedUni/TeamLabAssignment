@@ -374,6 +374,11 @@ public class MenuDriver {
      * @return A new course object
      */
     private Course courseWizard () {
+        String type = "";
+        while (type != C ) {
+            System.out.println("What type of course do you wish to create?");
+            System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
+        }
         System.out.println("Enter the Name of new course:");
         String tempCourseName = input.nextLine();
 		String courseName = "";
