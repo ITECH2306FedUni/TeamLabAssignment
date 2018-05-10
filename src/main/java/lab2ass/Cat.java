@@ -43,7 +43,6 @@ public class Cat extends Animal {
                 + ", gender=" + gender
                 + ", regdue=" + regdue
                 + ", microchip=" + microchip
-                + ", registrationID=" + registrationID
                 + "]";
     }
 }

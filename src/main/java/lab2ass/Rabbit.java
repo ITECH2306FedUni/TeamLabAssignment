@@ -33,7 +33,6 @@ public class Rabbit extends Animal {
                 + ", gender=" + gender
                 + ", regdue=" + regdue
                 + ", microchip=" + microchip
-                + ", registrationID=" + registrationID
                 + "]";
     }
 }

@@ -105,7 +105,6 @@ public abstract class Animal {
         + ", gender=" + gender
         + ", regdue=" + regdue
         + ", microchip=" + microchip
-        + ", registrationID=" + registrationID
         + "]";
     }
 

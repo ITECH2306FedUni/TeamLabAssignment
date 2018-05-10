@@ -123,7 +123,6 @@ public class Dog extends Animal {
                 + ", microchip=" + microchip
                 + ", desexed=" + desexed
                 + ", vaccinated=" + vaccinated
-                + ", registrationID=" + registrationID
                 + "]";
     }
 }

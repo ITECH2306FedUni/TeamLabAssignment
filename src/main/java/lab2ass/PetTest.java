@@ -21,7 +21,7 @@ public class PetTest {
         for (Animal pet : p1test.personPetList) {
             TestPet = pet;
         }
-        Assert.assertEquals("type=Dog[breed=Pug, name=Fido, dob=05 01 1998, gender=F, regdue=05 01 1998, microchip=13, desexed=true, vaccinated=false, registrationID=5]", TestPet.toString());
+        Assert.assertEquals("type=Dog[breed=Pug, name=Fido, dob=05 01 1998, gender=F, regdue=05 01 1998, microchip=13, desexed=true, vaccinated=false]", TestPet.toString());
         // testing a failure of adding a pet to a person
     }
     @org.junit.Test
@@ -64,5 +64,25 @@ public class PetTest {
         Animal TestPet = null;
         TestPet = p1test.personPetList.get(1);
         Assert.assertEquals("Fido", TestPet.getName());
+    }
+    //Tests listing multiple pet's names
+    @org.junit.Test
+    public void testRateDesexed()
+    {
+        Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
+        p1test.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, true, false));
+        Animal TestPet = null;
+        TestPet = p1test.personPetList.get(0);
+        Assert.assertEquals(16.35813875194462, TestPet.calcRates(), 1e-15);
+    }
+    //Tests listing multiple pet's names
+    @org.junit.Test
+    public void testRateNotDesexed()
+    {
+        Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
+        p1test.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
+        Animal TestPet = null;
+        TestPet = p1test.personPetList.get(0);
+        Assert.assertEquals(21.756324540086347, TestPet.calcRates(), 1e-15);
     }
 }
