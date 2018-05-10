@@ -1,7 +1,5 @@
 package lab2ass;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,19 +16,36 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class MenuDriver {
-    private boolean stillRunning;
-    private boolean subMenu;
     private static Course cMain = new Course(); // Main Course List
     private static Person pMain = new Person(); // Main Person List
-    private Scanner input = new Scanner(System.in);
-    private String fileName;
     DecimalFormat df = new DecimalFormat("0.00");
     PrintWriter writer = null;
+    private boolean stillRunning;
+    private boolean subMenu;
+    private Scanner input = new Scanner(System.in);
+    private String fileName;
 
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
+    }
+
+    /**
+     * To check if a date matches the format criteria
+     *
+     * @param date this is the date to be checked
+     * @return A new true or false boolean
+     */
+    private static boolean isValidDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+            return true;
+        } catch (ParseException pe) {
+            return false;
+        }
     }
 
     private void start() {
@@ -141,7 +156,7 @@ public class MenuDriver {
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
-                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit "); // asks the user if they would like to send all of the private data to facebook 
+                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit "); // asks the user if they would like to send all of the private data to facebook
                 String Input = input.nextLine(); // obtain the input
                 menuReturn();
                 break;
@@ -365,7 +380,7 @@ public class MenuDriver {
                         int pos = input.nextInt();
                         input.nextLine();
                         Animal pet = petOwner.personPetList.get(pos);
-                        if (pet.getType().equalsIgnoreCase("dog")){
+                        if (pet.getType().equalsIgnoreCase("dog")) {
                             Dog dog = (Dog) pet;
                             System.out.println(dog.getName() + " is currently listed as desexed being " + dog.isDesexed());
                             System.out.println("Has the animal been desexed? (true/false)");
@@ -377,8 +392,8 @@ public class MenuDriver {
                             System.out.println("Currently only dog entries can be altered");
                         }
                     } else {
-                    System.out.println(petOwner.getName() + " does not own a pet!");
-                }
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
 
                 } else {
                     System.out.println("Please add a Person first!");
@@ -386,7 +401,7 @@ public class MenuDriver {
                     break;
                 }
                 menuReturn();
-        break;
+                break;
             case 4:
                 // menu option 4: remove pet(s)
                 //print a list of pet(s) for a person then give the option to remove
@@ -585,23 +600,6 @@ public class MenuDriver {
             }
         } else {
             System.out.println("Please add a Person first!");
-        }
-    }
-
-    /**
-     * To check if a date matches the format criteria
-     *
-     * @param date this is the date to be checked
-     * @return A new true or false boolean
-     */
-    private static boolean isValidDate(String date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
-        dateFormat.setLenient(false);
-        try {
-            dateFormat.parse(date.trim());
-            return true;
-        } catch (ParseException pe) {
-            return false;
         }
     }
 
