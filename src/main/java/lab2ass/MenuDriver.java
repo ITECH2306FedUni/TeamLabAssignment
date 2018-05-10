@@ -70,7 +70,8 @@ public class MenuDriver {
         System.out.println("2.  Pet Submenu");
         System.out.println("3.  Courses Menu");
         System.out.println("4.  Run system tests");
-        System.out.println("5.  Facebook Private Infomation");
+        System.out.println("5.  Save or Load Data");
+        System.out.println("6.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
 
@@ -117,6 +118,31 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 5:
+                //menu option 5: save/load data
+                System.out.println("What would you like to (s)ave or (l)oad data?");
+                String fileChoice = input.nextLine();
+                if (fileChoice.equalsIgnoreCase("s")) {
+                    try {
+                        fileName = "PersonAndPetData.txt";
+                        writer = new PrintWriter(fileName, "UTF-8");
+                    } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    for (Person person : pMain.personList) {
+                        writer.println(person);
+                        if (person.hasPet()){
+                            for (Animal pet: person.personPetList){
+                                writer.println(pet);
+                            }
+                        }
+                    }
+                    writer.close();
+                } else {
+                    menuReturn();
+                }
+                menuReturn();
+                break;
+            case 6:
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
@@ -326,6 +352,46 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 3:
+                // menu option 3: modify pet(s)
+                //print a list of pet(s) for a person then give the option to modify
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
+                        int index = 0;
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed() + " (" + index++ + ")");
+                        }
+                        System.out.println("Please enter the Pets ID");
+                        int pos = input.nextInt();
+                        input.nextLine();
+                        Animal pet = petOwner.personPetList.get(pos);
+                        if (pet.getType().equalsIgnoreCase("dog")){
+                            Dog dog = (Dog) pet;
+                            System.out.println(dog.getName() + " is currently listed as desexed being " + dog.isDesexed());
+                            System.out.println("Has the animal been desexed? (true/false)");
+                            dog.setDesexed(input.nextBoolean());
+                            System.out.println(dog.getName() + " is currently listed as vaccinated being " + dog.isVaccinated());
+                            System.out.println("Has the animal been vaccinated? (true/false)");
+                            dog.setVaccinated(input.nextBoolean());
+                        } else {
+                            System.out.println("Currently only dog entries can be altered");
+                        }
+                    } else {
+                    System.out.println(petOwner.getName() + " does not own a pet!");
+                }
+
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+        break;
             case 4:
                 // menu option 4: remove pet(s)
                 //print a list of pet(s) for a person then give the option to remove
