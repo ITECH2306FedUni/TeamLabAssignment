@@ -1,3 +1,0 @@
-The Cuck
-The second line
-[Person [name=Nathan Blaney, address=31 Nowhere Street, postcode=3977], Person [name=Lachlan Copsey, address=69 Rangeless Drive, postcode=3977], Person [name=Nine Hall, address=56 Torvald Court, postcode=3977]]
