@@ -5,6 +5,7 @@ package lab2ass;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Calendar;
 
 /**
@@ -119,7 +120,7 @@ public abstract class Animal {
 
         long regoYear = regoDate.get(Calendar.YEAR);
         double fee = 20.00;
-        long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
+        long currentYear = Year.now().getValue();
         // TODO Dog vaccine thing
         if (regoYear == currentYear) {
             return fee;

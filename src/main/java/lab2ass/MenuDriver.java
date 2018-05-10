@@ -1,6 +1,11 @@
 package lab2ass;
 
+import com.sun.deploy.util.StringUtils;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +23,9 @@ public class MenuDriver {
     private static Course cMain = new Course(); // Main Course List
     private static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
+    private String fileName;
     DecimalFormat df = new DecimalFormat("0.00");
+    PrintWriter writer = null;
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -33,7 +40,7 @@ public class MenuDriver {
                 Person p1Preload = new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey");
                 pMain.addPerson(p1Preload);
                 p1Preload.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
-                p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, true, false));
+                p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
                 Person p2Preload = new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey");
                 pMain.addPerson(p2Preload);
                 p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998","05 01 1998", 0));
@@ -344,18 +351,35 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 5:
-                // menu option 2: calculate rego
+                // menu option 5: calculate rego
                 if(!pMain.personList.isEmpty()){
                     for (Person person: pMain.personList) {
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-
                     Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
                     if(ratePayer.hasPet()){
-                        System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
-                        System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
-                        System.out.println("The rate to pay is: " + df.format(ratePayer.pet.calcRates()));
+                        try {
+                            fileName = "RegoInvoice" + ratePayer.getName() +".txt";
+                            writer = new PrintWriter(fileName.replaceAll("\\s",""), "UTF-8");
+                        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        double totalRate = 0;
+                        System.out.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
+                        writer.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
+                        for (Animal pet : ratePayer.personPetList) {
+                            System.out.println(pet.getName() + " the "+ pet.getBreed() + ", a type of " + pet.getType());
+                            writer.println(pet.getName() + " the "+ pet.getBreed() + ", a type of " + pet.getType());
+                            System.out.println(pet.getName() + " was first registered: "+ pet.regdue);
+                            writer.println(pet.getName() + " was first registered: "+ pet.regdue);
+                            System.out.println("The rate to pay is: " + df.format(pet.calcRates()));
+                            writer.println("The rate to pay is: " + df.format(pet.calcRates()));
+                            totalRate = totalRate + pet.calcRates();
+                        }
+                        System.out.println("Total rates to pay is " + df.format(totalRate));
+                        System.out.println("A Text version of this invoice has been saved under the name: " + fileName.replaceAll("\\s",""));
+                        writer.println("Total rates to pay is " + df.format(totalRate));
                     } else {
                         System.out.println(ratePayer.getName() + " does not own a pet!");
                     }
@@ -364,6 +388,7 @@ public class MenuDriver {
                     menuReturn();
                     break;
                 }
+                writer.close();
                 menuReturn();
                 break;
             case 0:

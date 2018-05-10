@@ -11,16 +11,16 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Person {
-	public ArrayList<Person> personList = new ArrayList<>();
-	public ArrayList<Animal> personPetList = new ArrayList<>();
+	ArrayList<Person> personList = new ArrayList<>();
+	ArrayList<Animal> personPetList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
     private String address; // address of person
     private String postcode; // postcode of person's address
     private String city; // city of person's address
-    public Animal pet; // associate a pet that is an Animal object with the Person
-    public Course currentCourse;
+    Animal pet; // associate a pet that is an Animal object with the Person
+    private Course currentCourse;
     Animal petInList;
 
     // constructor - create Person given name, address and a Pet object

@@ -95,7 +95,6 @@ public class Dog extends Animal {
         }
 
         long regoYear = regoDate.get(Calendar.YEAR);
-        System.out.println(regoYear);
         double fee = 20.00;
         if (!isDesexed()) {
             fee = fee * 1.33;
