@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * MenuDriver
  *
- * @author  RAWR-XD
+ * @author RAWR-XD
  * @version 1.0
  */
 public class MenuDriver {
@@ -26,24 +26,26 @@ public class MenuDriver {
     private String fileName;
     DecimalFormat df = new DecimalFormat("0.00");
     PrintWriter writer = null;
+
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
     }
+
     private void start() {
         int choice;
-        if(pMain.personList.isEmpty()) {
+        if (pMain.personList.isEmpty()) {
             System.out.println("What would you like preloaded People data? (y)es or (n)o");
             String preloadchoice = input.nextLine();
-            if(preloadchoice.equalsIgnoreCase("y")){
+            if (preloadchoice.equalsIgnoreCase("y")) {
                 Person p1Preload = new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey");
                 pMain.addPerson(p1Preload);
                 p1Preload.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
                 p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
                 Person p2Preload = new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey");
                 pMain.addPerson(p2Preload);
-                p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998","05 01 1998", 0));
+                p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998", "05 01 1998", 0));
                 Person p3Preload = new Person("56 Torvald Court", "Nine Hall", "3977", "Casey");
                 pMain.addPerson(p3Preload);
             }//adds Temp testing data into the lists
@@ -57,8 +59,9 @@ public class MenuDriver {
         }
 
     }
+
     /**
-    * To present the main menu/list of options to the user.
+     * To present the main menu/list of options to the user.
      */
     private void showMainMenu() {
         System.out.println();        // ensure a break between previous output and the menu
@@ -70,8 +73,10 @@ public class MenuDriver {
         System.out.println("5.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
+
     /**
      * To dispatch control to a relevant method which handles the user's selected choice.
+     *
      * @param choice - the code of the menu option selected by the user.
      */
     private void processChoiceMainMenu(int choice) {
@@ -98,7 +103,7 @@ public class MenuDriver {
                 while (subMenu) {
                     showCourseMenu();
                     int selection = getUserSelection(10);
-                    processChoiceCourseMenu (selection);
+                    processChoiceCourseMenu(selection);
                 }
                 break;
             case 4:
@@ -121,13 +126,13 @@ public class MenuDriver {
                 break;
             case 0:
                 //quit
-            	System.out.println("What would you like to QUIT (y)es or (n)o?");
+                System.out.println("What would you like to QUIT (y)es or (n)o?");
                 String quitChoice = input.nextLine();
-                if(quitChoice.equalsIgnoreCase("y")){
-                	System.out.println("Goodbye!");
-                	stillRunning = false;// causes the main loop of program to end (i.e. quits)
+                if (quitChoice.equalsIgnoreCase("y")) {
+                    System.out.println("Goodbye!");
+                    stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 } else {
-                	menuReturn();
+                    menuReturn();
                 }
                 break;
             default:
@@ -136,8 +141,10 @@ public class MenuDriver {
                 break;
         }
     }
+
     /**
      * To obtain from the user a selection (an integer) from a range of values
+     *
      * @param max - the Highest permissible value the user can enter
      * @return userInput The value entered by the user, unless the "lower" parameter was higher than the "max" parameter, in which case 0 is returned.
      */
@@ -158,11 +165,13 @@ public class MenuDriver {
 
         return userInput;
     }
+
     /**
      * To generate a person.
+     *
      * @return A new person object
      */
-    private Person personWizard () {
+    private Person personWizard() {
         System.out.println("Enter rate payer name: ");
         String name = input.nextLine(); // obtain the name
         System.out.println("Enter rate payer address: ");
@@ -173,11 +182,13 @@ public class MenuDriver {
         String city = input.nextLine(); // obtain the city
         return new Person(address, name, postcode, city);
     }
+
     /**
      * To generate a person.
+     *
      * @return A new person object
      */
-    private void showCourseMenu () {
+    private void showCourseMenu() {
         System.out.println();
         System.out.println("1.  Create a new Course offering");
         System.out.println("2.  View Course Details");
@@ -192,8 +203,8 @@ public class MenuDriver {
         System.out.println("0.  Return to the Main Menu");
     }
 
-    private void processChoiceCourseMenu (int choice) {
-        switch(choice) {
+    private void processChoiceCourseMenu(int choice) {
+        switch (choice) {
             case 1:
                 //create new course
                 Course c = courseWizard();
@@ -203,14 +214,14 @@ public class MenuDriver {
                 break;
             case 2:
                 //get course details
-                if(!cMain.courseList.isEmpty()) {
+                if (!cMain.courseList.isEmpty()) {
                     for (Course course : cMain.courseList) {
                         System.out.println("ID " + course.toStringShort());
                     }
                     System.out.println("Enter in a Course ID: ");
                     int selectCourse = input.nextInt();
                     System.out.println(cMain.courseList.get(selectCourse).toString());
-                }else {
+                } else {
                     System.out.println("Please add a Course first!");
                     menuReturn();
                     break;
@@ -253,10 +264,11 @@ public class MenuDriver {
                 break;
         }
     }
+
     /**
      * To present the sub pet menu/list of options to the user.
      */
-    private void showPetMenu () {
+    private void showPetMenu() {
         System.out.println();
         System.out.println("1.  Register new Pet");
         System.out.println("2.  List Pet(s)");
@@ -265,23 +277,23 @@ public class MenuDriver {
         System.out.println("5.  Generate Registration Costs");
     }
 
-    private void processChoicePetMenu (int choice) {
-        switch(choice) {
+    private void processChoicePetMenu(int choice) {
+        switch (choice) {
             case 1:
                 // menu option 1: register pet
                 //print a list of people
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
                     //figure out who to give a pet to
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
                     //add dat pet
                     petOwner.addAPet(petWizard());
                     System.out.println("The added pet is: " + petOwner.pet.toString());
                     System.out.println("For the Person: " + petOwner.getName());
-                }else {
+                } else {
                     System.out.println("Please add a Person first!");
                     menuReturn();
                     break;
@@ -291,13 +303,13 @@ public class MenuDriver {
             case 2:
                 // menu option 2: list pet(s)
                 //print a list of pet(s) for a person
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
-                    if(petOwner.hasPet()){
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
                         System.out.println(petOwner.getName() + " has the following pet(s)");
                         for (Animal pet : petOwner.personPetList) {
                             System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed());
@@ -306,7 +318,7 @@ public class MenuDriver {
                         System.out.println(petOwner.getName() + " does not own a pet!");
                     }
 
-                }else {
+                } else {
                     System.out.println("Please add a Person first!");
                     menuReturn();
                     break;
@@ -317,13 +329,13 @@ public class MenuDriver {
             case 4:
                 // menu option 4: remove pet(s)
                 //print a list of pet(s) for a person then give the option to remove
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
-                    if(petOwner.hasPet()){
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
                         int index = 0;
                         System.out.println(petOwner.getName() + " has the following pet(s)");
                         for (Animal pet : petOwner.personPetList) {
@@ -334,7 +346,7 @@ public class MenuDriver {
                         input.nextLine();
                         System.out.println("Are you sure you want to remove the pet (y)es or (n)o?");
                         String quitChoice = input.nextLine();
-                        if(quitChoice.equalsIgnoreCase("y")){
+                        if (quitChoice.equalsIgnoreCase("y")) {
                             petOwner.personPetList.remove(pos);
                         } else {
                             menuReturn();
@@ -343,7 +355,7 @@ public class MenuDriver {
                         System.out.println(petOwner.getName() + " does not own a pet!");
                     }
 
-                }else {
+                } else {
                     System.out.println("Please add a Person first!");
                     menuReturn();
                     break;
@@ -352,16 +364,16 @@ public class MenuDriver {
                 break;
             case 5:
                 // menu option 5: calculate rego
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size()-1));
-                    if(ratePayer.hasPet()){
+                    Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (ratePayer.hasPet()) {
                         try {
-                            fileName = "RegoInvoice" + ratePayer.getName() +".txt";
-                            writer = new PrintWriter(fileName.replaceAll("\\s",""), "UTF-8");
+                            fileName = "RegoInvoice" + ratePayer.getName() + ".txt";
+                            writer = new PrintWriter(fileName.replaceAll("\\s", ""), "UTF-8");
                         } catch (FileNotFoundException | UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
@@ -369,21 +381,21 @@ public class MenuDriver {
                         System.out.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
                         writer.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
                         for (Animal pet : ratePayer.personPetList) {
-                            System.out.println(pet.getName() + " the "+ pet.getBreed() + ", a type of " + pet.getType());
-                            writer.println(pet.getName() + " the "+ pet.getBreed() + ", a type of " + pet.getType());
-                            System.out.println(pet.getName() + " was first registered: "+ pet.regdue);
-                            writer.println(pet.getName() + " was first registered: "+ pet.regdue);
+                            System.out.println(pet.getName() + " the " + pet.getBreed() + ", a type of " + pet.getType());
+                            writer.println(pet.getName() + " the " + pet.getBreed() + ", a type of " + pet.getType());
+                            System.out.println(pet.getName() + " was first registered: " + pet.regdue);
+                            writer.println(pet.getName() + " was first registered: " + pet.regdue);
                             System.out.println("The rate to pay is: " + df.format(pet.calcRates()));
                             writer.println("The rate to pay is: " + df.format(pet.calcRates()));
                             totalRate = totalRate + pet.calcRates();
                         }
                         System.out.println("Total rates to pay is " + df.format(totalRate));
-                        System.out.println("A Text version of this invoice has been saved under the name: " + fileName.replaceAll("\\s",""));
+                        System.out.println("A Text version of this invoice has been saved under the name: " + fileName.replaceAll("\\s", ""));
                         writer.println("Total rates to pay is " + df.format(totalRate));
                     } else {
                         System.out.println(ratePayer.getName() + " does not own a pet!");
                     }
-                }else {
+                } else {
                     System.out.println("Please add a Person first!");
                     menuReturn();
                     break;
@@ -402,45 +414,47 @@ public class MenuDriver {
                 break;
         }
     }
+
     /**
      * Wrap Animal creation method in command line interface
+     *
      * @return A new pet object
      */
-    private Animal petWizard () {
+    private Animal petWizard() {
         String creature = "";
-        while(!creature.equalsIgnoreCase("c")&& !creature.equalsIgnoreCase("d") && !creature.equalsIgnoreCase("r")){
-            System.out.println ("Is the pet a (c)at, (d)og, or (r)abbit?");
+        while (!creature.equalsIgnoreCase("c") && !creature.equalsIgnoreCase("d") && !creature.equalsIgnoreCase("r")) {
+            System.out.println("Is the pet a (c)at, (d)og, or (r)abbit?");
             creature = input.nextLine();
         }
         System.out.println("What is the breed of the pet?");
         String breed = input.nextLine();
-        System.out.println ("What is the pet's name?");
+        System.out.println("What is the pet's name?");
         String name = input.nextLine();
         String gender = "";
-        while(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f")){
+        while (!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f")) {
             System.out.println("What is the pet's gender? (m/f)");
             gender = input.nextLine();
         }
         String regdue = "";
-        while(!isValidDate(regdue)){
+        while (!isValidDate(regdue)) {
             System.out.println("When is the animal's first registration? (DD MMM YYYY)");
             regdue = input.nextLine();
         }
         String dob = "";
-        while(!isValidDate(dob)){
+        while (!isValidDate(dob)) {
             System.out.println("What is the animal's date of birth? (DD MMM YYYY)");
             dob = input.nextLine();
         }
         String chipped = "";
-        if(creature.equals("r")){
-            while(!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")){
-                System.out.println ("Is the pet microchipped (y)es or (n)o?");
+        if (creature.equals("r")) {
+            while (!chipped.equalsIgnoreCase("y") && !chipped.equalsIgnoreCase("n")) {
+                System.out.println("Is the pet microchipped (y)es or (n)o?");
                 chipped = input.nextLine();
             }
         }
         int microchip = 0;
-        if(chipped.equalsIgnoreCase("y") || !creature.equalsIgnoreCase("r")){
-            while(microchip <= 0){
+        if (chipped.equalsIgnoreCase("y") || !creature.equalsIgnoreCase("r")) {
+            while (microchip <= 0) {
                 System.out.println("Microchip number of animal?");
                 microchip = input.nextInt();
             }
@@ -459,44 +473,45 @@ public class MenuDriver {
         }
         return null;
     }
+
     /**
      * To generate a course.
+     *
      * @return A new course object
      */
-    private Course courseWizard () {
+    private Course courseWizard() {
         System.out.println("Enter the Name of new course:");
         String tempCourseName = input.nextLine();
-		String courseName = "";
-		if (tempCourseName.length() <= 0 )
-        {        	
-        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: "); // checks with the user if the course being blank is ok 
-        	courseName = input.nextLine();
+        String courseName = "";
+        if (tempCourseName.length() <= 0) {
+            System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: "); // checks with the user if the course being blank is ok
+            courseName = input.nextLine();
+        } else {
+            courseName = tempCourseName;
         }
-		else {
-			courseName = tempCourseName;
-		}
         System.out.println("Enter the price of " + courseName + ":");
         float coursePrice = input.nextFloat();
         System.out.println("Enter the runtime of " + courseName + ":");
         int courseRuntime = input.nextInt();
-        System.out.println("Enter the lecturer's id for " + courseName +":");
+        System.out.println("Enter the lecturer's id for " + courseName + ":");
         int courseLecturerID = input.nextInt();
         return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
 
     }
+
     /**
      * To enroll a person into a course
      */
-    private void enrollmentWizard () {
+    private void enrollmentWizard() {
         int studentID;
         int courseID;
-        if(!pMain.personList.isEmpty()){
-            for (Person person: pMain.personList) {
+        if (!pMain.personList.isEmpty()) {
+            for (Person person : pMain.personList) {
                 System.out.println("ID " + person.getPersonID() + ": " + person.getName());
             }
             System.out.println("Enter the ID of the student");
             studentID = input.nextInt();
-            if(!cMain.courseList.isEmpty()) {
+            if (!cMain.courseList.isEmpty()) {
                 for (Course course : cMain.courseList) {
                     System.out.println("ID: " + course.getID() + " Name: " + course.getName());
                 }
@@ -504,15 +519,17 @@ public class MenuDriver {
                 courseID = input.nextInt();
                 cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
                 pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
-            }else {
+            } else {
                 System.out.println("Please add a Course first!");
             }
-        }else {
+        } else {
             System.out.println("Please add a Person first!");
         }
     }
+
     /**
      * To check if a date matches the format criteria
+     *
      * @param date this is the date to be checked
      * @return A new true or false boolean
      */
@@ -526,10 +543,11 @@ public class MenuDriver {
             return false;
         }
     }
+
     /**
      * To return the user to the menu
      */
-    private void menuReturn(){
+    private void menuReturn() {
         try {
             System.out.println("Click enter to return to the menu");
             System.in.read();
