@@ -67,6 +67,7 @@ public class MenuDriver {
         System.out.println("1.  Add a new rate payer");
         System.out.println("2.  Pet's Menu");
         System.out.println("3.  Courses Menu");
+        System.out.println("4.  Student Menu");
         System.out.println("5.  Run system tests");
         System.out.println("6.  Save or Load Person/Pet data");
         System.out.println("8.  Facebook Private Infomation");
@@ -259,9 +260,8 @@ public class MenuDriver {
         System.out.println("4.  View Results");
         System.out.println("5.  View Text Doc");
         System.out.println("6.  Save A Student");
-        System.out.println("7.  Save A Course ");
+        System.out.println("7.  Delete A Student ");
         System.out.println("8.  Load A Student");
-        System.out.println("9.  Load A Course ");
         System.out.println("0.  Return to the Main Menu");
 
     }
@@ -368,7 +368,11 @@ public class MenuDriver {
                 int studentDelID = input.nextInt();
                 for (Course course : pMain.personList.get(studentDelID).CourseList) {
                     System.out.println("ID " + course.toStringShort());
+                    
                 }
+                System.out.println("Enter In Course ID");
+                int studentDelIDCourse = input.nextInt();
+                pMain.personList.get(studentDelID).CourseList.remove(studentDelIDCourse);
                 break;
             case 8:
                 Scanner inputFileLoadStudent = null;
@@ -450,7 +454,7 @@ public class MenuDriver {
                 break;
             case 9:
                 // load course
-                cMain.loadCourses();
+                cMain.setCourses(cMain.loadCourses());
                 break;
             case 10:
                 // expenses from file
@@ -727,6 +731,7 @@ public class MenuDriver {
         while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
             System.out.println("What type of course do you wish to create?");
             System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
+            type = input.nextLine();
         }
         String courseName = "";
         while (courseName.length() <= 0) {
@@ -834,6 +839,7 @@ public class MenuDriver {
     }
 
     public static void generateStudentInvoice(int ID) {
+    	double priceInvoiceGen = 0.00;
         PrintWriter writer = null;
         try {
             writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
@@ -847,9 +853,12 @@ public class MenuDriver {
 
 
         if (!pMain.personList.get(ID).CourseList.isEmpty()) {
+        	writer.println("### Course Invoice For " + pMain.personList.get(ID).getName() + " ###");
             for (Course course : pMain.personList.get(ID).CourseList) {
-                writer.println(course.toString());
+            	priceInvoiceGen += course.getPrice();
+                writer.println("Course ID: "+course.getID() + " Course Name: " +  course.getName() + " Course Price: $" + course.getPrice() +" Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
             }
+            writer.println("Final Total: $" + priceInvoiceGen);
         }
 
         writer.close();

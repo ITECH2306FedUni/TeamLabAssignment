@@ -12,7 +12,7 @@ DreamWorks Animation ; Columbus 81 Productions ; Pacific Data Images ; produced 
 5. [x] Write Junit tests to verify that the Course and Student class code is working as expected.
 6. [x] Write code to read in information from a text file to populate data for courses and students.
 7. [x] Add a menu option to the main menu driver class to read data from a file and to create the invoices and save to a file.
-8. [ ] Ensure that you have used polymorphism in your code and highlight where this occurs with comments in your code
+8. [x] Ensure that you have used polymorphism in your code and highlight where this occurs with comments in your code
 
 # Team Member 2 Blaney
 
@@ -28,11 +28,11 @@ payer, register a new animal and remove an animal from the list of registered an
 
 # Team Member 3 Nine
 
-1. [ ] Create a new data management class for council, in which it is possible to have a number of courses in a collection. You will use an ArrayList to store these course objects.
-2. [ ] You must modify/add methods so that you can generate a list of courses offered by council, add a new course and remove an existing course from the list of available courses.
+1. [x] Create a new data management class for council, in which it is possible to have a number of courses in a collection. You will use an ArrayList to store these course objects.
+2. [x] You must modify/add methods so that you can generate a list of courses offered by council, add a new course and remove an existing course from the list of available courses.
 3. [ ] You will need to add code so that it is possible to generate an course detail and expenses report that provides details of all courses, organised by duration and course type and save this report to a text file.
 4. [x] Add a menu option to the main menu driver class to modify an existing course to change the allocated budgets or any other course details.
 5. [ ] Write Junit tests to verify that the Course and CourseCollection class code is working as expected.
-6. [ ] Write code to read in information from a text file to populate data for multiple courses.
-7. [ ] Add a menu option to the main menu driver class to read data from a file and to create the courses detail and expenses report and save to a file.
-8. [ ] Ensure that you have used polymorphism in your code and highlight where this occurs with comments in your code
+6. [x] Write code to read in information from a text file to populate data for multiple courses.
+7. [x] Add a menu option to the main menu driver class to read data from a file and to create the courses detail and expenses report and save to a file.
+8. [x] sure that you have used polymorphism in your code and highlight where this occurs with comments in your code

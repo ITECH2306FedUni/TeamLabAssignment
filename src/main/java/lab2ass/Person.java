@@ -124,7 +124,8 @@ public class Person implements Serializable {
     }
 
     public void enrollInCourse(Course _currentCourse) {
-        this.currentCourse = _currentCourse;
+
+        this.CourseList.add(_currentCourse);
     }
 
     public void addPerson(Person personAddToList) {

@@ -1,2 +1,12 @@
-Course [course=dicksuck, price=1.0, runtime=1, courseID=0, students= []]
-Course [course=suckdick, price=2.0, runtime=2, courseID=0, students= []]
+class lab2ass.Course
+1
+Spider Husbandry
+6969.0
+13.5
+8
+class lab2ass.OnlineCourse
+2
+Fighting
+0.0
+555.0
+4
