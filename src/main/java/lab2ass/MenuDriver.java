@@ -709,6 +709,7 @@ public class MenuDriver {
         while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
             System.out.println("What type of course do you wish to create?");
             System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
+            type = input.NextLine();
         }
         String courseName = "";
         while (courseName.length() <= 0) {
