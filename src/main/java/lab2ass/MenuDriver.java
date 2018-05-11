@@ -462,6 +462,10 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                 break;
             case 5:
                 // generate a list of courses
+                for (Course course: cMain.courseList) {
+                    System.out.println (course.toString());
+                }
+                menuReturn();
                 break;
             case 6:
                 // generate expenses report
@@ -471,9 +475,11 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                 break;
             case 8:
                 // save course
+                cMain.saveCourses();
                 break;
             case 9:
                 // load course
+                cMain.loadCourses();
                 break;
             case 10:
                 // expenses from file
@@ -551,24 +557,38 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
      * @return A new course object
      */
     private Course courseWizard () {
-        System.out.println("Enter the Name of new course:");
-        String tempCourseName = input.nextLine();
-		String courseName = "";
-		if (tempCourseName.length() <= 0 )
-        {        	
-        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: "); // checks with the user if the course being blank is ok 
-        	courseName = input.nextLine();
+        String type = "";
+        while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
+            System.out.println("What type of course do you wish to create?");
+            System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
         }
-		else {
-			courseName = tempCourseName;
-		}
+		String courseName = "";
+        while (courseName.length() <= 0) {
+            System.out.println("Enter the Name of new course:");
+            courseName = input.nextLine();
+        }
+        double courseCost = 0.0;
+        if (!type.toLowerCase().equals("o")) {
+            System.out.println("enter the cost of" + courseName + "to run");
+            courseCost = input.nextDouble();
+        }
         System.out.println("Enter the price of " + courseName + ":");
-        float coursePrice = input.nextFloat();
+        double coursePrice = input.nextDouble();
         System.out.println("Enter the runtime of " + courseName + ":");
         int courseRuntime = input.nextInt();
         System.out.println("Enter the lecturer's id for " + courseName +":");
         int courseLecturerID = input.nextInt();
-        return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+        switch (type.toLowerCase()) {
+            case "c":
+                return new Course(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
+            case "s":
+                return new ShortCourse(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
+            case "e":
+                return new EveningCourse(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
+            case "o":
+                return new OnlineCourse(courseLecturerID, courseName, 0.0, coursePrice, courseRuntime);
+        }
+        return null;
 
     }
     /**
@@ -609,7 +629,34 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         try {
             dateFormat.parse(date.trim());
             return true;
-        } catch (ParseException pe) {
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Is this string a double
+     * @param dub the double to check
+     * @return A boolean
+     */
+    private boolean isDouble(String dub) {
+        try {
+            Double.parseDouble(dub);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+        /**
+     * Is this string an int
+     * @param wint the int to check
+     * @return A boolean
+     */
+    private boolean isInt(String wint) {
+        try {
+            Double.parseDouble(wint);
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }
