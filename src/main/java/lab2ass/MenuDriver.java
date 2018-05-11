@@ -239,7 +239,7 @@ public class MenuDriver {
         System.out.println("4.  View Results");
         System.out.println("5.  View Text Doc");
         System.out.println("6.  Save A Student");
-        System.out.println("7.  Save A Course ");
+        System.out.println("7.  Delete A Student ");
         System.out.println("8.  Load A Student");
         System.out.println("9.  Load A Course ");
         System.out.println("0.  Return to the Main Menu");
