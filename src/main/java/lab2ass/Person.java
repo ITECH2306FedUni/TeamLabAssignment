@@ -3,6 +3,7 @@
  */
 package lab2ass;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author  RAWR-XD
  * @version 1.0
  */
-public class Person {
+public class Person implements Serializable {
 	ArrayList<Person> personList = new ArrayList<>();
 	ArrayList<Animal> personPetList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
@@ -145,6 +146,10 @@ public class Person {
     }
     @Override
     public String toString(){
-        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
+        if(!hasPet()){
+            return name + "," + address + "," + postcode + "," +  city;
+        } else {
+            return name + "," + address + "," + postcode + "," + personPetList;
+        }
     }
 }

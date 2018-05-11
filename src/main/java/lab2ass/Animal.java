@@ -3,6 +3,7 @@
  */
 package lab2ass;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
@@ -13,7 +14,7 @@ import java.util.Calendar;
  * @author  RAWR-XD
  * @version 1.0
  */
-public abstract class Animal {
+public abstract class Animal implements Serializable {
     // General Animal Attributes
     private static int nextValidRegistrationID = 1;
     Integer registrationID;
@@ -99,13 +100,7 @@ public abstract class Animal {
      */
     @Override
     public String toString() {
-        return "Animal [breed=" + breed
-        + ", name=" + name
-        + ", dob=" + dob
-        + ", gender=" + gender
-        + ", regdue=" + regdue
-        + ", microchip=" + microchip
-        + "]";
+        return breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip;
     }
 
     public double calcRates () {

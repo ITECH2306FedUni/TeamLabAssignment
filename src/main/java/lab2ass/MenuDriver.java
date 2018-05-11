@@ -1,13 +1,14 @@
 package lab2ass;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * MenuDriver
@@ -109,7 +110,7 @@ public class MenuDriver {
                 subMenu = true;
                 while (subMenu) {
                     showPetMenu();
-                    int selection = getUserSelection(10);
+                    int selection = getUserSelection(5);
                     processChoicePetMenu(selection);
                 }
                 break;
@@ -143,8 +144,13 @@ public class MenuDriver {
                     } catch (FileNotFoundException | UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    for (Person person : pMain.personList) {
-                        writer.print(person);
+                    if(!pMain.personList.isEmpty()){
+                        for (Person person: pMain.personList){
+                            writer.println(person);
+                            if(person.hasPet()){
+                                writer.println(person.personPetList);
+                            }
+                        }
                     }
                     writer.close();
                 } else {

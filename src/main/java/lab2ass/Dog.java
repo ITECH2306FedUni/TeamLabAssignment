@@ -1,5 +1,6 @@
 package lab2ass;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
@@ -12,7 +13,7 @@ import java.util.Calendar;
  * @author RAWR-XD
  * @version 1.0
  */
-public class Dog extends Animal {
+public class Dog extends Animal implements Serializable {
     private boolean desexed;
     private boolean vaccinated;
     private int microchip;
@@ -114,15 +115,6 @@ public class Dog extends Animal {
      */
     @Override
     public String toString() {
-        return "type=" + this.getClass().getSimpleName()
-                + "[breed=" + breed
-                + ", name=" + name
-                + ", dob=" + dob
-                + ", gender=" + gender
-                + ", regdue=" + regdue
-                + ", microchip=" + microchip
-                + ", desexed=" + desexed
-                + ", vaccinated=" + vaccinated
-                + "]";
+        return this.getClass().getSimpleName() + "," + breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip + "," + desexed + "," + vaccinated;
     }
 }
