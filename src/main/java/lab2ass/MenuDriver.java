@@ -36,7 +36,7 @@ public class MenuDriver {
 
         while (stillRunning) {
             showMainMenu();
-            choice = getUserSelection(0, 11);
+            choice = getUserSelection(0, 8);
             processChoiceMainMenu(choice);
         }
 
@@ -132,6 +132,7 @@ public class MenuDriver {
                         }
                     }
                     writer.close();
+                    System.out.println("The People and Pet data been saved under the name: " + fileName.replaceAll("\\s", ""));
                 } else if  (fileChoice.equalsIgnoreCase("l")){
                     fileName = "PersonAndPetData.txt";
                     String line = "";
@@ -153,7 +154,7 @@ public class MenuDriver {
                                 person.addAPet(new Rabbit(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6])));
                             }
                         }
-
+                        System.out.println("People and Pet data has been loaded from: "+ fileName.replaceAll("\\s", ""));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -418,6 +419,7 @@ public class MenuDriver {
                     break;
                 }
                 menuReturn();
+                break;
             case 3:
                 //delete a course
                 break;
