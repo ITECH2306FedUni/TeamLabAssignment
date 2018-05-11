@@ -34,9 +34,15 @@ public class MenuDriver {
             System.out.println("What would you like preloaded People data? (y)es or (n)o");
             String preloadchoice = input.nextLine();
             if (preloadchoice.equalsIgnoreCase("y")) {
-                pMain.addPerson(new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey"));
-                pMain.addPerson(new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey"));
-                pMain.addPerson(new Person("56 Torvald Court", "Nine Hall", "3977", "Casey"));
+                Person p1Preload = new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey");
+                pMain.addPerson(p1Preload);
+                p1Preload.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
+                p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
+                Person p2Preload = new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey");
+                pMain.addPerson(p2Preload);
+                p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998", "05 01 1998", 0));
+                Person p3Preload = new Person("56 Torvald Court", "Nine Hall", "3977", "Casey");
+                pMain.addPerson(p3Preload);
 
             }//adds Temp testing data into the lists
         }
