@@ -722,6 +722,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
             System.out.println("What type of course do you wish to create?");
             System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
+            type = input.nextLine();
         }
 		String courseName = "";
         while (courseName.length() <= 0) {
