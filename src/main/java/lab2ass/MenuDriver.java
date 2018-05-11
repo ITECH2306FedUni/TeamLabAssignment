@@ -375,28 +375,32 @@ public class MenuDriver {
      */
     private Course courseWizard () {
         String type = "";
-        while (type != C ) {
+        while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
             System.out.println("What type of course do you wish to create?");
             System.out.println("(C)ourse, (S)hortcourse, (E)vening course, or (O)nline Course");
         }
-        System.out.println("Enter the Name of new course:");
-        String tempCourseName = input.nextLine();
 		String courseName = "";
-		if (tempCourseName.length() <= 0 )
-        {        	
-        	System.out.println("Course Name must be greater than 0 letters, Enter Name Again if name is left blank Name Will be set Blank: "); // checks with the user if the course being blank is ok 
-        	courseName = input.nextLine();
+        while (courseName.length() <= 0) {
+            System.out.println("Enter the Name of new course:");
+            courseName = input.nextLine();
         }
-		else {
-			courseName = tempCourseName;
-		}
         System.out.println("Enter the price of " + courseName + ":");
-        float coursePrice = input.nextFloat();
+        double coursePrice = input.nextDouble();
         System.out.println("Enter the runtime of " + courseName + ":");
         int courseRuntime = input.nextInt();
         System.out.println("Enter the lecturer's id for " + courseName +":");
         int courseLecturerID = input.nextInt();
-        return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+        switch (type.toLowerCase()) {
+            case "c":
+                return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+            case "s":
+                return new ShortCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+            case "e":
+                return new EveningCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+            case "o":
+                return new OnlineCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+        }
+        return null;
 
     }
     /**
@@ -437,7 +441,7 @@ public class MenuDriver {
         try {
             dateFormat.parse(date.trim());
             return true;
-        } catch (ParseException pe) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -451,7 +455,7 @@ public class MenuDriver {
         try {
             Double.parseDouble(dub);
             return true;
-        } catch (ParseException pe) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -462,12 +466,11 @@ public class MenuDriver {
      */
     private boolean isInt(String wint) {
         try {
-            Double.parseDouble(dub);
+            Double.parseDouble(wint);
             return true;
-        } catch (ParseException pe) {
+        } catch (Exception e) {
             return false;
         }
-    }
     }
     /**
      * To return the user to the menu
