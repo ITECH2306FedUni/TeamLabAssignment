@@ -433,7 +433,7 @@ public class MenuDriver {
                 break;
             case 9:
                 // load course
-                cMain.loadCourses();
+                cMain.setCourses(cMain.loadCourses());
                 break;
             case 10:
                 // expenses from file
