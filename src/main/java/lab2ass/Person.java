@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Person {
 	public ArrayList<Person> personList = new ArrayList<>();
+	public ArrayList<Course> CourseList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
@@ -122,7 +123,8 @@ public class Person {
     }
 
     public void enrollInCourse(Course _currentCourse) {
-        this.currentCourse = _currentCourse;
+    	this.CourseList.add(_currentCourse);
+      //  this.currentCourse = _currentCourse;
     }
     
     public void addPerson(Person personAddToList)
@@ -147,5 +149,8 @@ public class Person {
     @Override
     public String toString(){
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
+    }
+    public String toStringCleaned(){
+        return personID +" "+ name + " " + address + " " + postcode;
     }
 }
