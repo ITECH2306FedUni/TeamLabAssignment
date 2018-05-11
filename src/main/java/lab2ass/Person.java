@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Person implements Serializable {
-	ArrayList<Person> personList = new ArrayList<>();
-	ArrayList<Animal> personPetList = new ArrayList<>();
-  ArrayList<Course> CourseList = new ArrayList<>();
-	private static int nextValidPersonID = 0;
+    ArrayList<Person> personList = new ArrayList<>();
+    ArrayList<Animal> personPetList = new ArrayList<>();
+    ArrayList<Course> CourseList = new ArrayList<>();
+    private static int nextValidPersonID = 0;
     private int personID;
-	private String name;  // name of person
+    private String name;  // name of person
     private String address; // address of person
     private String postcode; // postcode of person's address
     private String city; // city of person's address
@@ -28,14 +28,14 @@ public class Person implements Serializable {
     // constructor - create Person given name, address and a Pet object
 
     /**
-     * @param name name of person
+     * @param name    name of person
      * @param address address of person
-     * @param city city of person's address
-     * @param pet pet of the person
+     * @param city    city of person's address
+     * @param pet     pet of the person
      */
     public Person(String name, String address, String city, Animal pet) {
         this.setPersonID();
-    	this.name = name;
+        this.name = name;
         this.address = address;
         this.city = city;
         this.pet = pet;
@@ -44,22 +44,22 @@ public class Person implements Serializable {
     // constructor - create Person given address, name and postcode
 
     /**
-     * @param _name name of person
-     * @param _address address of person
-     * @param _city city of person's address
+     * @param _name     name of person
+     * @param _address  address of person
+     * @param _city     city of person's address
      * @param _postcode postcode of the person
      */
     public Person(String _address, String _name, String _postcode, String _city) {
-    	this.setPersonID();
-    	this.setAddress(_address);
+        this.setPersonID();
+        this.setAddress(_address);
         this.setName(_name);
         this.setPostcode(_postcode);
         this.setCity(_city);
     }
 
     public Person() {
-		// TODO Auto-generated constructor stub
-	}
+        // TODO Auto-generated constructor stub
+    }
 
     public int getPersonID() {
         return personID;
@@ -68,7 +68,8 @@ public class Person implements Serializable {
     public void setPersonID(int personID) {
         this.personID = personID;
     }
-	/**
+
+    /**
      * @return the name
      */
     public String getName() {
@@ -125,32 +126,28 @@ public class Person implements Serializable {
     public void enrollInCourse(Course _currentCourse) {
         this.currentCourse = _currentCourse;
     }
-    
-    public void addPerson(Person personAddToList)
-    {
-    	personList.add(personAddToList); // adding the person to the person list 
-    	
-    	
+
+    public void addPerson(Person personAddToList) {
+        personList.add(personAddToList); // adding the person to the person list
+
+
     }
+
     private void setPersonID() { // allocate next available ID
         this.personID = nextValidPersonID++;
-     
+
     }
 
     public String toStringWhole() {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
     }
 
-    public String toStringNameAndCourse()
-    {
-    	return "Person [name= " + name + ", Ccourse= " + currentCourse +"]";
+    public String toStringNameAndCourse() {
+        return "Person [name= " + name + ", Ccourse= " + currentCourse + "]";
     }
+
     @Override
-    public String toString(){
-        if(!hasPet()){
-            return name + "," + address + "," + postcode + "," +  city;
-        } else {
-            return name + "," + address + "," + postcode + "," + personPetList;
-        }
+    public String toString() {
+        return "Person," + name + "," + address + "," + postcode + "," + city;
     }
 }

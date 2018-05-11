@@ -92,6 +92,10 @@ public abstract class Animal implements Serializable {
         this.regdue = regdue;
     }
 
+    public int getMicrochip() {
+        return microchip;
+    }
+
     public String getType(){
         return this.getClass().getSimpleName();
     }

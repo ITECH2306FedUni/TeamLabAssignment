@@ -1,6 +1,8 @@
 package lab2ass;
 
 
+import jdk.nashorn.internal.objects.NativeJSON;
+
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -67,7 +69,7 @@ public class MenuDriver {
         System.out.println("3.  Courses Menu");
         System.out.println("5.  Run system tests");
         System.out.println("6.  Save or Load Person/Pet data");
-        System.out.println("7.  Facebook Private Infomation");
+        System.out.println("8.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
 
@@ -138,13 +140,31 @@ public class MenuDriver {
                         for (Person person : pMain.personList) {
                             writer.println(person);
                             if (person.hasPet()) {
-                                writer.println(person.personPetList);
+                                for (Animal pet : person.personPetList) {
+                                    writer.println(pet.toString());
+                                }
                             }
                         }
                     }
                     writer.close();
-                } else {
-                    menuReturn();
+                } else if  (fileChoice.equalsIgnoreCase("l")){
+                    fileName = "PersonAndPetData.txt";
+                    String line = "";
+                    String cvsSplitBy = ",";
+
+                    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                        while ((line = br.readLine()) != null) {
+                            String[] data = line.split(cvsSplitBy);
+                            if(data[0].equalsIgnoreCase("person")){
+                                Person person = new Person(data[2],data[1],data[3],data[4]);
+                                pMain.addPerson(person);
+                            }
+
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 menuReturn();
                 break;
@@ -245,12 +265,13 @@ public class MenuDriver {
         System.out.println("0.  Return to the Main Menu");
 
     }
-    private void processChoiceStudentMenu (int choice) {
-        switch(choice) {
+
+    private void processChoiceStudentMenu(int choice) {
+        switch (choice) {
             case 1:
 
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
                             System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                         }
@@ -258,20 +279,19 @@ public class MenuDriver {
                 }
                 break;
             case 2:
-                if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
                     System.out.println("Enter Student ID:");
                     int ID = input.nextInt(); // obtain the city
                     generateStudentInvoice(ID);
-                }
-                else {
+                } else {
                     System.out.println("No Students or Courses");
 
 
                 }
                 break;
             case 3:
-                if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
 
                     System.out.println("Enter Student ID:");
@@ -281,26 +301,24 @@ public class MenuDriver {
                     System.out.println("Enter In Result:");
                     float result = input.nextFloat();
                     pMain.personList.get(ID1).CourseList.get(courseID).result = result;
-                }
-                else {
+                } else {
                     System.out.println("No Students or Courses");
 
 
                 }
                 break;
             case 4:
-                if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
 
                     System.out.println("Enter Student ID:");
                     int ID2 = input.nextInt();
                     System.out.println("Enter Course ID:");
                     int courseID1 = input.nextInt();
-                    System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
+                    System.out.println(pMain.personList.get(ID2).CourseList.get(courseID1).result);
                     break;
 
-                }
-                else {
+                } else {
                     System.out.println("No Students or Courses");
 
 
@@ -308,7 +326,7 @@ public class MenuDriver {
             case 5:
                 Scanner inputFile = null;
                 try {
-                    inputFile = new Scanner( new File ("StudentInvoice.txt"));
+                    inputFile = new Scanner(new File("StudentInvoice.txt"));
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -342,20 +360,20 @@ public class MenuDriver {
                 break;
             case 7:
                 System.out.println("");
-                for (Person person: pMain.personList) {
+                for (Person person : pMain.personList) {
                     System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                 }
                 System.out.println();
                 System.out.println("Enter In Student ID");
                 int studentDelID = input.nextInt();
-                for (Course course: pMain.personList.get(studentDelID).CourseList) {
+                for (Course course : pMain.personList.get(studentDelID).CourseList) {
                     System.out.println("ID " + course.toStringShort());
                 }
                 break;
             case 8:
                 Scanner inputFileLoadStudent = null;
                 try {
-                    inputFileLoadStudent = new Scanner( new File ("StudentSave.txt"));
+                    inputFileLoadStudent = new Scanner(new File("StudentSave.txt"));
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -364,7 +382,7 @@ public class MenuDriver {
                 System.out.println("Data: " + name);
                 String address = inputFileLoadStudent.nextLine();
                 System.out.println("Data: " + address);
-                pMain.addPerson(new Person(address, name, "" , ""));
+                pMain.addPerson(new Person(address, name, "", ""));
                 break;
 
 
