@@ -65,11 +65,9 @@ public class MenuDriver {
         System.out.println("1.  Add a new rate payer");
         System.out.println("2.  Pet's Menu");
         System.out.println("3.  Courses Menu");
-        System.out.println("5.  List details of a particular available course");
-        System.out.println("6.  Calculate registration renewal notice for a particular rate payer who has previously registered an animal");
-        System.out.println("7.  Run system tests");
-        System.out.println("8.  Facebook Private Infomation");
-        System.out.println("11.  Thingy");
+        System.out.println("5.  Run system tests");
+        System.out.println("6.  Save or Load Person/Pet data");
+        System.out.println("7.  Facebook Private Infomation");
         System.out.println("0.  Exit Program");
     }
 
@@ -116,8 +114,7 @@ public class MenuDriver {
                 }
                 break;
             case 5:
-                System.out.println("7");
-                //menu option 7: system testor
+                //menu option 5: system testor
                 System.out.println("Running Person Test's");
                 TestDriverClass.runTestPerson(null);
                 System.out.println("Running Pet Test's");
@@ -127,7 +124,7 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 6:
-                //menu option 5: save/load data
+                //menu option 6: save/load data
                 System.out.println("What would you like to (s)ave or (l)oad data?");
                 String fileChoice = input.nextLine();
                 if (fileChoice.equalsIgnoreCase("s")) {
@@ -462,6 +459,7 @@ public class MenuDriver {
         System.out.println("3.  Modify Pet(s)");
         System.out.println("4.  Remove Pet(s)");
         System.out.println("5.  Generate Registration Costs");
+        System.out.println("0.  Exit");
     }
 
     private void processChoicePetMenu(int choice) {
