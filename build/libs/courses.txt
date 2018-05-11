@@ -1,1 +1,2 @@
-Course [course=dick, price=1.0, runtime=1, courseID=0, students= []]
+Course [course=dicksuck, price=1.0, runtime=1, courseID=0, students= []]
+Course [course=suckdick, price=2.0, runtime=2, courseID=0, students= []]
