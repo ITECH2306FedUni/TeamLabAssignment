@@ -1,10 +1,13 @@
 package lab2ass;
+
+import java.io.Serializable;
+
 /**
  * The Rabbit Class
  * @author  RAWR-XD
  * @version 1.0
  */
-public class Rabbit extends Animal {
+public class Rabbit extends Animal implements Serializable {
     /**
      * To build the rabbit object
      * @param _breed  breed of the animal
@@ -18,18 +21,15 @@ public class Rabbit extends Animal {
         super(_breed, _name, _gender, _dob, _regdue, _microchip);
 
     }
+    @Override
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     /**
      * Return the animal object
      */
     @Override
     public String toString() {
-        return "Rabbit [breed=" + breed
-                + ", name=" + name
-                + ", dob=" + dob
-                + ", gender=" + gender
-                + ", regdue=" + regdue
-                + ", microchip=" + microchip
-                + ", registrationID=" + registrationID
-                + "]";
+        return this.getClass().getSimpleName() + "," + breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip;
     }
 }

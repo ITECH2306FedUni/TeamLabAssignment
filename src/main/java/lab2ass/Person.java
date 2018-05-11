@@ -3,6 +3,7 @@
  */
 package lab2ass;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,17 +11,19 @@ import java.util.ArrayList;
  * @author  RAWR-XD
  * @version 1.0
  */
-public class Person {
-	public ArrayList<Person> personList = new ArrayList<>();
-	public ArrayList<Course> CourseList = new ArrayList<>();
+public class Person implements Serializable {
+	ArrayList<Person> personList = new ArrayList<>();
+	ArrayList<Animal> personPetList = new ArrayList<>();
+  ArrayList<Course> CourseList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
     private String address; // address of person
     private String postcode; // postcode of person's address
     private String city; // city of person's address
-    public Animal pet; // associate a pet that is an Animal object with the Person
-    public Course currentCourse;
+    Animal pet; // associate a pet that is an Animal object with the Person
+    private Course currentCourse;
+    Animal petInList;
 
     // constructor - create Person given name, address and a Pet object
 
@@ -44,7 +47,7 @@ public class Person {
      * @param _name name of person
      * @param _address address of person
      * @param _city city of person's address
-     * @param _postcode postcdoe of the person
+     * @param _postcode postcode of the person
      */
     public Person(String _address, String _name, String _postcode, String _city) {
     	this.setPersonID();
@@ -112,19 +115,15 @@ public class Person {
      * @param _pet the pet animal to associate
      */
     public void addAPet(Animal _pet) {
-        this.pet = _pet;
+        personPetList.add(_pet);
     }
 
     public boolean hasPet() {
-        if(this.pet == null){
-            return false;
-        }
-        return true;
+        return !personPetList.isEmpty();
     }
 
     public void enrollInCourse(Course _currentCourse) {
-    	this.CourseList.add(_currentCourse);
-      //  this.currentCourse = _currentCourse;
+        this.currentCourse = _currentCourse;
     }
     
     public void addPerson(Person personAddToList)
@@ -140,7 +139,7 @@ public class Person {
 
     public String toStringWhole() {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
-    };
+    }
 
     public String toStringNameAndCourse()
     {
@@ -148,9 +147,10 @@ public class Person {
     }
     @Override
     public String toString(){
-        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
-    }
-    public String toStringCleaned(){
-        return personID +" "+ name + " " + address + " " + postcode;
+        if(!hasPet()){
+            return name + "," + address + "," + postcode + "," +  city;
+        } else {
+            return name + "," + address + "," + postcode + "," + personPetList;
+        }
     }
 }

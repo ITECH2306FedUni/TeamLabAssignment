@@ -3,8 +3,10 @@
  */
 package lab2ass;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Calendar;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Calendar;
  * @author  RAWR-XD
  * @version 1.0
  */
-public abstract class Animal {
+public abstract class Animal implements Serializable {
     // General Animal Attributes
     private static int nextValidRegistrationID = 1;
     Integer registrationID;
@@ -90,19 +92,15 @@ public abstract class Animal {
         this.regdue = regdue;
     }
 
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     /**
      * Return the animal object
      */
     @Override
     public String toString() {
-        return "Animal [breed=" + breed
-        + ", name=" + name
-        + ", dob=" + dob
-        + ", gender=" + gender
-        + ", regdue=" + regdue
-        + ", microchip=" + microchip
-        + ", registrationID=" + registrationID
-        + "]";
+        return breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip;
     }
 
     public double calcRates () {
@@ -116,7 +114,7 @@ public abstract class Animal {
 
         long regoYear = regoDate.get(Calendar.YEAR);
         double fee = 20.00;
-        long currentYear = 2018;//FIXME:Calendar.getInstance.get(Calendar.YEAR);
+        long currentYear = Year.now().getValue();
         // TODO Dog vaccine thing
         if (regoYear == currentYear) {
             return fee;

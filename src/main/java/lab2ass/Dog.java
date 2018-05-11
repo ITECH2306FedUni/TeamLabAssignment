@@ -1,4 +1,6 @@
 package lab2ass;
+
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
@@ -7,10 +9,11 @@ import java.util.Calendar;
 
 /**
  * The Dog Class
- * @author  RAWR-XD
+ *
+ * @author RAWR-XD
  * @version 1.0
  */
-public class Dog extends Animal {
+public class Dog extends Animal implements Serializable {
     private boolean desexed;
     private boolean vaccinated;
     private int microchip;
@@ -23,15 +26,17 @@ public class Dog extends Animal {
             "Perro de Presa Canario",
             "Presa Canario"
     };
+
     /**
      * To build the animal object
-     * @param _breed  breed of the animal
-     * @param _name   name of the animal
-     * @param _dob    dob of the animal DD MMM YYYY
-     * @param _gender gender of the animal
-     * @param _regdue date that reg is due DD MMM YYYY
-     * @param _microchip microchip id for the pet
-     * @param _desexed desex status of the pet
+     *
+     * @param _breed      breed of the animal
+     * @param _name       name of the animal
+     * @param _dob        dob of the animal DD MMM YYYY
+     * @param _gender     gender of the animal
+     * @param _regdue     date that reg is due DD MMM YYYY
+     * @param _microchip  microchip id for the pet
+     * @param _desexed    desex status of the pet
      * @param _vaccinated vaccine status of the pet
      */
     Dog(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip, boolean _desexed, boolean _vaccinated) {
@@ -59,10 +64,13 @@ public class Dog extends Animal {
         this.vaccinated = vaccinated;
     }
 
-
+    @Override
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     @Override
     public void setBreed(String breed) throws IllegalArgumentException {
-        if (Arrays.asList(restricted_breeds).contains(breed)){
+        if (Arrays.asList(restricted_breeds).contains(breed)) {
             throw new IllegalArgumentException("Dog is on the Restricted Breed's list");
         } else {
             this.breed = breed;
@@ -70,14 +78,15 @@ public class Dog extends Animal {
     }
 
     private void setMicrochip(int microchip) throws IllegalArgumentException {
-        if (microchip >= 0){
+        if (microchip >= 0) {
             this.microchip = microchip;
         } else {
             throw new IllegalArgumentException("Microchip should not be null");
         }
     }
+
     @Override
-    public double calcRates () {
+    public double calcRates() {
         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
 
         Calendar regoDate = Calendar.getInstance();
@@ -87,9 +96,8 @@ public class Dog extends Animal {
         }
 
         long regoYear = regoDate.get(Calendar.YEAR);
-        System.out.println(regoYear);
         double fee = 20.00;
-        if(!isDesexed()){
+        if (!isDesexed()) {
             fee = fee * 1.33;
         }
         long currentYear = Year.now().getValue();
@@ -97,24 +105,16 @@ public class Dog extends Animal {
             return fee;
         }
         for (int i = 0; i < currentYear - regoYear; i++) {
-            fee = fee - (fee*0.01);
+            fee = fee - (fee * 0.01);
         }
         return fee;
     }
+
     /**
      * Return the animal object
      */
     @Override
     public String toString() {
-        return "Dog [breed=" + breed
-                + ", name=" + name
-                + ", dob=" + dob
-                + ", gender=" + gender
-                + ", regdue=" + regdue
-                + ", microchip=" + microchip
-                + ", desexed=" + desexed
-                + ", vaccinated=" + vaccinated
-                + ", registrationID=" + registrationID
-                + "]";
+        return this.getClass().getSimpleName() + "," + breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip + "," + desexed + "," + vaccinated;
     }
 }

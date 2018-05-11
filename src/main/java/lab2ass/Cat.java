@@ -1,12 +1,14 @@
 package lab2ass;
 
+import java.io.Serializable;
+
 /**
  * The Cat Class
  * @author  RAWR-XD
  * @version 1.0
  */
 
-public class Cat extends Animal {
+public class Cat extends Animal implements Serializable {
     private int microchip;
     /**
      * To build the cat object
@@ -28,18 +30,15 @@ public class Cat extends Animal {
             throw new IllegalArgumentException("Microchip should not be null");
         }
     }
+    @Override
+    public String getType(){
+        return this.getClass().getSimpleName();
+    }
     /**
      * Return the animal object
      */
     @Override
     public String toString() {
-        return "Cat [breed=" + breed
-                + ", name=" + name
-                + ", dob=" + dob
-                + ", gender=" + gender
-                + ", regdue=" + regdue
-                + ", microchip=" + microchip
-                + ", registrationID=" + registrationID
-                + "]";
+        return this.getClass().getSimpleName() + "," + breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip;
     }
 }
