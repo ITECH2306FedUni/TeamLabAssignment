@@ -263,7 +263,7 @@ public class MenuDriver {
          System.out.println("4.  View Results");
          System.out.println("5.  View Text Doc");
          System.out.println("6.  Save A Student");
-         System.out.println("7.  Save A Course ");
+         System.out.println("7.  Delete Student ");
          System.out.println("8.  Load A Student");
          System.out.println("9.  Load A Course ");
          System.out.println("0.  Return to the Main Menu");
@@ -365,28 +365,16 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         	writer.close();
         	break;
         case 7:
-        	
         	System.out.println("");
-        	
-        	System.out.println("Enter Course ID:");
-        	int IDCourseSave = input.nextInt();
-       	 PrintWriter writerCourse = null;
- 		try {
- 			writerCourse = new PrintWriter("CourseSave.txt", "UTF-8");
- 		} catch (FileNotFoundException e) {
- 			// TODO Auto-generated catch block
- 			e.printStackTrace();
- 		} catch (UnsupportedEncodingException e) {
- 			// TODO Auto-generated catch block
- 			e.printStackTrace();
- 		}
-        	writerCourse.println(cMain.courseList.get(IDCourseSave).getName());
-        	System.out.println(cMain.courseList.get(IDCourseSave).getName());
-        	writerCourse.println(cMain.courseList.get(IDCourseSave).getPrice());
-        	System.out.println(cMain.courseList.get(IDCourseSave).getPrice());
-        	writerCourse.println(cMain.courseList.get(IDCourseSave).getRuntime());
-        	System.out.println(cMain.courseList.get(IDCourseSave).getRuntime());
-        	writerCourse.close();
+      	  for (Person person: pMain.personList) {
+                System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+            }
+      	  System.out.println();
+      	System.out.println("Enter In Student ID");
+      	int studentDelID = input.nextInt();
+      	 for (Course course: pMain.personList.get(studentDelID).CourseList) {
+             System.out.println("ID " + course.toStringShort());
+         }
         	break;
         case 8:
         	Scanner inputFileLoadStudent = null;
@@ -403,23 +391,11 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         	pMain.addPerson(new Person(address, name, "" , ""));
         	break;
 
+       	
         case 9:
-        	Scanner inputFileLoadCourse = null;
-			try {
-				inputFileLoadCourse = new Scanner( new File ("CourseSave.txt"));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	String nameCourse = inputFileLoadCourse.nextLine();
-        	System.out.println("Data: " + nameCourse);
 
- //       	System.out.println("Data: " + priceCourse);
-     //   	int runtimeCourse = inputFileLoadCourse.nextInt();
-      //  	System.out.println("Data: " + runtimeCourse);
-     //   	cMain.diffrentCourses(new Course(1, nameCourse, 5, runtimeCourse));
+            
         	break;
-        	
         case 0:
         	subMenu = false;
             menuReturn();

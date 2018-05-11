@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Course {
 	
 	public static Person personToAdd = new Person();
-    private static int nextValidCourseID = 0;
+    private static int nextValidCourseID = -0;
     ArrayList<Course> courseList = new ArrayList<>();
 
 	private ArrayList<Person> personToaddList = new ArrayList<Person>();
@@ -32,6 +32,7 @@ public class Course {
         this.name = _name;
         this.price = _price;
         setRuntime(_runtime);
+        this.setCourseID();
        // this.runtime = _runtime;
     }
 
