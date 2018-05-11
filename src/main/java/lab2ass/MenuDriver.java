@@ -415,13 +415,22 @@ public class MenuDriver {
                     System.out.println(cMain.courseList.get(selectCourse).toString());
                 } else {
                     System.out.println("Please add a Course first!");
-                    menuReturn();
-                    break;
                 }
                 menuReturn();
                 break;
             case 3:
                 //delete a course
+                if (!cMain.courseList.isEmpty()) {
+                    for (Course course : cMain.courseList) {
+                        System.out.println("ID " + course.toStringShort());
+                    }
+                    System.out.println ("enter a course to delete:");
+                    int pos = input.nextInt();
+                    cMain.courseList.remove(pos);
+                } else {
+                    System.out.println("No courses in record");
+                }
+                menuReturn();
                 break;
             case 4:
                 // enroll a student in a course
