@@ -13,11 +13,9 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Course {
-	
-	public static Person personToAdd = new Person();
     private static int nextValidCourseID = -0;
     ArrayList<Course> courseList = new ArrayList<>();
-	private ArrayList<Person> personToaddList = new ArrayList<Person>();
+	private ArrayList<Person> studentList = new ArrayList<Person>();
     
     private int courseID; 
     private String name;
@@ -25,6 +23,7 @@ public class Course {
     private int runtime;
     private double cost;
     float result;
+    int students;
     public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
@@ -32,7 +31,7 @@ public class Course {
         this.price = _price;
         setRuntime(_runtime);
         this.setCourseID();
-       // this.runtime = _runtime;
+        this.students = 0;
     }
 
     void setCourses(ArrayList inputCourses) {
@@ -43,9 +42,6 @@ public class Course {
 		this.setCourseID();
 	}
 
-	public void finalize() throws Throwable {
-
-    }
     int getID() {
         return courseID;
     }
@@ -89,30 +85,29 @@ public class Course {
     public String runTimeToString(int runtime) {
         return String.valueOf(runtime);
     }
+
     private void setCourseID() { // allocate next available ID
         this.courseID = nextValidCourseID++;
-      
     }
+
     void diffrentCourses(Course courseAddToList)
     {
     	courseList.add(courseAddToList);
     	
     }
-    void enrollstudent(Person personAddToList)
+    void enrollstudent(Person student)
     {
-    	personToaddList.add(personAddToList);
-    	System.out.println(personAddToList.getName() + " added to course");
+    	studentList.add(student);
+    	System.out.println(student.getName() + " added to course");
     }
     
-      
-
     @Override
     public String toString() {
-        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ personToaddList.toString() + "]";
+        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ studentList.toString() + "]";
     }
     public String toStringNameAndPeople()
     {
-    	return "Course [course=" + name + ", students= " + personToaddList.toString() + "]";
+    	return "Course [course=" + name + ", students= " + studentList.toString() + "]";
     }
     
     String toStringShort() {
