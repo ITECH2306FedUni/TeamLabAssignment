@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Person implements Serializable {
 	ArrayList<Person> personList = new ArrayList<>();
 	ArrayList<Animal> personPetList = new ArrayList<>();
+  ArrayList<Course> CourseList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
