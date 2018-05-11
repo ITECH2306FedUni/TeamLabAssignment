@@ -242,7 +242,6 @@ public class MenuDriver {
         System.out.println("6.  Save A Student");
         System.out.println("7.  Delete A Student ");
         System.out.println("8.  Load A Student");
-        System.out.println("9.  Load A Course ");
         System.out.println("0.  Return to the Main Menu");
 
     }
@@ -351,7 +350,11 @@ public class MenuDriver {
                 int studentDelID = input.nextInt();
                 for (Course course: pMain.personList.get(studentDelID).CourseList) {
                     System.out.println("ID " + course.toStringShort());
+                    
                 }
+                System.out.println("Enter In Course ID");
+                int studentDelIDCourse = input.nextInt();
+                pMain.personList.get(studentDelID).CourseList.remove(studentDelIDCourse);
                 break;
             case 8:
                 Scanner inputFileLoadStudent = null;
@@ -818,6 +821,7 @@ public class MenuDriver {
     }
 
     public static void generateStudentInvoice(int ID) {
+    	double priceInvoiceGen = 0.00;
         PrintWriter writer = null;
         try {
             writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
@@ -831,9 +835,12 @@ public class MenuDriver {
 
 
         if (!pMain.personList.get(ID).CourseList.isEmpty()) {
+        	writer.println("### Course Invoice For " + pMain.personList.get(ID).getName() + " ###");
             for (Course course : pMain.personList.get(ID).CourseList) {
-                writer.println(course.toString());
+            	priceInvoiceGen += course.getPrice();
+                writer.println("Course ID: "+course.getID() + " Course Name: " +  course.getName() + " Course Price: $" + course.getPrice() +" Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
             }
+            writer.println("Final Total: $" + priceInvoiceGen);
         }
 
         writer.close();
