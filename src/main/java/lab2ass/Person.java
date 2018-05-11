@@ -58,7 +58,7 @@ public class Person implements Serializable {
     }
 
     public Person() {
-        // TODO Auto-generated constructor stub
+        // This is used for pMain
     }
 
     public int getPersonID() {

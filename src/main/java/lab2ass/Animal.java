@@ -119,7 +119,6 @@ public abstract class Animal implements Serializable {
         long regoYear = regoDate.get(Calendar.YEAR);
         double fee = 20.00;
         long currentYear = Year.now().getValue();
-        // TODO Dog vaccine thing
         if (regoYear == currentYear) {
             return fee;
         }
