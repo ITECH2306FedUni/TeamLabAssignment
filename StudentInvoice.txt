@@ -1,3 +1,1 @@
-The Cuck
-The second line
-Course [course=1, price=1.0, runtime=1, courseID=0, students= [Person [name=Nathan Blaney, address=31 Nowhere Street, postcode=3977]]]
+Course [course=5, price=5.0, runtime=5, courseID=1, students= [Person [name=Nathan Blaney, address=31 Nowhere Street, postcode=3977]]]

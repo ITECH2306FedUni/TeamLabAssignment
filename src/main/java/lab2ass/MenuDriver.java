@@ -234,6 +234,19 @@ public class MenuDriver {
     }
 
     private void showStudentMenu() {
+<<<<<<< HEAD
+    	 System.out.println();
+         System.out.println("1.  View all Students");
+         System.out.println("2.  Generate Invoice");
+         System.out.println("3.  Enter In Results");
+         System.out.println("4.  View Results");
+         System.out.println("5.  View Text Doc");
+         System.out.println("6.  Save A Student");
+         System.out.println("7.  Delete Student ");
+         System.out.println("8.  Load A Student");
+         System.out.println("9.  Load A Course ");
+         System.out.println("0.  Return to the Main Menu");
+=======
         System.out.println();
         System.out.println("1.  View all Students");
         System.out.println("2.  Generate Invoice");
@@ -245,13 +258,151 @@ public class MenuDriver {
         System.out.println("8.  Load A Student");
         System.out.println("9.  Load A Course ");
         System.out.println("0.  Return to the Main Menu");
+>>>>>>> branch 'master' of https://github.com/ITECH2306FedUni/TeamLabAssignment.git
 
     }
+<<<<<<< HEAD
+    private void processChoiceStudentMenu (int choice) {
+        switch(choice) {
+        case 1:
+        	
+        	 if(!pMain.personList.isEmpty()){
+                 for (Person person: pMain.personList) {
+                	 if (!person.CourseList.isEmpty()) {
+                     System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                	 }
+                 }
+        	 }
+        	break;
+        case 2:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+        	System.out.println("");
+        	System.out.println("Enter Student ID:");
+        	 int ID = input.nextInt(); // obtain the city
+        	 generateStudentInvoice(ID);
+        	 }
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}        	
+        	break;
+        case 3:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+        	System.out.println("");
+        	
+        	System.out.println("Enter Student ID:");
+        	int ID1 = input.nextInt();
+        	System.out.println("Enter Course ID:");
+        	int courseID = input.nextInt();
+        	System.out.println("Enter In Result:");
+        	float result = input.nextFloat();
+        	pMain.personList.get(ID1).CourseList.get(courseID).result = result;
+        	}
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}
+        	break;
+        case 4:
+        	if ((!pMain.personList.isEmpty()) &&  (!cMain.courseList.isEmpty())) {
+        	System.out.println("");
+        	
+        	System.out.println("Enter Student ID:");
+        	int ID2 = input.nextInt();
+        	System.out.println("Enter Course ID:");
+        	int courseID1 = input.nextInt();
+System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
+        	break;
+        	
+        }
+        	else {
+        		System.out.println("No Students or Courses");
+        		
+        		
+        	}
+        case 5:
+        	Scanner inputFile = null;
+			try {
+				inputFile = new Scanner( new File ("StudentInvoice.txt"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	String firstline = inputFile.nextLine();
+        	System.out.println("Data: " + firstline);
+        	String firstline2 = inputFile.nextLine();
+        	System.out.println("Data: " + firstline2);
+        	break;
+        	
+        case 6: 
+        	System.out.println("");
+        	
+        	System.out.println("Enter Student ID:");
+        	int ID1StudentSave = input.nextInt();
+       	 PrintWriter writer = null;
+ 		try {
+ 			writer = new PrintWriter("StudentSave.txt", "UTF-8");
+ 		} catch (FileNotFoundException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		} catch (UnsupportedEncodingException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+        	writer.println(pMain.personList.get(ID1StudentSave).getName());
+        	System.out.println(pMain.personList.get(ID1StudentSave).getName());
+        	writer.println(pMain.personList.get(ID1StudentSave).getAddress());
+        	System.out.println(pMain.personList.get(ID1StudentSave).getAddress());
+        	writer.close();
+        	break;
+        case 7:
+        	System.out.println("");
+      	  for (Person person: pMain.personList) {
+                System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+            }
+      	  System.out.println();
+      	System.out.println("Enter In Student ID");
+      	int studentDelID = input.nextInt();
+      	 for (Course course: pMain.personList.get(studentDelID).CourseList) {
+             System.out.println("ID " + course.toStringShort());
+         }
+        	break;
+        case 8:
+        	Scanner inputFileLoadStudent = null;
+			try {
+				inputFileLoadStudent = new Scanner( new File ("StudentSave.txt"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	String name = inputFileLoadStudent.nextLine();
+        	System.out.println("Data: " + name);
+        	String address = inputFileLoadStudent.nextLine();
+        	System.out.println("Data: " + address);
+        	pMain.addPerson(new Person(address, name, "" , ""));
+        	break;
+=======
+>>>>>>> branch 'master' of https://github.com/ITECH2306FedUni/TeamLabAssignment.git
 
+<<<<<<< HEAD
+       	
+        case 9:
+=======
     private void processChoiceStudentMenu(int choice) {
         switch (choice) {
             case 1:
+>>>>>>> branch 'master' of https://github.com/ITECH2306FedUni/TeamLabAssignment.git
 
+<<<<<<< HEAD
+            
+        	break;
+        case 0:
+        	subMenu = false;
+            menuReturn();
+        	break;
+=======
                 if (!pMain.personList.isEmpty()) {
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
@@ -400,6 +551,7 @@ public class MenuDriver {
                 subMenu = false;
                 menuReturn();
                 break;
+>>>>>>> branch 'master' of https://github.com/ITECH2306FedUni/TeamLabAssignment.git
         }
 
     }
