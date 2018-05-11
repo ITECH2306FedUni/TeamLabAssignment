@@ -384,6 +384,11 @@ public class MenuDriver {
             System.out.println("Enter the Name of new course:");
             courseName = input.nextLine();
         }
+        double courseCost = 0.0;
+        if (!type.toLowerCase().equals("o")) {
+            System.out.println("enter the cost of" + courseName + "to run");
+            courseCost = input.nextDouble();
+        }
         System.out.println("Enter the price of " + courseName + ":");
         double coursePrice = input.nextDouble();
         System.out.println("Enter the runtime of " + courseName + ":");
@@ -392,13 +397,13 @@ public class MenuDriver {
         int courseLecturerID = input.nextInt();
         switch (type.toLowerCase()) {
             case "c":
-                return new Course(courseLecturerID, courseName, coursePrice, courseRuntime);
+                return new Course(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
             case "s":
-                return new ShortCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+                return new ShortCourse(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
             case "e":
-                return new EveningCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+                return new EveningCourse(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
             case "o":
-                return new OnlineCourse(courseLecturerID, courseName, coursePrice, courseRuntime);
+                return new OnlineCourse(courseLecturerID, courseName, 0.0, coursePrice, courseRuntime);
         }
         return null;
 

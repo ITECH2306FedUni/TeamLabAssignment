@@ -25,9 +25,10 @@ public class Course {
     private int runtime;
     private double cost;
 
-    public Course(int _studentID, String _name, double _price, int _runtime) {
+    public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
+        this.cost = _cost;
         this.price = _price;
         setRuntime(_runtime);
        // this.runtime = _runtime;

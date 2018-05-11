@@ -14,7 +14,7 @@ public class CourseTest {
     {
         Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
         pMain.addPerson(p1test);        
-        Course ctest = new Course(0, "Eurobeat with BLAN3Y", 148, 9);
+        Course ctest = new Course(0, "Eurobeat with BLAN3Y", 1000, 148, 9);
         cMain.diffrentCourses(ctest);
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(0));
         pMain.personList.get(0).enrollInCourse(cMain.courseList.get(0));
@@ -26,7 +26,7 @@ public class CourseTest {
     {
     	Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
         pMain.addPerson(p1test);        
-        Course ctest = new Course(0, "Eurobeat with BLAN3Y", 148, -5);
+        Course ctest = new Course(0, "Eurobeat with BLAN3Y", 1000, 148, -5);
         cMain.diffrentCourses(ctest);
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(0));
         pMain.personList.get(0).enrollInCourse(cMain.courseList.get(0));
@@ -40,7 +40,7 @@ public class CourseTest {
     {
         Person p2test = new Person("88 Ye Street", "Greg", "9999", "bong");
         pMain.addPerson(p2test);        
-        Course c1test = new Course(0, "Eurobeat with BLAN3Y", 148, 9);
+        Course c1test = new Course(0, "Eurobeat with BLAN3Y", 1000, 148, 9);
         cMain.diffrentCourses(c1test);
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(1));
         pMain.personList.get(1).enrollInCourse(cMain.courseList.get(0));
