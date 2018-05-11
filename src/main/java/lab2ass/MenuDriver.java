@@ -1,9 +1,16 @@
 package lab2ass;
+
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,16 +21,36 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class MenuDriver {
+    private static Course cMain = new Course(); // Main Course List
+    private static Person pMain = new Person(); // Main Person List
+    DecimalFormat df = new DecimalFormat("0.00");
+    PrintWriter writer = null;
     private boolean stillRunning;
     private boolean subMenu;
-    public static Course cMain = new Course(); // Main Course List
-    public static Person pMain = new Person(); // Main Person List
     private Scanner input = new Scanner(System.in);
-    DecimalFormat df = new DecimalFormat("0.00");
+    private String fileName;
+
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
+    }
+
+    /**
+     * To check if a date matches the format criteria
+     *
+     * @param date this is the date to be checked
+     * @return A new true or false boolean
+     */
+    private static boolean isValidDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+            return true;
+        } catch (ParseException pe) {
+            return false;
+        }
     }
     private void start() {
         int choice;
@@ -76,23 +103,12 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 2:
-                // menu option 2: register pet
-                //print a list of people
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
-                    }
-                    System.out.println("Please enter a Person's ID");
-                    //figure out who to give a pet to
-                    Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
-                    //add dat pet
-                    petOwner.addAPet(petWizard());
-                    System.out.println("The added pet is: " + petOwner.pet.toString());
-                    System.out.println("For the Person: " + petOwner.getName());
-                }else {
-                    System.out.println("Please add a Person first!");
-                    menuReturn();
-                    break;
+                // menu option 2: pet menu
+                subMenu = true;
+                while (subMenu) {
+                    showPetMenu();
+                    int selection = getUserSelection(5);
+                    processChoicePetMenu(selection);
                 }
                 menuReturn();
                 break;
@@ -160,10 +176,36 @@ public class MenuDriver {
                 menuReturn();
                 break;
             case 8:
+                //menu option 5: save/load data
+                System.out.println("What would you like to (s)ave or (l)oad data?");
+                String fileChoice = input.nextLine();
+                if (fileChoice.equalsIgnoreCase("s")) {
+                    try {
+                        fileName = "PersonAndPetData.txt";
+                        writer = new PrintWriter(fileName, "UTF-8");
+                    } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    if(!pMain.personList.isEmpty()){
+                        for (Person person: pMain.personList){
+                            writer.println(person);
+                            if(person.hasPet()){
+                                writer.println(person.personPetList);
+                            }
+                        }
+                    }
+                    writer.close();
+                } else {
+                    menuReturn();
+                }
+                menuReturn();
+                break;
+            case 6:
+            case 8:
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
-                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit "); // asks the user if they would like to send all of the private data to facebook 
+                System.out.println("\n Would you like to load Facebooks private info on Adrain Shatte \n Type 'Yes' to View & 'No' to Exit "); // asks the user if they would like to send all of the private data to facebook
                 String Input = input.nextLine(); // obtain the input
                 menuReturn();
                 break;
@@ -496,6 +538,195 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
         } 
     }
     /**
+     * To present the sub pet menu/list of options to the user.
+     */
+    private void showPetMenu() {
+        System.out.println();
+        System.out.println("1.  Register new Pet");
+        System.out.println("2.  List Pet(s)");
+        System.out.println("3.  Modify Pet(s)");
+        System.out.println("4.  Remove Pet(s)");
+        System.out.println("5.  Generate Registration Costs");
+    }
+
+    private void processChoicePetMenu(int choice) {
+        switch (choice) {
+            case 1:
+                // menu option 1: register pet
+                //print a list of people
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    //figure out who to give a pet to
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    //add dat pet
+                    petOwner.addAPet(petWizard());
+                    System.out.println("The added pet is: " + petOwner.pet.toString());
+                    System.out.println("For the Person: " + petOwner.getName());
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 2:
+                // menu option 2: list pet(s)
+                //print a list of pet(s) for a person
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed());
+                        }
+                    } else {
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
+
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 3:
+                // menu option 3: modify pet(s)
+                //print a list of pet(s) for a person then give the option to modify
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
+                        int index = 0;
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed() + " (" + index++ + ")");
+                        }
+                        System.out.println("Please enter the Pets ID");
+                        int pos = input.nextInt();
+                        input.nextLine();
+                        Animal pet = petOwner.personPetList.get(pos);
+                        if (pet.getType().equalsIgnoreCase("dog")) {
+                            Dog dog = (Dog) pet;
+                            System.out.println(dog.getName() + " is currently listed as desexed being " + dog.isDesexed());
+                            System.out.println("Has the animal been desexed? (true/false)");
+                            dog.setDesexed(input.nextBoolean());
+                            System.out.println(dog.getName() + " is currently listed as vaccinated being " + dog.isVaccinated());
+                            System.out.println("Has the animal been vaccinated? (true/false)");
+                            dog.setVaccinated(input.nextBoolean());
+                        } else {
+                            System.out.println("Currently only dog entries can be altered");
+                        }
+                    } else {
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
+
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 4:
+                // menu option 4: remove pet(s)
+                //print a list of pet(s) for a person then give the option to remove
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (petOwner.hasPet()) {
+                        int index = 0;
+                        System.out.println(petOwner.getName() + " has the following pet(s)");
+                        for (Animal pet : petOwner.personPetList) {
+                            System.out.println("A " + pet.getType() + ", " + pet.getName() + " the " + pet.getBreed() + " (" + index++ + ")");
+                        }
+                        System.out.println("Please enter the Pets ID");
+                        int pos = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Are you sure you want to remove the pet (y)es or (n)o?");
+                        String quitChoice = input.nextLine();
+                        if (quitChoice.equalsIgnoreCase("y")) {
+                            petOwner.personPetList.remove(pos);
+                        } else {
+                            menuReturn();
+                        }
+                    } else {
+                        System.out.println(petOwner.getName() + " does not own a pet!");
+                    }
+
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                menuReturn();
+                break;
+            case 5:
+                // menu option 5: calculate rego
+                if (!pMain.personList.isEmpty()) {
+                    for (Person person : pMain.personList) {
+                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                    }
+                    System.out.println("Please enter a Person's ID");
+                    Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    if (ratePayer.hasPet()) {
+                        try {
+                            fileName = "RegoInvoice" + ratePayer.getName() + ".txt";
+                            writer = new PrintWriter(fileName.replaceAll("\\s", ""), "UTF-8");
+                        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        double totalRate = 0;
+                        System.out.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
+                        writer.println(ratePayer.getName() + " has " + ratePayer.personPetList.size() + " pet(s)");
+                        for (Animal pet : ratePayer.personPetList) {
+                            System.out.println(pet.getName() + " the " + pet.getBreed() + ", a type of " + pet.getType());
+                            writer.println(pet.getName() + " the " + pet.getBreed() + ", a type of " + pet.getType());
+                            System.out.println(pet.getName() + " was first registered: " + pet.regdue);
+                            writer.println(pet.getName() + " was first registered: " + pet.regdue);
+                            System.out.println("The rate to pay is: " + df.format(pet.calcRates()));
+                            writer.println("The rate to pay is: " + df.format(pet.calcRates()));
+                            totalRate = totalRate + pet.calcRates();
+                        }
+                        System.out.println("Total rates to pay is " + df.format(totalRate));
+                        System.out.println("A Text version of this invoice has been saved under the name: " + fileName.replaceAll("\\s", ""));
+                        writer.println("Total rates to pay is " + df.format(totalRate));
+                    } else {
+                        System.out.println(ratePayer.getName() + " does not own a pet!");
+                    }
+                } else {
+                    System.out.println("Please add a Person first!");
+                    menuReturn();
+                    break;
+                }
+                writer.close();
+                menuReturn();
+                break;
+            case 0:
+                // return to menu
+                subMenu = false;
+                menuReturn();
+                break;
+            default:
+                //error
+                System.out.println("Unexpected selection made. Doing nothing.");
+                break;
+        }
+    }
+    /**
      * Wrap Animal creation method in command line interface
      * @return A new pet object
      */
@@ -684,9 +915,6 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
 		 writer.close();
 
 	 }
-    /**
-     * To return the user to the menu
-     */
     private void menuReturn(){
         try {
             System.out.println("Click enter to return to the menu");
