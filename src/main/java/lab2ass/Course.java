@@ -74,7 +74,7 @@ public class Course {
         return runtime;
     }
 
-    private void setRuntime(int runtime) throws IllegalArgumentException  {
+    private void setRuntime(int runtime) throws IllegalArgumentException {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
                   } else {
@@ -86,27 +86,33 @@ public class Course {
         return String.valueOf(runtime);
     }
 
-    private void setCourseID() { // allocate next available ID
+    private void setCourseID() {
         this.courseID = nextValidCourseID++;
     }
 
-    void diffrentCourses(Course courseAddToList)
-    {
+    void diffrentCourses(Course courseAddToList) {
     	courseList.add(courseAddToList);
-    	
     }
-    void enrollstudent(Person student)
-    {
+
+    void enrollstudent(Person student) {
     	studentList.add(student);
     	System.out.println(student.getName() + " added to course");
+    }
+
+    void setNumStudents (int num) {
+        this.students = num;
+    }
+
+    int getNumStudents () {
+        return this.students;
     }
     
     @Override
     public String toString() {
         return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ studentList.toString() + "]";
     }
-    public String toStringNameAndPeople()
-    {
+
+    public String toStringNameAndPeople() {
     	return "Course [course=" + name + ", students= " + studentList.toString() + "]";
     }
     
