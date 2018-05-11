@@ -35,6 +35,10 @@ public class Course {
        // this.runtime = _runtime;
     }
 
+    public void setCourses (ArrayList inputCourses) {
+        this.courseList = inputCourses;
+    }
+
 	public Course() {
 		this.setCourseID();
 	}
@@ -125,17 +129,18 @@ public class Course {
             );
             while (input.hasNextLine()) {
                 String inputType = input.nextLine();
-                int inputID = input.nextInt();
+                int inputID = Integer.parseInt(input.nextLine());
                 String inputName = input.nextLine();
-                double inputCost = input.nextDouble();
-                double inputPrice = input.nextDouble();
-                int inputRuntime = input.nextInt();
+                double inputCost = Double.parseDouble(input.nextLine());
+                double inputPrice = Double.parseDouble(input.nextLine());
+                int inputRuntime = Integer.parseInt(input.nextLine());
                 Course course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                System.out.println (course.toString());
                 data.add(course);
-                return data;
             }
-        } catch (Exception e) {
-            System.out.println ("File not Found, please create one");
+            return data;
+        } catch (FileNotFoundException e) {
+            System.out.println ("Error: file not found");
         }
         return null;
     }
@@ -149,6 +154,7 @@ public class Course {
             for (Course course: this.courseList) {
                 output.println (course.getClass());
                 output.println (course.getID());
+                output.println (course.getName());
                 output.println (course.getCost());
                 output.println (course.getPrice());
                 output.println (course.getRuntime());
