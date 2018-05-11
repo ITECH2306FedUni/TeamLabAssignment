@@ -48,19 +48,19 @@ public class Dog extends Animal implements Serializable {
 
     }
 
-    public boolean isDesexed() {
+    boolean isDesexed() {
         return desexed;
     }
 
-    public void setDesexed(boolean desexed) {
+    void setDesexed(boolean desexed) {
         this.desexed = desexed;
     }
 
-    public boolean isVaccinated() {
+    boolean isVaccinated() {
         return vaccinated;
     }
 
-    public void setVaccinated(boolean vaccinated) {
+    void setVaccinated(boolean vaccinated) {
         this.vaccinated = vaccinated;
     }
 

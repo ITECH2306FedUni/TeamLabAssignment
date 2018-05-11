@@ -48,11 +48,11 @@ public abstract class Animal implements Serializable {
         return registrationID;
     }
 
-    public void setRegistrationID() { // allocate next available ID
+    private void setRegistrationID() { // allocate next available ID
         this.registrationID = nextValidRegistrationID++;
     }
 
-    public String getBreed() {
+    String getBreed() {
         return breed;
     }
 

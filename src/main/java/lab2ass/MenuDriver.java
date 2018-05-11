@@ -17,8 +17,8 @@ import java.util.Scanner;
 public class MenuDriver {
     private static Course cMain = new Course(); // Main Course List
     private static Person pMain = new Person(); // Main Person List
-    DecimalFormat df = new DecimalFormat("0.00");
-    PrintWriter writer = null;
+    private DecimalFormat df = new DecimalFormat("0.00");
+    private PrintWriter writer = null;
     private boolean stillRunning;
     private boolean subMenu;
     private Scanner input = new Scanner(System.in);

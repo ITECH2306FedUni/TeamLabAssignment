@@ -24,7 +24,7 @@ public class Course {
     private double price;
     private int runtime;
     private double cost;
-    public float result;
+    float result;
     public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
@@ -35,7 +35,7 @@ public class Course {
        // this.runtime = _runtime;
     }
 
-    public void setCourses (ArrayList inputCourses) {
+    void setCourses(ArrayList inputCourses) {
         this.courseList = inputCourses;
     }
 
@@ -46,7 +46,7 @@ public class Course {
 	public void finalize() throws Throwable {
 
     }
-    public int getID() {
+    int getID() {
         return courseID;
     }
 
@@ -58,7 +58,7 @@ public class Course {
         this.name = name;
     }
 
-    public double getPrice() {
+    double getPrice() {
         return price;
     }
 
@@ -78,7 +78,7 @@ public class Course {
         return runtime;
     }
 
-    public void setRuntime(int runtime) throws IllegalArgumentException  {
+    private void setRuntime(int runtime) throws IllegalArgumentException  {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
                   } else {
@@ -93,12 +93,12 @@ public class Course {
         this.courseID = nextValidCourseID++;
       
     }
-    public void diffrentCourses(Course courseAddToList)
+    void diffrentCourses(Course courseAddToList)
     {
     	courseList.add(courseAddToList);
     	
     }
-    public void enrollstudent(Person personAddToList)
+    void enrollstudent(Person personAddToList)
     {
     	personToaddList.add(personAddToList);
     	System.out.println(personAddToList.getName() + " added to course");
@@ -115,12 +115,12 @@ public class Course {
     	return "Course [course=" + name + ", students= " + personToaddList.toString() + "]";
     }
     
-    public String toStringShort() {
+    String toStringShort() {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
     }
 
     //load courses from file
-    public ArrayList loadCourses () {
+    ArrayList loadCourses() {
         System.out.println ("Loading courses...");
         try {
             ArrayList data = new ArrayList();
@@ -160,7 +160,7 @@ public class Course {
     }
     
     // Save all courses to a list
-    public void saveCourses () {
+    void saveCourses() {
         System.out.println ("Saving courses...");
         try {
             File saveLocation = new File ("courses.txt");
