@@ -114,6 +114,8 @@ public class Course {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
     }
 
+    // public Course(int _studentID, String _name, double _cost, double _price, int _runtime)
+
     //load courses from file
     public void loadCourses () {
         System.out.println ("Loading courses...");
@@ -136,8 +138,11 @@ public class Course {
             File saveLocation = new File ("courses.txt");
             PrintWriter output = new PrintWriter (saveLocation);
             for (Course course: this.courseList) {
-                System.out.println (course.toString());
-                output.println (course.toString());
+                output.println (course.getClass());
+                output.println (course.getID());
+                output.println (course.getCost());
+                output.println (course.getPrice());
+                output.println (course.getRuntime());
             }
             output.close();
         } catch (FileNotFoundException e) {

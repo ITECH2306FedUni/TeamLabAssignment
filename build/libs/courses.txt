@@ -1,2 +1,10 @@
-Course [course=dicksuck, price=1.0, runtime=1, courseID=0, students= []]
-Course [course=suckdick, price=2.0, runtime=2, courseID=0, students= []]
+class lab2ass.Course
+0
+1.0
+1.0
+1
+class lab2ass.OnlineCourse
+0
+0.0
+1.0
+1
