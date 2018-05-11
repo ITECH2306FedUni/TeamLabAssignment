@@ -116,18 +116,28 @@ public class Course {
     }
 
     //load courses from file
-    public void loadCourses () {
+    public ArrayList loadCourses () {
         System.out.println ("Loading courses...");
         try {
+            ArrayList data = new ArrayList();
             Scanner input = new Scanner (
                 new File("courses.txt")
             );
             while (input.hasNextLine()) {
-                System.out.println (input.nextLine());
+                String inputType = input.nextLine();
+                int inputID = input.nextInt();
+                String inputName = input.nextLine();
+                double inputCost = input.nextDouble();
+                double inputPrice = input.nextDouble();
+                int inputRuntime = input.nextInt();
+                Course course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                data.add(course);
+                return data;
             }
         } catch (Exception e) {
             System.out.println ("File not Found, please create one");
         }
+        return null;
     }
     
     // Save all courses to a list
