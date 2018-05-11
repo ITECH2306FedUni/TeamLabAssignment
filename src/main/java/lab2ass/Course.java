@@ -134,7 +134,21 @@ public class Course {
                 double inputCost = Double.parseDouble(input.nextLine());
                 double inputPrice = Double.parseDouble(input.nextLine());
                 int inputRuntime = Integer.parseInt(input.nextLine());
-                Course course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                Course course = null;
+                switch (inputType) {
+                    case "class lab2ass.Course":
+                        course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        break;
+                    case "class lab2ass.OnlineCourse":
+                        course = new OnlineCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        break;
+                    case "class lab2ass.ShortCourse":
+                        course = new ShortCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        break;
+                    case "class lab2ass.EveningCourse":
+                        course = new EveningCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        break;
+                }
                 System.out.println (course.toString());
                 data.add(course);
             }
