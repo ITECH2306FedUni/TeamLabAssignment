@@ -11,17 +11,16 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Person {
-	ArrayList<Person> personList = new ArrayList<>();
-	ArrayList<Animal> personPetList = new ArrayList<>();
+	public ArrayList<Person> personList = new ArrayList<>();
+	public ArrayList<Course> CourseList = new ArrayList<>();
 	private static int nextValidPersonID = 0;
     private int personID;
 	private String name;  // name of person
     private String address; // address of person
     private String postcode; // postcode of person's address
     private String city; // city of person's address
-    Animal pet; // associate a pet that is an Animal object with the Person
-    private Course currentCourse;
-    Animal petInList;
+    public Animal pet; // associate a pet that is an Animal object with the Person
+    public Course currentCourse;
 
     // constructor - create Person given name, address and a Pet object
 
@@ -45,7 +44,7 @@ public class Person {
      * @param _name name of person
      * @param _address address of person
      * @param _city city of person's address
-     * @param _postcode postcode of the person
+     * @param _postcode postcdoe of the person
      */
     public Person(String _address, String _name, String _postcode, String _city) {
     	this.setPersonID();
@@ -113,15 +112,19 @@ public class Person {
      * @param _pet the pet animal to associate
      */
     public void addAPet(Animal _pet) {
-        personPetList.add(_pet);
+        this.pet = _pet;
     }
 
     public boolean hasPet() {
-        return !personPetList.isEmpty();
+        if(this.pet == null){
+            return false;
+        }
+        return true;
     }
 
     public void enrollInCourse(Course _currentCourse) {
-        this.currentCourse = _currentCourse;
+    	this.CourseList.add(_currentCourse);
+      //  this.currentCourse = _currentCourse;
     }
     
     public void addPerson(Person personAddToList)
@@ -137,7 +140,7 @@ public class Person {
 
     public String toStringWhole() {
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
-    }
+    };
 
     public String toStringNameAndCourse()
     {
@@ -146,5 +149,8 @@ public class Person {
     @Override
     public String toString(){
         return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + "]";
+    }
+    public String toStringCleaned(){
+        return personID +" "+ name + " " + address + " " + postcode;
     }
 }
