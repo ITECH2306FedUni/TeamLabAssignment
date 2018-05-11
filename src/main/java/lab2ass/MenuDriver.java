@@ -65,6 +65,7 @@ public class MenuDriver {
         System.out.println("1.  Add a new rate payer");
         System.out.println("2.  Pet's Menu");
         System.out.println("3.  Courses Menu");
+        System.out.println("4.  Student Menu");
         System.out.println("5.  Run system tests");
         System.out.println("6.  Save or Load Person/Pet data");
         System.out.println("7.  Facebook Private Infomation");
