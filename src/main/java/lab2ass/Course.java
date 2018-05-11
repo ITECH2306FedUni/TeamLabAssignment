@@ -11,18 +11,22 @@ import java.util.ArrayList;
  * @author  RAWR-XD
  * @version 1.0
  */
+
+
+
 public class Course {
 	
 	public static Person personToAdd = new Person();
     private static int nextValidCourseID = 0;
     ArrayList<Course> courseList = new ArrayList<>();
+
 	private ArrayList<Person> personToaddList = new ArrayList<Person>();
     
     private int courseID; 
     private String name;
     private float price;
     private int runtime;
-
+    public float result;
     public Course(int _studentID, String _name, float _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
