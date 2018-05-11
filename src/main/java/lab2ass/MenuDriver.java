@@ -32,22 +32,6 @@ public class MenuDriver {
 
     private void start() {
         int choice;
-        if (pMain.personList.isEmpty()) {
-            System.out.println("What would you like preloaded People data? (y)es or (n)o");
-            String preloadchoice = input.nextLine();
-            if (preloadchoice.equalsIgnoreCase("y")) {
-                Person p1Preload = new Person("31 Nowhere Street", "Nathan Blaney", "3977", "Casey");
-                pMain.addPerson(p1Preload);
-                p1Preload.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
-                p1Preload.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
-                Person p2Preload = new Person("69 Rangeless Drive", "Lachlan Copsey", "3977", "Casey");
-                pMain.addPerson(p2Preload);
-                p2Preload.addAPet(new Rabbit("Floppy", "Fluffy", "M", "05 01 1998", "05 01 1998", 0));
-                Person p3Preload = new Person("56 Torvald Court", "Nine Hall", "3977", "Casey");
-                pMain.addPerson(p3Preload);
-
-            }//adds Temp testing data into the lists
-        }
         stillRunning = true; // in order to commence program
 
         while (stillRunning) {
@@ -160,7 +144,14 @@ public class MenuDriver {
                                 Person person = new Person(data[2],data[1],data[3],data[4]);
                                 pMain.addPerson(person);
                             }
-
+                            Person person = pMain.personList.get(pMain.personList.size()-1);
+                            if(data[0].equalsIgnoreCase("cat")) {
+                                person.addAPet(new Cat(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6])));
+                            } else if(data[0].equalsIgnoreCase("dog")) {
+                                person.addAPet(new Dog(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6]), Boolean.getBoolean(data[7]), Boolean.getBoolean(data[8])));
+                            } else if(data[0].equalsIgnoreCase("rabbit")) {
+                                person.addAPet(new Rabbit(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6])));
+                            }
                         }
 
                     } catch (IOException e) {
