@@ -18,7 +18,7 @@ public class CourseTest {
         cMain.diffrentCourses(ctest);
         cMain.courseList.get(0).enrollstudent(pMain.personList.get(0));
         pMain.personList.get(0).enrollInCourse(cMain.courseList.get(0));
-        Assert.assertEquals("Course [course=Eurobeat with BLAN3Y, price=148.0, runtime=9, courseID=0, students= [Person [name=Kathleen, address=25 Somewhere Street, postcode=2000]]]", cMain.courseList.get(0).toString());
+        Assert.assertEquals("Course [course=Eurobeat with BLAN3Y, price=148.0, runtime=9, courseID=0, students= [Greg,88 Ye Street,9999,bong]]", cMain.courseList.get(0).toString());
         //Tests if the person is added
     }
     @org.junit.Test

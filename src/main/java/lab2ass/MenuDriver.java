@@ -35,23 +35,6 @@ public class MenuDriver {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
     }
-
-    /**
-     * To check if a date matches the format criteria
-     *
-     * @param date this is the date to be checked
-     * @return A new true or false boolean
-     */
-    private static boolean isValidDate(String date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
-        dateFormat.setLenient(false);
-        try {
-            dateFormat.parse(date.trim());
-            return true;
-        } catch (ParseException pe) {
-            return false;
-        }
-    }
     private void start() {
         int choice;
         if(pMain.personList.isEmpty()) {
@@ -107,13 +90,13 @@ public class MenuDriver {
                 subMenu = true;
                 while (subMenu) {
                     showPetMenu();
-                    int selection = getUserSelection(5);
+                    int selection = getUserSelection(0,5);
                     processChoicePetMenu(selection);
                 }
                 menuReturn();
                 break;
             case 3:
-                // menu option 3: create new course
+                // menu option 3: course menu
                 subMenu = true;
                 while (subMenu) {
                     showCourseMenu();
@@ -122,49 +105,15 @@ public class MenuDriver {
                 }
                 break;
             case 4:
-                // DELETEME
+                // menu option 4: student menu
+                subMenu = true;
+                while (subMenu) {
+                    showStudentMenu();
+                    int selection = getUserSelection(0,9);
+                    processChoiceStudentMenu (selection);
+                }
                 break;
             case 5:
-                // menu option 5: list courses
-                if(!cMain.courseList.isEmpty()) {
-                    for (Course course : cMain.courseList) {
-                        System.out.println("ID " + course.toStringShort());
-                    }
-                    System.out.println("Enter in a Course ID: ");
-                    int selectCourse = input.nextInt();
-                    System.out.println(cMain.courseList.get(selectCourse).toString());
-                }else {
-                    System.out.println("Please add a Course first!");
-                    menuReturn();
-                    break;
-                }
-                menuReturn();
-                break;
-            case 6:
-                // menu option 6: calculate rego
-                // figure out who to generate rates for
-                if(!pMain.personList.isEmpty()){
-                    for (Person person: pMain.personList) {
-                        System.out.println("ID " + person.getPersonID() + ": " + person.getName());
-                    }
-                    System.out.println("Please enter a Person's ID");
-
-                    Person ratePayer = pMain.personList.get(getUserSelection(0, pMain.personList.size()-1));
-                    if(ratePayer.hasPet()){
-                        System.out.println("Pet is a: "+ ratePayer.pet.getBreed());
-                        System.out.println("Pet was first registered: "+ ratePayer.pet.regdue);
-                        System.out.println("The rate to pay is: " + df.format(ratePayer.pet.calcRates()));
-                    } else {
-                        System.out.println(ratePayer.getName() + " does not own a pet!");
-                    }
-                }else {
-                    System.out.println("Please add a Person first!");
-                    menuReturn();
-                    break;
-                }
-                menuReturn();
-                break;
-            case 7:
                 System.out.println("7");
                 //menu option 7: system testor
                 System.out.println("Running Person Test's");
@@ -175,7 +124,7 @@ public class MenuDriver {
                 TestDriverClass.runTestCourse(null);
                 menuReturn();
                 break;
-            case 8:
+            case 6:
                 //menu option 5: save/load data
                 System.out.println("What would you like to (s)ave or (l)oad data?");
                 String fileChoice = input.nextLine();
@@ -200,8 +149,7 @@ public class MenuDriver {
                 }
                 menuReturn();
                 break;
-            case 6:
-            case 8:
+            case 7:
                 //menu option 8: lizard eggos
                 System.out.println("If any errors occour please send an email to Zucc@lizardsquad.com.");
                 System.out.println("Gaining access to Lizard Deep Web.");
@@ -209,24 +157,6 @@ public class MenuDriver {
                 String Input = input.nextLine(); // obtain the input
                 menuReturn();
                 break;
-            case 9:
-                if(!pMain.personList.isEmpty()) {
-                    for (Person person : pMain.personList) {
-                        System.out.println("ID " + person.toStringCleaned());
-                    }
-                    
-                }
-            
-            	break;
-            case 11:
-            	  // menu option 3: create new course
-                subMenu = true;
-                while (subMenu) {
-                	showStudentMenu();
-                    int selection = getUserSelection(0,9);
-                    processChoiceStudentMenu (selection);
-                }
-            	break;
             case 0:
                 //quit
             	System.out.println("What would you like to QUIT (y)es or (n)o?");
@@ -560,7 +490,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                     }
                     System.out.println("Please enter a Person's ID");
                     //figure out who to give a pet to
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    Person petOwner = pMain.personList.get(getUserSelection(0,pMain.personList.size() - 1));
                     //add dat pet
                     petOwner.addAPet(petWizard());
                     System.out.println("The added pet is: " + petOwner.pet.toString());
@@ -580,7 +510,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    Person petOwner = pMain.personList.get(getUserSelection(0,pMain.personList.size() - 1));
                     if (petOwner.hasPet()) {
                         System.out.println(petOwner.getName() + " has the following pet(s)");
                         for (Animal pet : petOwner.personPetList) {
@@ -605,7 +535,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    Person petOwner = pMain.personList.get(getUserSelection(0,pMain.personList.size() - 1));
                     if (petOwner.hasPet()) {
                         int index = 0;
                         System.out.println(petOwner.getName() + " has the following pet(s)");
@@ -646,7 +576,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person petOwner = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    Person petOwner = pMain.personList.get(getUserSelection(0,pMain.personList.size() - 1));
                     if (petOwner.hasPet()) {
                         int index = 0;
                         System.out.println(petOwner.getName() + " has the following pet(s)");
@@ -681,7 +611,7 @@ System.out.println( pMain.personList.get(ID2).CourseList.get(courseID1).result);
                         System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                     }
                     System.out.println("Please enter a Person's ID");
-                    Person ratePayer = pMain.personList.get(getUserSelection(pMain.personList.size() - 1));
+                    Person ratePayer = pMain.personList.get(getUserSelection(0,pMain.personList.size() - 1));
                     if (ratePayer.hasPet()) {
                         try {
                             fileName = "RegoInvoice" + ratePayer.getName() + ".txt";

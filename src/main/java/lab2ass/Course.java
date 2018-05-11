@@ -24,7 +24,7 @@ public class Course {
     private double price;
     private int runtime;
     private double cost;
-
+    public float result;
     public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
