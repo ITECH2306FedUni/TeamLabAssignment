@@ -21,7 +21,7 @@ public class PetTest {
         for (Animal pet : p1test.personPetList) {
             TestPet = pet;
         }
-        Assert.assertEquals("type=Dog[breed=Pug, name=Fido, dob=05 01 1998, gender=F, regdue=05 01 1998, microchip=13, desexed=true, vaccinated=false]", TestPet.toString());
+        Assert.assertEquals("Dog,Pug,Fido,05 01 1998,F,05 01 1998,13,true,false", TestPet.toString());
         // testing a failure of adding a pet to a person
     }
     @org.junit.Test
