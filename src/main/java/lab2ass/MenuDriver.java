@@ -349,7 +349,7 @@ private Scanner inputFileLoadStudent;
                 try {
                     inputFile = new Scanner(new File("StudentInvoice.txt"));
                 } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
+                    // 
                     e.printStackTrace();
                 }
                 String firstline = inputFile.nextLine();
@@ -367,7 +367,7 @@ private Scanner inputFileLoadStudent;
                 try {
                     writer = new PrintWriter("StudentSave.txt", "UTF-8");
                 } catch (FileNotFoundException | UnsupportedEncodingException e) {
-                    // TODO Auto-generated catch block
+                    // 
                     e.printStackTrace();
                 }
                 writer.println(pMain.personList.get(ID1StudentSave).getName());
@@ -402,7 +402,7 @@ private Scanner inputFileLoadStudent;
                 try {
                     inputFileLoadStudent = new Scanner(new File("StudentSave.txt"));
                 } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
+                    // 
                     e.printStackTrace();
                 }
                 String name = inputFileLoadStudent.nextLine();
@@ -926,7 +926,7 @@ nextbreak(namesave);
         try {
             writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 
