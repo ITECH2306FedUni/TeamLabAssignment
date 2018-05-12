@@ -273,6 +273,12 @@ public class MenuDriver {
             case 2:
                 if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
+                    for (Person person : pMain.personList) {
+                        if (!person.CourseList.isEmpty()) {
+                            System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                        }
+                    }
+                    System.out.println();
                     System.out.println("Enter Student ID:");
                     int ID = input.nextInt(); // obtain the city
                     generateStudentInvoice(ID);
@@ -285,9 +291,18 @@ public class MenuDriver {
             case 3:
                 if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
-
+                    for (Person person : pMain.personList) {
+                        if (!person.CourseList.isEmpty()) {
+                            System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                        }
+                    }  
+                    System.out.println();
                     System.out.println("Enter Student ID:");
                     int ID1 = input.nextInt();
+                    for (Course course : pMain.personList.get(ID1).CourseList) {
+                        System.out.println("ID " + course.toStringShort());
+                        
+                    }
                     System.out.println("Enter Course ID:");
                     int courseID = input.nextInt();
                     System.out.println("Enter In Result:");
@@ -302,9 +317,23 @@ public class MenuDriver {
             case 4:
                 if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
                     System.out.println("");
-
+                    for (Person person : pMain.personList) {
+                        if (!person.CourseList.isEmpty()) {
+                            System.out.println("ID " + person.getPersonID() + ": " + person.getName());
+                        }
+                    }
+                    System.out.println("");
                     System.out.println("Enter Student ID:");
                     int ID2 = input.nextInt();
+                    for (Course course : pMain.personList.get(ID2).CourseList) {
+                        System.out.println("ID " + course.toStringShort());
+                        
+                    }
+                    for (Course course : cMain.courseList) {
+                        if (!course.courseList.isEmpty()) {
+                            System.out.println("ID " + course.getID() + ": " + course.getName());
+                        }
+                    }
                     System.out.println("Enter Course ID:");
                     int courseID1 = input.nextInt();
                     System.out.println(pMain.personList.get(ID2).CourseList.get(courseID1).result);
