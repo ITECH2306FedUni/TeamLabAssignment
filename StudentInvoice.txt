@@ -2,3 +2,4 @@
 Course ID: 1 Course Name: 4 Course Price: $4.0 Course Runtime: 4 Course Type: class lab2ass.Course
 Course ID: 1 Course Name: 4 Course Price: $4.0 Course Runtime: 4 Course Type: class lab2ass.Course
 Final Total: $8.0
+s
