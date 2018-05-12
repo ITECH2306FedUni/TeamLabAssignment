@@ -372,9 +372,14 @@ public class MenuDriver {
                 }
                 writer.println(pMain.personList.get(ID1StudentSave).getName());
                 System.out.println(pMain.personList.get(ID1StudentSave).getName());
-                writer.println(pMain.personList.get(ID1StudentSave).getAddress());
-                System.out.println(pMain.personList.get(ID1StudentSave).getAddress());
-                writer.close();
+                for (Course course : pMain.personList.get(ID1StudentSave).CourseList) {
+                     {
+                    	writer.println("Break");
+                        writer.println("ID " + course.getID() + ": " + course.getName());
+                    }
+                }
+
+                writer.close(); 
                 break;
             case 7:
                 System.out.println("");

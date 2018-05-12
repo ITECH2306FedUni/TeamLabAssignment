@@ -1,5 +1,6 @@
-### Course Invoice For 4 ###
-Course ID: 1 Course Name: 4 Course Price: $4.0 Course Runtime: 4 Course Type: class lab2ass.Course
-Course ID: 1 Course Name: 4 Course Price: $4.0 Course Runtime: 4 Course Type: class lab2ass.Course
-Final Total: $8.0
-s
+### Course Invoice For Nathan Blaney ###
+Course ID: 1 Course Name: Drifting 101 Course Price: $69.0 Course Runtime: 2 Course Type: class lab2ass.Course
+Course ID: 2 Course Name: Homework Course Price: $23.0 Course Runtime: 3 Course Type: class lab2ass.ShortCourse
+Course ID: 3 Course Name: Sleeping Course Price: $56.0 Course Runtime: 5 Course Type: class lab2ass.EveningCourse
+Course ID: 4 Course Name: Java 4 Nerds Course Price: $68.0 Course Runtime: 7 Course Type: class lab2ass.OnlineCourse
+Final Total: $216.0
