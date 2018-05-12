@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * The Rabbit Class
- * @author  RAWR-XD
+ * @author  RAWR-XD (Nathan Blaney)
  * @version 1.0
  */
 public class Rabbit extends Animal implements Serializable {

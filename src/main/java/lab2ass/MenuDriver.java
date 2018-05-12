@@ -366,10 +366,7 @@ public class MenuDriver {
                 PrintWriter writer = null;
                 try {
                     writer = new PrintWriter("StudentSave.txt", "UTF-8");
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
+                } catch (FileNotFoundException | UnsupportedEncodingException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -409,11 +406,7 @@ public class MenuDriver {
                 System.out.println("Data: " + address);
                 pMain.addPerson(new Person(address, name, "", ""));
                 break;
-
-
             case 9:
-
-
                 break;
             case 0:
                 subMenu = false;
@@ -514,6 +507,7 @@ public class MenuDriver {
 
     /**
      * To present the sub pet menu/list of options to the user.
+     * @author RAWR-XD (Nathan Blaney)
      */
     private void showPetMenu() {
         System.out.println();
@@ -524,7 +518,11 @@ public class MenuDriver {
         System.out.println("5.  Generate Registration Costs");
         System.out.println("0.  Exit");
     }
-
+    /**
+     *
+     * To process the sub pet menu/list of options to the user.
+     * @author RAWR-XD (Nathan Blaney)
+     */
     private void processChoicePetMenu(int choice) {
         switch (choice) {
             case 1:
@@ -884,10 +882,7 @@ public class MenuDriver {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

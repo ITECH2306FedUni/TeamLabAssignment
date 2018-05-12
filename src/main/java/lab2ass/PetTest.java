@@ -6,11 +6,13 @@ import org.junit.rules.ExpectedException;
 
 /**
  * The Pet Test Class
- * @author  RAWR-XD
+ * @author  RAWR-XD (Nathan Blaney)
  * @version 1.0
  */
 public class PetTest {
-
+    /**
+     * Test's adding a Pet
+     */
     @org.junit.Test
     public void testAddPet()
     {
@@ -24,6 +26,9 @@ public class PetTest {
         Assert.assertEquals("Dog,Pug,Fido,05 01 1998,F,05 01 1998,13,true,false", TestPet.toString());
         // testing a failure of adding a pet to a person
     }
+    /**
+     * Test's a person having a Pet
+     */
     @org.junit.Test
     public void testHasPetTrue()
     {
@@ -33,6 +38,9 @@ public class PetTest {
         Assert.assertEquals(true, p1test.hasPet());
         //testing adding a person to a list
     }
+    /**
+     * Test's a person not having a Pet
+     */
     @org.junit.Test
     public void testHasPetFalse()
     {
@@ -40,8 +48,9 @@ public class PetTest {
         Assert.assertEquals(false, p1test.hasPet());
         //testing adding a person to a list
     }
-
-   //Tests adding a pet but assert wrong details into the list
+    /**
+     * Tests adding a pet but assert wrong details into the list
+     */
     @org.junit.Test
     public void testAddPetFailure()
     {
@@ -54,7 +63,9 @@ public class PetTest {
         Assert.assertEquals("German Shepherd", TestPet.getBreed());
         // testing a failure of adding a pet to a person 
     }
-    //Tests listing multiple pet's names
+    /**
+     * Tests listing multiple pet's names
+     */
     @org.junit.Test
     public void testAddMultiple()
     {
@@ -65,7 +76,9 @@ public class PetTest {
         TestPet = p1test.personPetList.get(1);
         Assert.assertEquals("Fido", TestPet.getName());
     }
-    //Tests listing multiple pet's names
+    /**
+     * Tests rates for a desexed dog
+     */
     @org.junit.Test
     public void testRateDesexed()
     {
@@ -75,7 +88,9 @@ public class PetTest {
         TestPet = p1test.personPetList.get(0);
         Assert.assertEquals(16.35813875194462, TestPet.calcRates(), 1e-15);
     }
-    //Tests listing multiple pet's names
+    /**
+     * Tests rates for a not desexed dog
+     */
     @org.junit.Test
     public void testRateNotDesexed()
     {

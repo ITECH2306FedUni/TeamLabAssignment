@@ -139,14 +139,6 @@ public class Person implements Serializable {
 
     }
 
-    public String toStringWhole() {
-        return "Person [name=" + name + ", address=" + address + ", postcode=" + postcode + ",\n pet=" + pet + "\n course=" + currentCourse + "]";
-    }
-
-    public String toStringNameAndCourse() {
-        return "Person [name= " + name + ", Ccourse= " + currentCourse + "]";
-    }
-
     @Override
     public String toString() {
         return "Person," + name + "," + address + "," + postcode + "," + city;
