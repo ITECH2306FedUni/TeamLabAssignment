@@ -23,7 +23,7 @@ public class MenuDriver {
     private boolean subMenu;
     private Scanner input = new Scanner(System.in);
     private String fileName;
-
+private Scanner inputFileLoadStudent;
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -375,7 +375,7 @@ public class MenuDriver {
                 for (Course course : pMain.personList.get(ID1StudentSave).CourseList) {
                      {
                     	writer.println("Break");
-                        writer.println("ID " + course.getID() + ": " + course.getName());
+                        writer.println(course.getName());
                     }
                 }
 
@@ -398,7 +398,7 @@ public class MenuDriver {
                 pMain.personList.get(studentDelID).CourseList.remove(studentDelIDCourse);
                 break;
             case 8:
-                Scanner inputFileLoadStudent = null;
+               inputFileLoadStudent = null;
                 try {
                     inputFileLoadStudent = new Scanner(new File("StudentSave.txt"));
                 } catch (FileNotFoundException e) {
@@ -406,10 +406,23 @@ public class MenuDriver {
                     e.printStackTrace();
                 }
                 String name = inputFileLoadStudent.nextLine();
-                System.out.println("Data: " + name);
-                String address = inputFileLoadStudent.nextLine();
-                System.out.println("Data: " + address);
-                pMain.addPerson(new Person(address, name, "", ""));
+                for (Person person : pMain.personList) {
+                     {
+
+                        if (name.equals(person.getName()))
+                        {
+                        	System.out.println("Data Found:  " + name);
+                        }
+                    }
+                }
+                if (inputFileLoadStudent.nextLine().equals("Break"))
+                {
+                	System.out.println("Break Found");
+                	nextbreak(name);
+                }
+               
+    
+              
                 break;
             case 9:
                 break;
@@ -420,8 +433,33 @@ public class MenuDriver {
         }
 
     }
+private void nextbreak(String name)
+{
+	String d = inputFileLoadStudent.nextLine();
+	String namesave = name;
+	System.out.println("READING BREAK");
+	System.out.println(d);
+	  for (Course course : cMain.courseList) {
+         if (course.getName().equals(d)) 
+         {
+        	 int courseIDPos = course.getID() - 1;
+        	 for (Person person : pMain.personList) {
+                if(person.getName().equals(name))
+                {
+                	person.enrollInCourse(cMain.courseList.get(courseIDPos));
+                }
+          }
+      }
+	}
+if (inputFileLoadStudent.hasNextLine())
+{
+System.out.println("New Line Found");
+nextbreak(namesave);
 
+}
+	  
 
+}
     private void processChoiceCourseMenu(int choice) {
         switch (choice) {
             case 1:
