@@ -135,19 +135,24 @@ public class Course {
                 double inputCost = Double.parseDouble(input.nextLine());
                 double inputPrice = Double.parseDouble(input.nextLine());
                 int inputRuntime = Integer.parseInt(input.nextLine());
+                int inputStudents = Integer.parseInt(input.nextLine());
                 Course course = null;
                 switch (inputType) {
                     case "class lab2ass.Course":
                         course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course.setNumStudents(inputStudents);
                         break;
                     case "class lab2ass.OnlineCourse":
                         course = new OnlineCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course.setNumStudents(inputStudents);
                         break;
                     case "class lab2ass.ShortCourse":
                         course = new ShortCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course.setNumStudents(inputStudents);
                         break;
                     case "class lab2ass.EveningCourse":
                         course = new EveningCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course.setNumStudents(inputStudents);
                         break;
                 }
                 System.out.println (course.toString());
@@ -173,6 +178,7 @@ public class Course {
                 output.println (course.getCost());
                 output.println (course.getPrice());
                 output.println (course.getRuntime());
+                output.println (course.getNumStudents());
             }
             output.close();
         } catch (FileNotFoundException e) {
