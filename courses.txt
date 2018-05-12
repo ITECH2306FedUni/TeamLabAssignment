@@ -4,11 +4,11 @@ Spider Husbandry
 300.0
 14.0
 6
-0
+39
 class lab2ass.ShortCourse
 2
 Z-Fighting
 9000.0
 20.0
 3
-0
+4

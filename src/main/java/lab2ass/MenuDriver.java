@@ -446,6 +446,16 @@ public class MenuDriver {
                 break;
             case 6:
                 // generate expenses report
+                System.out.println (cMain.reportHeader());
+                double totalExpenditure = 0;
+                double totalEarnings = 0;
+                for(Course course:cMain.courseList) {
+                    System.out.println (course.reportLine());
+                    totalExpenditure -= course.getCost();
+                    totalEarnings += course.getEarnings();
+                }
+                double netProfit = totalEarnings - totalExpenditure;
+                System.out.println(cMain.reportFooter(totalExpenditure,totalEarnings,netProfit));
                 break;
             case 7:
                 // edit course

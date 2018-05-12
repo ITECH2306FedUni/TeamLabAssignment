@@ -106,6 +106,10 @@ public class Course {
     int getNumStudents () {
         return this.students;
     }
+
+    double getEarnings () {
+        return this.price * this.students;
+    }
     
     @Override
     public String toString() {
@@ -118,6 +122,18 @@ public class Course {
     
     String toStringShort() {
     	return "Course [ID= " + courseID + ", name= " + name + "]" ;
+    }
+
+    public String reportHeader () {
+        return "course\texpenditure\tprice\tstudents\tearnings";
+    }
+
+    public String reportLine () {
+        return this.name+"\t"+this.cost+"\t"+this.price+"\t"+this.students+(this.price*this.students);
+    }
+
+    public String reportFooter (double totalExpenditure, double totalEarnings, double totalProfit) {
+        return "Spending: "+totalExpenditure+"\tEarnings: "+totalEarnings+"\tProfits: "+totalProfit;
     }
 
     //load courses from file
