@@ -435,12 +435,12 @@ private Scanner inputFileLoadStudent;
     }
 private void nextbreak(String name)
 {
-	String d = inputFileLoadStudent.nextLine();
+	String nextlineString = inputFileLoadStudent.nextLine();
 	String namesave = name;
 	System.out.println("READING BREAK");
-	System.out.println(d);
+	System.out.println(nextlineString);
 	  for (Course course : cMain.courseList) {
-         if (course.getName().equals(d)) 
+         if (course.getName().equals(nextlineString)) 
          {
         	 int courseIDPos = course.getID() - 1;
         	 for (Person person : pMain.personList) {
