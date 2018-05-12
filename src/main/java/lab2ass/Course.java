@@ -154,19 +154,19 @@ public class Course {
                 int inputStudents = Integer.parseInt(input.nextLine());
                 Course course = null;
                 switch (inputType) {
-                    case "class lab2ass.Course":
+                    case "Course":
                         course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
-                    case "class lab2ass.OnlineCourse":
+                    case "OnlineCourse":
                         course = new OnlineCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
-                    case "class lab2ass.ShortCourse":
+                    case "ShortCourse":
                         course = new ShortCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
-                    case "class lab2ass.EveningCourse":
+                    case "EveningCourse":
                         course = new EveningCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
@@ -188,7 +188,7 @@ public class Course {
             File saveLocation = new File ("courses.txt");
             PrintWriter output = new PrintWriter (saveLocation);
             for (Course course: this.courseList) {
-                output.println (course.getClass());
+                output.println (course.getClass().getSimpleName());
                 output.println (course.getID());
                 output.println (course.getName());
                 output.println (course.getCost());
