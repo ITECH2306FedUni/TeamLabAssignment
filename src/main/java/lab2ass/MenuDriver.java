@@ -362,7 +362,9 @@ private Scanner inputFileLoadStudent;
                 System.out.println("");
 
                 System.out.println("Enter Student ID:");
+                try {
                 int ID1StudentSave = input.nextInt();
+                
                 PrintWriter writer = null;
                 try {
                     writer = new PrintWriter("StudentSave.txt", "UTF-8");
@@ -378,7 +380,9 @@ private Scanner inputFileLoadStudent;
                         writer.println(course.getName());
                     }
                 }
-
+                } catch (java.lang.IndexOutOfBoundsException exception)
+                {System.out.println("No Name by that ID");
+                	break;}
                 writer.close(); 
                 break;
             case 7:
