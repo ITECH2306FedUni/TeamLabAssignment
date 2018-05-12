@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 /**
  * The Base Animal Class
- * @author  RAWR-XD
+ * @author  RAWR-XD (Nathan Blaney)
  * @version 1.0
  */
 public abstract class Animal implements Serializable {
@@ -114,6 +114,7 @@ public abstract class Animal implements Serializable {
         try {
             regoDate.setTime(format.parse(this.regdue));
         } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         long regoYear = regoDate.get(Calendar.YEAR);

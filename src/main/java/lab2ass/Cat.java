@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * The Cat Class
- * @author  RAWR-XD
+ * @author  RAWR-XD (Nathan Blaney)
  * @version 1.0
  */
 
