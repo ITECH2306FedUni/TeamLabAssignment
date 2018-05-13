@@ -244,20 +244,6 @@ private Scanner inputFileLoadStudent;
         System.out.println("0.  Return to the Main Menu");
     }
 
-    private void showStudentMenu() {
-        System.out.println();
-        System.out.println("1.  View all Students");
-        System.out.println("2.  Generate Invoice");
-        System.out.println("3.  Enter In Results");
-        System.out.println("4.  View Results");
-        System.out.println("5.  View Text Doc");
-        System.out.println("6.  Save A Student");
-        System.out.println("7.  Delete A Student ");
-        System.out.println("8.  Load A Student");
-        System.out.println("0.  Return to the Main Menu");
-
-    }
-
     private void processChoiceStudentMenu(int choice) {
         switch (choice) {
             case 1:
@@ -437,6 +423,7 @@ private Scanner inputFileLoadStudent;
         }
 
     }
+//FIXME one true brace homie.
 private void nextbreak(String name)
 {
 	String nextlineString = inputFileLoadStudent.nextLine();
@@ -464,6 +451,20 @@ nextbreak(namesave);
 	  
 
 }
+
+    private void showStudentMenu() {
+        System.out.println();
+        System.out.println("1.  View all Students");
+        System.out.println("2.  Generate Invoice");
+        System.out.println("3.  Enter In Results");
+        System.out.println("4.  View Results");
+        System.out.println("5.  View Text Doc");
+        System.out.println("6.  Save A Student");
+        System.out.println("7.  Delete A Student ");
+        System.out.println("8.  Load A Student");
+        System.out.println("0.  Return to the Main Menu");
+
+    }
     private void processChoiceCourseMenu(int choice) {
         switch (choice) {
             case 1:
