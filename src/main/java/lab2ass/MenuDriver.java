@@ -541,12 +541,28 @@ nextbreak(namesave);
                     }
                     int selectCourse = getUserSelection(0, index--);
                     System.out.println();
-                    System.out.println("0.  Course Name");
-                    System.out.println("1.  Course Price");
-                    System.out.println("2.  Cost");
-                    System.out.println("3.  Runtime");
-                    System.out.println("4.  Number of Enrollments");
+                    System.out.println("1.  Course Name");
+                    System.out.println("2.  Course Price");
+                    System.out.println("3.  Cost");
+                    System.out.println("4.  Runtime");
+                    System.out.println("5.  Number of Enrollments");
+                    System.out.println("0.  Cancel");
                     System.out.println();
+                    int selectField = getUserSelection(0, 4);
+                    switch (selectField) {
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            break;
+                    }
                 } else {
                     System.out.println("Please add a Course first!");
                 }
