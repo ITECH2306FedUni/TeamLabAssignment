@@ -95,6 +95,7 @@ public class Course {
     }
 
     void enrollstudent(Person student) {
+        students++;
     	studentList.add(student);
     	System.out.println(student.getName() + " added to course");
     }
