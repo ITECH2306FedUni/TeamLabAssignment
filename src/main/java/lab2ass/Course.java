@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Course {
     private static int nextValidCourseID = -0;
-    ArrayList<Course> courseList = new ArrayList<>();
+    static ArrayList<Course> courseList = new ArrayList<>();
 	private ArrayList<Person> studentList = new ArrayList<Person>();
     
     private int courseID; 
@@ -32,6 +32,10 @@ public class Course {
         setRuntime(_runtime);
         this.setCourseID();
         this.students = 0;
+    }
+
+    ArrayList getAllCourses() {
+        return courseList;
     }
 
     void setCourses(ArrayList inputCourses) {

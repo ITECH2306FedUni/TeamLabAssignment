@@ -476,11 +476,12 @@ nextbreak(namesave);
             case 2:
                 //get course details
                 if (!cMain.courseList.isEmpty()) {
+                    int index = 0;
                     for (Course course : cMain.courseList) {
-                        System.out.println("ID " + course.toStringShort());
+                        System.out.println(index+". "+course.getName());
+                        index++;
                     }
-                    System.out.println("Enter in a Course ID: ");
-                    int selectCourse = input.nextInt();
+                    int selectCourse = getUserSelection(0, index--);
                     System.out.println(cMain.courseList.get(selectCourse).toString());
                 } else {
                     System.out.println("Please add a Course first!");
@@ -489,12 +490,14 @@ nextbreak(namesave);
                 break;
             case 3:
                 //delete a course
+                //FIXME: this should be a method at some point
                 if (!cMain.courseList.isEmpty()) {
+                    int index = 0;
                     for (Course course : cMain.courseList) {
-                        System.out.println("ID " + course.toStringShort());
+                        System.out.println(index+". "+course.getName());
+                        index++;
                     }
-                    System.out.println ("enter a course to delete:");
-                    int pos = input.nextInt();
+                    int pos = getUserSelection(0, index--);
                     cMain.courseList.remove(pos);
                 } else {
                     System.out.println("No courses in record");
@@ -532,10 +535,12 @@ nextbreak(namesave);
             case 8:
                 // save course
                 cMain.saveCourses();
+                menuReturn();
                 break;
             case 9:
                 // load course
                 cMain.setCourses(cMain.loadCourses());
+                menuReturn();
                 break;
             case 10:
                 // expenses from file
