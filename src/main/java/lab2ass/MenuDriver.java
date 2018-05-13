@@ -475,6 +475,7 @@ nextbreak(namesave);
                 break;
             case 2:
                 //get course details
+                //FIXME: duplicated code for picking an object
                 if (!cMain.courseList.isEmpty()) {
                     int index = 0;
                     for (Course course : cMain.courseList) {
@@ -531,6 +532,25 @@ nextbreak(namesave);
                 break;
             case 7:
                 // edit course
+                //FIXME: duplicated code for picking an object
+                if (!cMain.courseList.isEmpty()) {
+                    int index = 0;
+                    for (Course course : cMain.courseList) {
+                        System.out.println(index+". "+course.getName());
+                        index++;
+                    }
+                    int selectCourse = getUserSelection(0, index--);
+                    System.out.println();
+                    System.out.println("0.  Course Name");
+                    System.out.println("1.  Course Price");
+                    System.out.println("2.  Cost");
+                    System.out.println("3.  Runtime");
+                    System.out.println("4.  Number of Enrollments");
+                    System.out.println();
+                } else {
+                    System.out.println("Please add a Course first!");
+                }
+                menuReturn();
                 break;
             case 8:
                 // save course
