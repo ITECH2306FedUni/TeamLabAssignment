@@ -554,20 +554,16 @@ private Scanner inputFileLoadStudent;
                             course.setName(input.nextLine());
                             break;
                         case 2:
-                            System.out.println("enter new price:");
-                            course.setPrice(Double.parseDouble(input.nextLine()));
+                            course.setPrice(promptValidDouble("enter new price:"));
                             break;
                         case 3:
-                            System.out.println("enter new cost:");
-                            course.setCost(Double.parseDouble(input.nextLine()));
+                            course.setCost(promptValidDouble("enter new cost:"));
                             break;
                         case 4:
-                            System.out.println("enter new runtime");
-                            course.setRuntime(Integer.parseInt(input.nextLine()));
+                            course.setRuntime(promptValidInt("enter new runtime"));
                             break;
                         case 5:
-                            System.out.println("enter new enrollments");
-                            course.setNumStudents(Integer.parseInt(input.nextLine()));
+                            course.setNumStudents(promptValidInt("enter new enrollments"));
                             break;
                         default:
                             break;
@@ -996,6 +992,24 @@ private Scanner inputFileLoadStudent;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    private int promptValidInt(String message) {
+        String parseLine = "dkjfsjieoj";
+        while (!isInt(parseLine)) {
+            System.out.println(message);
+            parseLine = input.nextLine();
+        }
+        return Integer.parseInt(parseLine);
+    }
+
+    private double promptValidDouble(String message) {
+        String parseLine = "wskajfdlk";
+        while (!isInt(parseLine)) {
+            System.out.println(message);
+            parseLine = input.nextLine();
+        }
+        return Double.parseDouble(parseLine);
     }
 
     public static void generateStudentInvoice(int ID) {
