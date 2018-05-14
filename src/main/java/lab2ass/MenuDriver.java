@@ -77,7 +77,6 @@ public class MenuDriver {
     private void start() {
         int choice;
         stillRunning = true; // in order to commence program
-
         while (stillRunning) {
             showMainMenu();
             choice = getUserSelection(0, 8);
@@ -145,7 +144,7 @@ public class MenuDriver {
                 }
                 break;
             case 5:
-                //menu option 5: system testor
+                //menu option 5: system tests
                 System.out.println("Running Person Test's");
                 TestDriverClass.runTestPerson(null);
                 System.out.println("Running Pet Test's");
@@ -221,7 +220,7 @@ public class MenuDriver {
                 System.out.println("What would you like to QUIT (y)es or (n)o?");
                 String quitChoice = input.nextLine();
                 if (quitChoice.equalsIgnoreCase("y")) {
-                    System.out.println("GoodBye!");
+                    System.out.println("Goodbye!");
                     stillRunning = false;// causes the main loop of program to end (i.e. quits)
                 } else {
                     menuReturn();
@@ -293,6 +292,7 @@ public class MenuDriver {
     private void processChoiceStudentMenu(int choice) {
         switch (choice) {
             case 1:
+                // view students
                 if (!pMain.personList.isEmpty()) {
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
@@ -302,8 +302,9 @@ public class MenuDriver {
                 }
                 break;
             case 2:
-                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
-                    System.out.println("");
+                // generate invoice
+                if ((!pMain.personList.isEmpty()) && (!Course.courseList.isEmpty())) {
+                    System.out.println();
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
                             System.out.println("ID " + person.getPersonID() + ": " + person.getName());
@@ -315,13 +316,12 @@ public class MenuDriver {
                     generateStudentInvoice(ID);
                 } else {
                     System.out.println("No Students or Courses");
-
-
                 }
                 break;
             case 3:
-                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
-                    System.out.println("");
+                // enter results
+                if ((!pMain.personList.isEmpty()) && (!Course.courseList.isEmpty())) {
+                    System.out.println();
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
                             System.out.println("ID " + person.getPersonID() + ": " + person.getName());
@@ -345,22 +345,23 @@ public class MenuDriver {
                 }
                 break;
             case 4:
-                if ((!pMain.personList.isEmpty()) && (!cMain.courseList.isEmpty())) {
-                    System.out.println("");
+                // view results
+                if ((!pMain.personList.isEmpty()) && (!Course.courseList.isEmpty())) {
+                    System.out.println();
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
                             System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                         }
                     }
-                    System.out.println("");
+                    System.out.println();
                     System.out.println("Enter Student ID:");
                     int ID2 = input.nextInt();
                     for (Course course : pMain.personList.get(ID2).CourseList) {
                         System.out.println("ID " + course.toStringShort());
 
                     }
-                    for (Course course : cMain.courseList) {
-                        if (!course.courseList.isEmpty()) {
+                    for (Course course : Course.courseList) {
+                        if (!Course.courseList.isEmpty()) {
                             System.out.println("ID " + course.getID() + ": " + course.getName());
                         }
                     }
@@ -375,6 +376,7 @@ public class MenuDriver {
 
                 }
             case 5:
+                // view invoice
                 Scanner inputFile = null;
                 try {
                     inputFile = new Scanner(new File("StudentInvoice.txt"));
@@ -389,8 +391,8 @@ public class MenuDriver {
                 break;
 
             case 6:
-                System.out.println("");
-
+                // save a student
+                System.out.println();
                 System.out.println("Enter Student ID:");
                 try {
                     int ID1StudentSave = input.nextInt();
@@ -417,7 +419,8 @@ public class MenuDriver {
                 writer.close();
                 break;
             case 7:
-                System.out.println("");
+                // delete student
+                System.out.println();
                 for (Person person : pMain.personList) {
                     System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                 }
@@ -433,6 +436,7 @@ public class MenuDriver {
                 pMain.personList.get(studentDelID).CourseList.remove(studentDelIDCourse);
                 break;
             case 8:
+                // load student
                 inputFileLoadStudent = null;
                 try {
                     inputFileLoadStudent = new Scanner(new File("StudentSave.txt"));
@@ -454,9 +458,8 @@ public class MenuDriver {
                     nextbreak(name);
                 }
                 break;
-            case 9:
-                break;
             case 0:
+                // return to main menu
                 subMenu = false;
                 menuReturn();
                 break;
@@ -469,12 +472,12 @@ public class MenuDriver {
         String nextlineString = inputFileLoadStudent.nextLine();
         System.out.println("READING BREAK");
         System.out.println(nextlineString);
-        for (Course course : cMain.courseList) {
+        for (Course course : Course.courseList) {
             if (course.getName().equals(nextlineString)) {
                 int courseIDPos = course.getID() - 1;
                 for (Person person : pMain.personList) {
                     if (person.getName().equals(name)) {
-                        person.enrollInCourse(cMain.courseList.get(courseIDPos));
+                        person.enrollInCourse(Course.courseList.get(courseIDPos));
                     }
                 }
             }
@@ -512,14 +515,14 @@ public class MenuDriver {
             case 2:
                 //get course details
                 //FIXME: duplicated code for picking an object
-                if (!cMain.courseList.isEmpty()) {
+                if (!Course.courseList.isEmpty()) {
                     int index = 0;
-                    for (Course course : cMain.courseList) {
+                    for (Course course : Course.courseList) {
                         System.out.println(index + ". " + course.getName());
                         index++;
                     }
                     int selectCourse = getUserSelection(0, index--);
-                    System.out.println(cMain.courseList.get(selectCourse).toString());
+                    System.out.println(Course.courseList.get(selectCourse).toString());
                 } else {
                     System.out.println("Please add a Course first!");
                 }
@@ -528,14 +531,14 @@ public class MenuDriver {
             case 3:
                 //delete a course
                 //FIXME: this should be a method at some point
-                if (!cMain.courseList.isEmpty()) {
+                if (!Course.courseList.isEmpty()) {
                     int index = 0;
                     for (Course course : cMain.getAllCourses()) {
                         System.out.println(index + ". " + course.getName());
                         index++;
                     }
                     int pos = getUserSelection(0, index--);
-                    cMain.courseList.remove(pos);
+                    Course.courseList.remove(pos);
                 } else {
                     System.out.println("No courses in record");
                 }
@@ -643,7 +646,6 @@ public class MenuDriver {
                     try {
                         file = new File(input.nextLine());
                     } catch (Exception e) {
-                        ;
                     }
                 }
                 ArrayList courses = cMain.loadCourses(file.getName());
@@ -947,7 +949,6 @@ public class MenuDriver {
      *
      * @return A new course object
      */
-    // many hacks, need to standardize validation, don't care: wiping for ass3 -Nine
     private Course courseWizard() {
         String type = "";
         while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
@@ -995,14 +996,14 @@ public class MenuDriver {
                 System.out.println("ID " + person.getPersonID() + ": " + person.getName());
             }
             studentID = promptValidInt("Enter the ID of the student:");
-            if (!cMain.courseList.isEmpty()) {
-                for (Course course : cMain.courseList) {
+            if (!Course.courseList.isEmpty()) {
+                for (Course course : Course.courseList) {
                     System.out.println("ID: " + course.getID() + " Name: " + course.getName());
                 }
                 System.out.println("Enter the ID of the course you wish to enrol them in: ");
                 courseID = input.nextInt();
-                cMain.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
-                pMain.personList.get(studentID).enrollInCourse(cMain.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
+                Course.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
+                pMain.personList.get(studentID).enrollInCourse(Course.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
             } else {
                 System.out.println("Please add a Course first!");
             }
@@ -1044,7 +1045,7 @@ public class MenuDriver {
     /**
      * get an integer
      *
-     * @param message what to hassle them with
+     * @param message what to ask the user
      * @return int
      */
     private int promptValidInt(String message) {
@@ -1059,7 +1060,7 @@ public class MenuDriver {
     /**
      * get an double
      *
-     * @param message what to hassle them with
+     * @param message what to ask the user
      * @return double
      */
     private double promptValidDouble(String message) {
