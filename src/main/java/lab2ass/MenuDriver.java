@@ -597,12 +597,12 @@ private Scanner inputFileLoadStudent;
                 break;
             case 10:
                 // expenses from file
-                String filename = "";
-                while (!isFile(filename)) {
+                File file = new File ("penispenispenis");//this shouldn't work but does :(
+                while (!file.exists()) {
                     System.out.println("enter name of file to load");
-                    filename = input.nextLine();
+                    try {file = new File (input.nextLine());}catch(Exception e){;}
                 }
-                System.out.println(cMain.courseReport(cMain.loadCourses(filename)));
+                System.out.println(cMain.courseReport(cMain.loadCourses(file.getName())));
                 break;
             case 0:
                 // return to menu
@@ -613,15 +613,6 @@ private Scanner inputFileLoadStudent;
                 //error
                 System.out.println("Unexpected selection made. Doing nothing.");
                 break;
-        }
-    }
-
-    boolean isFile (String filename) {
-        try {
-            new File(filename);
-            return true;
-        } catch (Exception e) {
-            return false;
         }
     }
 
