@@ -156,12 +156,12 @@ public class Course {
     }
 
     //load courses from file
-    ArrayList loadCourses() {
+    ArrayList loadCourses(String filename) {
         System.out.println ("Loading courses...");
         try {
             ArrayList data = new ArrayList();
             Scanner input = new Scanner (
-                new File("courses.txt")
+                new File(filename)
             );
             while (input.hasNextLine()) {
                 String inputType = input.nextLine();

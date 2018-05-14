@@ -508,7 +508,7 @@ private Scanner inputFileLoadStudent;
                 break;
             case 5:
                 // generate a list of courses
-                for (Course course : cMain.courseList) {
+                for (Course course : cMain.getAllCourses()) {
                     System.out.println(course.toString());
                 }
                 menuReturn();
@@ -541,9 +541,9 @@ private Scanner inputFileLoadStudent;
             case 7:
                 // edit course
                 //FIXME: duplicated code for picking an object
-                if (!cMain.courseList.isEmpty()) {
+                if (!cMain.getAllCourses().isEmpty()) {
                     int index = 0;
-                    for (Course course : cMain.courseList) {
+                    for (Course course : cMain.getAllCourses()) {
                         System.out.println(index+". "+course.getName());
                         index++;
                     }
@@ -557,7 +557,7 @@ private Scanner inputFileLoadStudent;
                     System.out.println("0.  Cancel");
                     System.out.println();
                     int selectField = getUserSelection(0, 4);
-                    Course course = cMain.courseList.get(selectCourse);
+                    Course course = cMain.getAllCourses().get(selectCourse);
                     switch (selectField) {
                         case 0:
                             break;
@@ -592,12 +592,17 @@ private Scanner inputFileLoadStudent;
                 break;
             case 9:
                 // load course
-                cMain.setCourses(cMain.loadCourses());
+                cMain.setCourses(cMain.loadCourses("courses.txt"));
                 menuReturn();
                 break;
             case 10:
                 // expenses from file
-                System.out.println(cMain.courseReport(cMain.getAllCourses()));
+                String filename = "";
+                while (!isFile(filename)) {
+                    System.out.println("enter name of file to load");
+                    filename = input.nextLine();
+                }
+                System.out.println(cMain.courseReport(cMain.loadCourses(filename)));
                 break;
             case 0:
                 // return to menu
@@ -608,6 +613,15 @@ private Scanner inputFileLoadStudent;
                 //error
                 System.out.println("Unexpected selection made. Doing nothing.");
                 break;
+        }
+    }
+
+    boolean isFile (String filename) {
+        try {
+            new File(filename);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
