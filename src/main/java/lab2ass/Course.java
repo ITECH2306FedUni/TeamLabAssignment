@@ -1,30 +1,29 @@
 package lab2ass;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Course
  *
- * @author  RAWR-XD
+ * @author RAWR-XD
  * @version 1.0
  */
 public class Course {
-    private static int nextValidCourseID = -0;
     static ArrayList<Course> courseList = new ArrayList<>();
-	private ArrayList<Person> studentList = new ArrayList<Person>();
-    
-    private int courseID; 
+    private static int nextValidCourseID = -0;
+    float result;
+    int students;
+    private ArrayList<Person> studentList = new ArrayList<Person>();
+    private int courseID;
     private String name;
     private double price;
     private int runtime;
     private double cost;
-    float result;
-    int students;
-    
+
     public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
@@ -35,6 +34,10 @@ public class Course {
         this.students = 0;
     }
 
+    public Course() {
+        this.setCourseID();
+    }
+
     ArrayList<Course> getAllCourses() {
         return courseList;
     }
@@ -42,10 +45,6 @@ public class Course {
     void setCourses(ArrayList inputCourses) {
         this.courseList = inputCourses;
     }
-
-	public Course() {
-		this.setCourseID();
-	}
 
     int getID() {
         return courseID;
@@ -67,11 +66,11 @@ public class Course {
         this.price = price;
     }
 
-    public double getCost () {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost (double cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
@@ -82,8 +81,8 @@ public class Course {
     public void setRuntime(int runtime) throws IllegalArgumentException {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
-                  } else {
-        	throw new IllegalArgumentException("Runtime Can Not be Lower than 0 or Higer than 10"); // makes sure the runtime is greater than 0 and lower than 11
+        } else {
+            throw new IllegalArgumentException("Runtime Can Not be Lower than 0 or Higer than 10"); // makes sure the runtime is greater than 0 and lower than 11
         }
     }
 
@@ -96,72 +95,72 @@ public class Course {
     }
 
     void diffrentCourses(Course courseAddToList) {
-    	courseList.add(courseAddToList);
+        courseList.add(courseAddToList);
     }
 
     void enrollstudent(Person student) {
         students++;
-    	studentList.add(student);
-    	System.out.println(student.getName() + " added to course");
+        studentList.add(student);
+        System.out.println(student.getName() + " added to course");
     }
 
-    void setNumStudents (int num) {
-        this.students = num;
-    }
-
-    int getNumStudents () {
+    int getNumStudents() {
         return this.students;
     }
 
-    double getEarnings () {
+    void setNumStudents(int num) {
+        this.students = num;
+    }
+
+    double getEarnings() {
         return this.price * this.students;
     }
-    
+
     @Override
     public String toString() {
-        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID +", students= "+ studentList.toString() + "]";
+        return "Course [course=" + name + ", price=" + price + ", runtime=" + runtime + ", courseID=" + courseID + ", students= " + studentList.toString() + "]";
     }
 
     public String toStringNameAndPeople() {
-    	return "Course [course=" + name + ", students= " + studentList.toString() + "]";
-    }
-    
-    String toStringShort() {
-    	return "Course [ID= " + courseID + ", name= " + name + "]" ;
+        return "Course [course=" + name + ", students= " + studentList.toString() + "]";
     }
 
-    public String reportHeader () {
+    String toStringShort() {
+        return "Course [ID= " + courseID + ", name= " + name + "]";
+    }
+
+    public String reportHeader() {
         return "course\texpenditure\tprice\tstudents\tearnings";
     }
 
-    public String reportLine () {
-        return this.name+"\t"+this.cost+"\t"+this.price+"\t"+this.students+(this.price*this.students);
+    public String reportLine() {
+        return this.name + "\t" + this.cost + "\t" + this.price + "\t" + this.students + (this.price * this.students);
     }
 
-    public String reportFooter (double totalExpenditure, double totalEarnings, double totalProfit) {
-        return "Spending: "+totalExpenditure+"\tEarnings: "+totalEarnings+"\tProfits: "+totalProfit;
+    public String reportFooter(double totalExpenditure, double totalEarnings, double totalProfit) {
+        return "Spending: " + totalExpenditure + "\tEarnings: " + totalEarnings + "\tProfits: " + totalProfit;
     }
 
-    public String courseReport (ArrayList<Course> input) {
+    public String courseReport(ArrayList<Course> input) {
         String output = reportHeader();
         double totalExpenditure = 0;
         double totalEarnings = 0;
-        for(Course course:input) {
-            output +=("\n"+course.reportLine());
+        for (Course course : input) {
+            output += ("\n" + course.reportLine());
             totalExpenditure += course.getCost();
             totalEarnings += course.getEarnings();
         }
         double netProfit = totalEarnings - totalExpenditure;
-        return output+"\n"+reportFooter(totalExpenditure,totalEarnings,netProfit);
+        return output + "\n" + reportFooter(totalExpenditure, totalEarnings, netProfit);
     }
 
     //load courses from file
     ArrayList loadCourses(String filename) {
-        System.out.println ("Loading courses...");
+        System.out.println("Loading courses...");
         try {
             ArrayList data = new ArrayList();
-            Scanner input = new Scanner (
-                new File(filename)
+            Scanner input = new Scanner(
+                    new File(filename)
             );
             while (input.hasNextLine()) {
                 String inputType = input.nextLine();
@@ -174,50 +173,50 @@ public class Course {
                 Course course = null;
                 switch (inputType) {
                     case "Course":
-                        course = new Course (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course = new Course(inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
                     case "OnlineCourse":
-                        course = new OnlineCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course = new OnlineCourse(inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
                     case "ShortCourse":
-                        course = new ShortCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course = new ShortCourse(inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
                     case "EveningCourse":
-                        course = new EveningCourse (inputID, inputName, inputCost, inputPrice, inputRuntime);
+                        course = new EveningCourse(inputID, inputName, inputCost, inputPrice, inputRuntime);
                         course.setNumStudents(inputStudents);
                         break;
                 }
-                System.out.println (course.toString());
+                System.out.println(course.toString());
                 data.add(course);
             }
             return data;
         } catch (FileNotFoundException e) {
-            System.out.println ("Error: file not found");
+            System.out.println("Error: file not found");
         }
         return null;
     }
-    
+
     // Save all courses to a list
     void saveCourses() {
-        System.out.println ("Saving courses...");
+        System.out.println("Saving courses...");
         try {
-            File saveLocation = new File ("courses.txt");
-            PrintWriter output = new PrintWriter (saveLocation);
-            for (Course course: this.courseList) {
-                output.println (course.getClass().getSimpleName());
-                output.println (course.getID());
-                output.println (course.getName());
-                output.println (course.getCost());
-                output.println (course.getPrice());
-                output.println (course.getRuntime());
-                output.println (course.getNumStudents());
+            File saveLocation = new File("courses.txt");
+            PrintWriter output = new PrintWriter(saveLocation);
+            for (Course course : this.courseList) {
+                output.println(course.getClass().getSimpleName());
+                output.println(course.getID());
+                output.println(course.getName());
+                output.println(course.getCost());
+                output.println(course.getPrice());
+                output.println(course.getRuntime());
+                output.println(course.getNumStudents());
             }
             output.close();
         } catch (FileNotFoundException e) {
-            System.out.println ("we didn't find the file we literally just made FFS java");
+            System.out.println("we didn't find the file we literally just made FFS java");
         }
     }
 }

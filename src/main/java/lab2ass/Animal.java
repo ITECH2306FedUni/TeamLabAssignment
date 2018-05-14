@@ -11,7 +11,8 @@ import java.util.Calendar;
 
 /**
  * The Base Animal Class
- * @author  RAWR-XD (Nathan Blaney)
+ *
+ * @author RAWR-XD (Nathan Blaney)
  * @version 1.0
  */
 public abstract class Animal implements Serializable {
@@ -26,13 +27,14 @@ public abstract class Animal implements Serializable {
     int microchip;
 
     /**
-    * To build the animal object
-    * @param _breed  breed of the animal
-    * @param _name   name of the animal
-    * @param _dob    dob of the animal DD MMM YYYY
-    * @param _gender gender of the animal
-    * @param _regdue date that reg is due DD MMM YYYY
-    * @param _microchip microchip id for the pet
+     * To build the animal object
+     *
+     * @param _breed     breed of the animal
+     * @param _name      name of the animal
+     * @param _dob       dob of the animal DD MMM YYYY
+     * @param _gender    gender of the animal
+     * @param _regdue    date that reg is due DD MMM YYYY
+     * @param _microchip microchip id for the pet
      */
     Animal(String _breed, String _name, String _gender, String _dob, String _regdue, int _microchip) {
         this.setRegistrationID();
@@ -96,9 +98,10 @@ public abstract class Animal implements Serializable {
         return microchip;
     }
 
-    public String getType(){
+    public String getType() {
         return this.getClass().getSimpleName();
     }
+
     /**
      * Return the animal object
      */
@@ -107,7 +110,7 @@ public abstract class Animal implements Serializable {
         return breed + "," + name + "," + dob + "," + gender + "," + regdue + "," + microchip;
     }
 
-    public double calcRates () {
+    public double calcRates() {
         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
 
         Calendar regoDate = Calendar.getInstance();
@@ -124,7 +127,7 @@ public abstract class Animal implements Serializable {
             return fee;
         }
         for (int i = 0; i < currentYear - regoYear; i++) {
-            fee = fee - (fee*0.01);
+            fee = fee - (fee * 0.01);
         }
         return fee;
     }

@@ -8,22 +8,23 @@ import java.util.ArrayList;
 
 /**
  * Person
- * @author  RAWR-XD
+ *
+ * @author RAWR-XD
  * @version 1.0
  */
 public class Person implements Serializable {
+    private static int nextValidPersonID = 0;
     ArrayList<Person> personList = new ArrayList<>();
     ArrayList<Animal> personPetList = new ArrayList<>();
     ArrayList<Course> CourseList = new ArrayList<>();
-    private static int nextValidPersonID = 0;
+    Animal pet; // associate a pet that is an Animal object with the Person
+    Animal petInList;
     private int personID;
     private String name;  // name of person
     private String address; // address of person
     private String postcode; // postcode of person's address
     private String city; // city of person's address
-    Animal pet; // associate a pet that is an Animal object with the Person
     private Course currentCourse;
-    Animal petInList;
 
     // constructor - create Person given name, address and a Pet object
 

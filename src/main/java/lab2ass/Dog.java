@@ -14,9 +14,6 @@ import java.util.Calendar;
  * @version 1.0
  */
 public class Dog extends Animal implements Serializable {
-    private boolean desexed;
-    private boolean vaccinated;
-    private int microchip;
     String[] restricted_breeds = {
             "American Pit Bull Terrier",
             "Pit Bull Terrier",
@@ -26,6 +23,9 @@ public class Dog extends Animal implements Serializable {
             "Perro de Presa Canario",
             "Presa Canario"
     };
+    private boolean desexed;
+    private boolean vaccinated;
+    private int microchip;
 
     /**
      * To build the animal object
@@ -65,9 +65,10 @@ public class Dog extends Animal implements Serializable {
     }
 
     @Override
-    public String getType(){
+    public String getType() {
         return this.getClass().getSimpleName();
     }
+
     @Override
     public void setBreed(String breed) throws IllegalArgumentException {
         if (Arrays.asList(restricted_breeds).contains(breed)) {

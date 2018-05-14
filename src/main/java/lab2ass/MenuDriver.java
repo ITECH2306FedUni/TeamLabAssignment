@@ -1,13 +1,10 @@
 package lab2ass;
 
-
-import jdk.nashorn.internal.objects.NativeJSON;
-
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
@@ -26,10 +23,55 @@ public class MenuDriver {
     private Scanner input = new Scanner(System.in);
     private String fileName;
     private Scanner inputFileLoadStudent;
+
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
         theProgram.start();
+    }
+
+    /**
+     * To check if a date matches the format criteria
+     *
+     * @param date this is the date to be checked
+     * @return A new true or false boolean
+     */
+    private static boolean isValidDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private static void generateStudentInvoice(int ID) {
+        double priceInvoiceGen = 0.00;
+        PrintWriter writer = null;
+        Person student = pMain.personList.get(ID);
+        try {
+            String filename = "StudentInvoice" + student.getName() + ".txt";
+            writer = new PrintWriter(filename.replaceAll("\\s", ""), "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+
+            e.printStackTrace();
+        }
+
+
+        if (!pMain.personList.get(ID).CourseList.isEmpty()) {
+            if (writer != null) {
+                writer.println("### Course Invoice For " + student.getName() + " ###");
+                for (Course course : student.CourseList) {
+                    priceInvoiceGen += course.getPrice();
+                    writer.println("Course ID: " + course.getID() + " Course Name: " + course.getName() + " Course Price: $" + course.getPrice() + " Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
+                }
+                writer.println("Final Total: $" + priceInvoiceGen);
+                writer.close();
+            }
+        }
+
     }
 
     private void start() {
@@ -138,7 +180,7 @@ public class MenuDriver {
                     } else {
                         System.out.println("There are no current people saved in the filesystem");
                     }
-                } else if  (fileChoice.equalsIgnoreCase("l")){
+                } else if (fileChoice.equalsIgnoreCase("l")) {
                     fileName = "PersonAndPetData.txt";
                     String line = "";
                     String cvsSplitBy = ",";
@@ -146,20 +188,20 @@ public class MenuDriver {
                     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                         while ((line = br.readLine()) != null) {
                             String[] data = line.split(cvsSplitBy);
-                            if(data[0].equalsIgnoreCase("person")){
-                                Person person = new Person(data[2],data[1],data[3],data[4]);
+                            if (data[0].equalsIgnoreCase("person")) {
+                                Person person = new Person(data[2], data[1], data[3], data[4]);
                                 pMain.addPerson(person);
                             }
-                            Person person = pMain.personList.get(pMain.personList.size()-1);
-                            if(data[0].equalsIgnoreCase("cat")) {
-                                person.addAPet(new Cat(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6])));
-                            } else if(data[0].equalsIgnoreCase("dog")) {
-                                person.addAPet(new Dog(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6]), Boolean.getBoolean(data[7]), Boolean.getBoolean(data[8])));
-                            } else if(data[0].equalsIgnoreCase("rabbit")) {
-                                person.addAPet(new Rabbit(data[1],data[2],data[3],data[4],data[5],Integer.valueOf(data[6])));
+                            Person person = pMain.personList.get(pMain.personList.size() - 1);
+                            if (data[0].equalsIgnoreCase("cat")) {
+                                person.addAPet(new Cat(data[1], data[2], data[3], data[4], data[5], Integer.valueOf(data[6])));
+                            } else if (data[0].equalsIgnoreCase("dog")) {
+                                person.addAPet(new Dog(data[1], data[2], data[3], data[4], data[5], Integer.valueOf(data[6]), Boolean.getBoolean(data[7]), Boolean.getBoolean(data[8])));
+                            } else if (data[0].equalsIgnoreCase("rabbit")) {
+                                person.addAPet(new Rabbit(data[1], data[2], data[3], data[4], data[5], Integer.valueOf(data[6])));
                             }
                         }
-                        System.out.println("People and Pet data has been loaded from: "+ fileName.replaceAll("\\s", ""));
+                        System.out.println("People and Pet data has been loaded from: " + fileName.replaceAll("\\s", ""));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -284,13 +326,13 @@ public class MenuDriver {
                         if (!person.CourseList.isEmpty()) {
                             System.out.println("ID " + person.getPersonID() + ": " + person.getName());
                         }
-                    }  
+                    }
                     System.out.println();
                     System.out.println("Enter Student ID:");
                     int ID1 = input.nextInt();
                     for (Course course : pMain.personList.get(ID1).CourseList) {
                         System.out.println("ID " + course.toStringShort());
-                        
+
                     }
                     System.out.println("Enter Course ID:");
                     int courseID = input.nextInt();
@@ -315,7 +357,7 @@ public class MenuDriver {
                     int ID2 = input.nextInt();
                     for (Course course : pMain.personList.get(ID2).CourseList) {
                         System.out.println("ID " + course.toStringShort());
-                        
+
                     }
                     for (Course course : cMain.courseList) {
                         if (!course.courseList.isEmpty()) {
@@ -337,7 +379,7 @@ public class MenuDriver {
                 try {
                     inputFile = new Scanner(new File("StudentInvoice.txt"));
                 } catch (FileNotFoundException e) {
-                    // 
+                    //
                     e.printStackTrace();
                 }
                 String firstline = inputFile.nextLine();
@@ -351,27 +393,28 @@ public class MenuDriver {
 
                 System.out.println("Enter Student ID:");
                 try {
-                int ID1StudentSave = input.nextInt();
-                
-                PrintWriter writer = null;
-                try {
-                    writer = new PrintWriter("StudentSave.txt", "UTF-8");
-                } catch (FileNotFoundException | UnsupportedEncodingException e) {
-                    // 
-                    e.printStackTrace();
-                }
-                writer.println(pMain.personList.get(ID1StudentSave).getName());
-                System.out.println(pMain.personList.get(ID1StudentSave).getName());
-                for (Course course : pMain.personList.get(ID1StudentSave).CourseList) {
-                     {
-                    	writer.println("Break");
-                        writer.println(course.getName());
+                    int ID1StudentSave = input.nextInt();
+
+                    PrintWriter writer = null;
+                    try {
+                        writer = new PrintWriter("StudentSave.txt", "UTF-8");
+                    } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                        //
+                        e.printStackTrace();
                     }
+                    writer.println(pMain.personList.get(ID1StudentSave).getName());
+                    System.out.println(pMain.personList.get(ID1StudentSave).getName());
+                    for (Course course : pMain.personList.get(ID1StudentSave).CourseList) {
+                        {
+                            writer.println("Break");
+                            writer.println(course.getName());
+                        }
+                    }
+                } catch (java.lang.IndexOutOfBoundsException exception) {
+                    System.out.println("No Name by that ID");
+                    break;
                 }
-                } catch (java.lang.IndexOutOfBoundsException exception)
-                {System.out.println("No Name by that ID");
-                	break;}
-                writer.close(); 
+                writer.close();
                 break;
             case 7:
                 System.out.println("");
@@ -383,34 +426,32 @@ public class MenuDriver {
                 int studentDelID = input.nextInt();
                 for (Course course : pMain.personList.get(studentDelID).CourseList) {
                     System.out.println("ID " + course.toStringShort());
-                    
+
                 }
                 System.out.println("Enter In Course ID");
                 int studentDelIDCourse = input.nextInt();
                 pMain.personList.get(studentDelID).CourseList.remove(studentDelIDCourse);
                 break;
             case 8:
-               inputFileLoadStudent = null;
+                inputFileLoadStudent = null;
                 try {
                     inputFileLoadStudent = new Scanner(new File("StudentSave.txt"));
                 } catch (FileNotFoundException e) {
-                    // 
+                    //
                     e.printStackTrace();
                 }
                 String name = inputFileLoadStudent.nextLine();
                 for (Person person : pMain.personList) {
-                     {
+                    {
 
-                        if (name.equals(person.getName()))
-                        {
-                        	System.out.println("Data Found:  " + name);
+                        if (name.equals(person.getName())) {
+                            System.out.println("Data Found:  " + name);
                         }
                     }
                 }
-                if (inputFileLoadStudent.nextLine().equals("Break"))
-                {
-                	System.out.println("Break Found");
-                	nextbreak(name);
+                if (inputFileLoadStudent.nextLine().equals("Break")) {
+                    System.out.println("Break Found");
+                    nextbreak(name);
                 }
                 break;
             case 9:
@@ -422,16 +463,17 @@ public class MenuDriver {
         }
 
     }
+
     //I fixed the indentation on this and I hate whoever put it here
     private void nextbreak(String name) {
-    	String nextlineString = inputFileLoadStudent.nextLine();
+        String nextlineString = inputFileLoadStudent.nextLine();
         System.out.println("READING BREAK");
-    	System.out.println(nextlineString);
+        System.out.println(nextlineString);
         for (Course course : cMain.courseList) {
             if (course.getName().equals(nextlineString)) {
                 int courseIDPos = course.getID() - 1;
                 for (Person person : pMain.personList) {
-                    if(person.getName().equals(name)) {
+                    if (person.getName().equals(name)) {
                         person.enrollInCourse(cMain.courseList.get(courseIDPos));
                     }
                 }
@@ -442,7 +484,6 @@ public class MenuDriver {
             nextbreak(name);
         }
     }
-
 
     private void showCourseMenu() {
         System.out.println();
@@ -474,7 +515,7 @@ public class MenuDriver {
                 if (!cMain.courseList.isEmpty()) {
                     int index = 0;
                     for (Course course : cMain.courseList) {
-                        System.out.println(index+". "+course.getName());
+                        System.out.println(index + ". " + course.getName());
                         index++;
                     }
                     int selectCourse = getUserSelection(0, index--);
@@ -490,7 +531,7 @@ public class MenuDriver {
                 if (!cMain.courseList.isEmpty()) {
                     int index = 0;
                     for (Course course : cMain.getAllCourses()) {
-                        System.out.println(index+". "+course.getName());
+                        System.out.println(index + ". " + course.getName());
                         index++;
                     }
                     int pos = getUserSelection(0, index--);
@@ -516,20 +557,20 @@ public class MenuDriver {
                 // generate expenses report
                 if (!cMain.getAllCourses().isEmpty()) {
                     String report = cMain.courseReport(cMain.getAllCourses());
-                    System.out.println (report);
-                    System.out.println ();
+                    System.out.println(report);
+                    System.out.println();
                     String parseLine = "";
                     while (!parseLine.equalsIgnoreCase("y") && !parseLine.equalsIgnoreCase("n")) {
-                        System.out.println ("would you like to save this report to disk??");
+                        System.out.println("would you like to save this report to disk??");
                         parseLine = input.nextLine();
                     }
                     if (parseLine.equalsIgnoreCase("y")) {
-                        File saveLocation = new File ("courseReport.txt");
+                        File saveLocation = new File("courseReport.txt");
                         try {
-                            PrintWriter output = new PrintWriter (saveLocation);
+                            PrintWriter output = new PrintWriter(saveLocation);
                             output.println(report);
                         } catch (Exception e) {
-                            System.out.println ("file error");
+                            System.out.println("file error");
                         }
                     }
                 } else {
@@ -543,7 +584,7 @@ public class MenuDriver {
                 if (!cMain.getAllCourses().isEmpty()) {
                     int index = 0;
                     for (Course course : cMain.getAllCourses()) {
-                        System.out.println(index+". "+course.getName());
+                        System.out.println(index + ". " + course.getName());
                         index++;
                     }
                     int selectCourse = getUserSelection(0, index--);
@@ -596,27 +637,31 @@ public class MenuDriver {
                 break;
             case 10:
                 // expenses from file
-                File file = new File ("32283ue9823ueoiurfh");//_needs_ to be a bad file name for validation to work
+                File file = new File("32283ue9823ueoiurfh");//_needs_ to be a bad file name for validation to work
                 while (!file.exists()) {
                     System.out.println("enter name of file to load");
-                    try {file = new File (input.nextLine());}catch(Exception e){;}
+                    try {
+                        file = new File(input.nextLine());
+                    } catch (Exception e) {
+                        ;
+                    }
                 }
                 ArrayList courses = cMain.loadCourses(file.getName());
                 String report = cMain.courseReport(courses);
                 System.out.println(report);
                 String parseLine = "";
                 while (!parseLine.equalsIgnoreCase("y") && !parseLine.equalsIgnoreCase("n")) {
-                    System.out.println ("would you like to save this report to disk??");
+                    System.out.println("would you like to save this report to disk??");
                     parseLine = input.nextLine();
                 }
                 if (parseLine.equalsIgnoreCase("y")) {
                     System.out.println("enter filename to save");
-                    File saveLocation = new File (input.nextLine());
+                    File saveLocation = new File(input.nextLine());
                     try {
-                        PrintWriter output = new PrintWriter (saveLocation);
+                        PrintWriter output = new PrintWriter(saveLocation);
                         output.println(report);
                     } catch (Exception e) {
-                        System.out.println ("file error");
+                        System.out.println("file error");
                     }
                 }
                 menuReturn();
@@ -635,6 +680,7 @@ public class MenuDriver {
 
     /**
      * To present the sub pet menu/list of options to the user.
+     *
      * @author RAWR-XD (Nathan Blaney)
      */
     private void showPetMenu() {
@@ -646,9 +692,10 @@ public class MenuDriver {
         System.out.println("5.  Generate Registration Costs");
         System.out.println("0.  Exit");
     }
+
     /**
-     *
      * To process the sub pet menu/list of options to the user.
+     *
      * @author RAWR-XD (Nathan Blaney)
      */
     private void processChoicePetMenu(int choice) {
@@ -664,9 +711,9 @@ public class MenuDriver {
                     //figure out who to give a pet to
                     Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size() - 1));
                     //add the pet
-                    if(petOwner.personPetList.size() < 5){
+                    if (petOwner.personPetList.size() < 5) {
                         petOwner.addAPet(petWizard());
-                        Animal petAdded =  petOwner.personPetList.get(petOwner.personPetList.size() - 1);
+                        Animal petAdded = petOwner.personPetList.get(petOwner.personPetList.size() - 1);
                         System.out.println("The added pet is: " + petAdded.getName());
                         System.out.println("For the Person: " + petOwner.getName());
                     } else {
@@ -965,23 +1012,6 @@ public class MenuDriver {
     }
 
     /**
-     * To check if a date matches the format criteria
-     *
-     * @param date this is the date to be checked
-     * @return A new true or false boolean
-     */
-    private static boolean isValidDate(String date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
-        dateFormat.setLenient(false);
-        try {
-            dateFormat.parse(date.trim());
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /**
      * Is this string a double
      *
      * @param dub the double to check
@@ -1011,7 +1041,7 @@ public class MenuDriver {
         }
     }
 
-   /**
+    /**
      * get an integer
      *
      * @param message what to hassle them with
@@ -1026,7 +1056,7 @@ public class MenuDriver {
         return Integer.parseInt(parseLine);
     }
 
-   /**
+    /**
      * get an double
      *
      * @param message what to hassle them with
@@ -1039,33 +1069,6 @@ public class MenuDriver {
             parseLine = input.nextLine();
         }
         return Double.parseDouble(parseLine);
-    }
-
-    private static void generateStudentInvoice(int ID) {
-    	double priceInvoiceGen = 0.00;
-        PrintWriter writer = null;
-        Person student = pMain.personList.get(ID);
-        try {
-            String filename = "StudentInvoice" + student.getName() + ".txt";
-            writer = new PrintWriter(filename.replaceAll("\\s", ""), "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
-
-            e.printStackTrace();
-        }
-
-
-        if (!pMain.personList.get(ID).CourseList.isEmpty()) {
-            if (writer != null) {
-                writer.println("### Course Invoice For " + student.getName() + " ###");
-                for (Course course : student.CourseList) {
-                    priceInvoiceGen += course.getPrice();
-                    writer.println("Course ID: "+course.getID() + " Course Name: " +  course.getName() + " Course Price: $" + course.getPrice() +" Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
-                }
-                writer.println("Final Total: $" + priceInvoiceGen);
-                writer.close();
-            }
-        }
-
     }
 
     private void menuReturn() {

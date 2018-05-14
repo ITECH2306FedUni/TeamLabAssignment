@@ -1,15 +1,17 @@
 package lab2ass;
+
 import org.junit.Assert;
+
 /**
  * The Course Test Class
- * @author  RAWR-XD
+ *
+ * @author RAWR-XD
  * @version 1.0
  */
 public class CourseTest {
 
     @org.junit.Test
-    public void testAddPerson()
-    {
+    public void testAddPerson() {
         Person p1test = new Person("25 Somewhere Street", "Kathleen", "2000", "Casey");
         Course ctest = new Course(0, "Eurobeat with BLAN3Y", 1000, 148, 9);
         ctest.enrollstudent(p1test);
