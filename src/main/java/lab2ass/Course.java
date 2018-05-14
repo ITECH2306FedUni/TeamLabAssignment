@@ -133,7 +133,7 @@ public class Course {
     }
 
     public String reportLine() {
-        return this.name + ", " + this.cost + ", " + this.price + ", " + this.students + (this.price * this.students);
+        return this.name + ", " + this.cost + ", " + this.price + ", " + this.students + ", " + (this.price * this.students);
     }
 
     public String reportFooter(double totalExpenditure, double totalEarnings, double totalProfit) {
