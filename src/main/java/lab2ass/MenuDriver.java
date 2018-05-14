@@ -71,7 +71,7 @@ public class MenuDriver {
                 // menu option 1: register person
                 Person p1 = personWizard();
                 pMain.addPerson(p1);
-                System.out.println("I have a person object ID: " + p1.getPersonID() + " " + p1.toString());
+                System.out.println("New person added: " + p1.getName());
                 menuReturn();
                 break;
             case 2:
@@ -117,6 +117,7 @@ public class MenuDriver {
                 System.out.println("What would you like to (s)ave or (l)oad data?");
                 String fileChoice = input.nextLine();
                 if (fileChoice.equalsIgnoreCase("s")) {
+
                     try {
                         fileName = "PersonAndPetData.txt";
                         writer = new PrintWriter(fileName, "UTF-8");
@@ -132,9 +133,11 @@ public class MenuDriver {
                                 }
                             }
                         }
+                        writer.close();
+                        System.out.println("The People and Pet data been saved under the name: " + fileName.replaceAll("\\s", ""));
+                    } else {
+                        System.out.println("There are no current people saved in the filesystem");
                     }
-                    writer.close();
-                    System.out.println("The People and Pet data been saved under the name: " + fileName.replaceAll("\\s", ""));
                 } else if  (fileChoice.equalsIgnoreCase("l")){
                     fileName = "PersonAndPetData.txt";
                     String line = "";
@@ -248,7 +251,6 @@ public class MenuDriver {
     private void processChoiceStudentMenu(int choice) {
         switch (choice) {
             case 1:
-
                 if (!pMain.personList.isEmpty()) {
                     for (Person person : pMain.personList) {
                         if (!person.CourseList.isEmpty()) {
@@ -293,8 +295,7 @@ public class MenuDriver {
                     System.out.println("Enter Course ID:");
                     int courseID = input.nextInt();
                     System.out.println("Enter In Result:");
-                    float result = input.nextFloat();
-                    pMain.personList.get(ID1).CourseList.get(courseID).result = result;
+                    pMain.personList.get(ID1).CourseList.get(courseID).result = input.nextFloat();
                 } else {
                     System.out.println("No Students or Courses");
 
@@ -411,9 +412,6 @@ public class MenuDriver {
                 	System.out.println("Break Found");
                 	nextbreak(name);
                 }
-               
-    
-              
                 break;
             case 9:
                 break;
@@ -427,8 +425,7 @@ public class MenuDriver {
     //I fixed the indentation on this and I hate whoever put it here
     private void nextbreak(String name) {
     	String nextlineString = inputFileLoadStudent.nextLine();
-    	String namesave = name;
-    	System.out.println("READING BREAK");
+        System.out.println("READING BREAK");
     	System.out.println(nextlineString);
         for (Course course : cMain.courseList) {
             if (course.getName().equals(nextlineString)) {
@@ -442,7 +439,7 @@ public class MenuDriver {
         }
         if (inputFileLoadStudent.hasNextLine()) {
             System.out.println("New Line Found");
-            nextbreak(namesave);
+            nextbreak(name);
         }
     }
 
