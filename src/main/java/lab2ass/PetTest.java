@@ -71,6 +71,8 @@ public class PetTest {
         p1test.addAPet(new Cat("Dim Sim", "Tissue", "F", "05 01 1998", "05 01 1998", 14));
         p1test.addAPet(new Dog("Pug", "Fido", "F", "05 01 1998", "05 01 1998", 13, false, false));
         Animal TestPet = null;
+        TestPet = p1test.personPetList.get(0);
+        Assert.assertEquals("Tissue", TestPet.getName());
         TestPet = p1test.personPetList.get(1);
         Assert.assertEquals("Fido", TestPet.getName());
     }
