@@ -229,19 +229,18 @@ private Scanner inputFileLoadStudent;
         return new Person(address, name, postcode, city);
     }
 
-    private void showCourseMenu() {
+    private void showStudentMenu() {
         System.out.println();
-        System.out.println("1.  Create a new Course offering");
-        System.out.println("2.  View Course Details");
-        System.out.println("3.  Delete current Course offering");
-        System.out.println("4.  Enroll a Student in a Course");
-        System.out.println("5.  Generate a list of all Courses");
-        System.out.println("6.  Generate Expenses Report");
-        System.out.println("7.  Edit Course Data");
-        System.out.println("8.  Save Course Schema");
-        System.out.println("9.  Load Course Schema");
-        System.out.println("10. Generate Expenses Report From Course Schema");
+        System.out.println("1.  View all Students");
+        System.out.println("2.  Generate Invoice");
+        System.out.println("3.  Enter In Results");
+        System.out.println("4.  View Results");
+        System.out.println("5.  View Text Doc");
+        System.out.println("6.  Save A Student");
+        System.out.println("7.  Delete A Student ");
+        System.out.println("8.  Load A Student");
         System.out.println("0.  Return to the Main Menu");
+
     }
 
     private void processChoiceStudentMenu(int choice) {
@@ -423,48 +422,44 @@ private Scanner inputFileLoadStudent;
         }
 
     }
-//FIXME one true brace homie.
-private void nextbreak(String name)
-{
-	String nextlineString = inputFileLoadStudent.nextLine();
-	String namesave = name;
-	System.out.println("READING BREAK");
-	System.out.println(nextlineString);
-	  for (Course course : cMain.courseList) {
-         if (course.getName().equals(nextlineString)) 
-         {
-        	 int courseIDPos = course.getID() - 1;
-        	 for (Person person : pMain.personList) {
-                if(person.getName().equals(name))
-                {
-                	person.enrollInCourse(cMain.courseList.get(courseIDPos));
+    //I fixed the indentation on this and I hate whoever put it here
+    private void nextbreak(String name) {
+    	String nextlineString = inputFileLoadStudent.nextLine();
+    	String namesave = name;
+    	System.out.println("READING BREAK");
+    	System.out.println(nextlineString);
+        for (Course course : cMain.courseList) {
+            if (course.getName().equals(nextlineString)) {
+                int courseIDPos = course.getID() - 1;
+                for (Person person : pMain.personList) {
+                    if(person.getName().equals(name)) {
+                        person.enrollInCourse(cMain.courseList.get(courseIDPos));
+                    }
                 }
-          }
-      }
-	}
-if (inputFileLoadStudent.hasNextLine())
-{
-System.out.println("New Line Found");
-nextbreak(namesave);
-
-}
-	  
-
-}
-
-    private void showStudentMenu() {
-        System.out.println();
-        System.out.println("1.  View all Students");
-        System.out.println("2.  Generate Invoice");
-        System.out.println("3.  Enter In Results");
-        System.out.println("4.  View Results");
-        System.out.println("5.  View Text Doc");
-        System.out.println("6.  Save A Student");
-        System.out.println("7.  Delete A Student ");
-        System.out.println("8.  Load A Student");
-        System.out.println("0.  Return to the Main Menu");
-
+            }
+        }
+        if (inputFileLoadStudent.hasNextLine()) {
+            System.out.println("New Line Found");
+            nextbreak(namesave);
+        }
     }
+
+
+    private void showCourseMenu() {
+        System.out.println();
+        System.out.println("1.  Create a new Course offering");
+        System.out.println("2.  View Course Details");
+        System.out.println("3.  Delete current Course offering");
+        System.out.println("4.  Enroll a Student in a Course");
+        System.out.println("5.  Generate a list of all Courses");
+        System.out.println("6.  Generate Expenses Report");
+        System.out.println("7.  Edit Course Data");
+        System.out.println("8.  Save Course Schema");
+        System.out.println("9.  Load Course Schema");
+        System.out.println("10. Generate Expenses Report From Course Schema");
+        System.out.println("0.  Return to the Main Menu");
+    }
+
     private void processChoiceCourseMenu(int choice) {
         switch (choice) {
             case 1:
