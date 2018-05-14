@@ -1007,6 +1007,7 @@ public class MenuDriver {
                 courseID = input.nextInt();
                 Course.courseList.get(courseID).enrollstudent(pMain.personList.get(studentID));
                 pMain.personList.get(studentID).enrollInCourse(Course.courseList.get(courseID)); // Gets the selected user and than enrolls them into the selected course
+                System.out.println(pMain.personList.get(studentID).getName() + " added to course");
             } else {
                 System.out.println("Please add a Course first!");
             }
