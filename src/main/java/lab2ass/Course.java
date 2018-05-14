@@ -130,15 +130,15 @@ public class Course {
     }
 
     public String reportHeader() {
-        return "course\texpenditure\tprice\tstudents\tearnings";
+        return "course, expenditure, price, students, earnings";
     }
 
     public String reportLine() {
-        return this.name + "\t" + this.cost + "\t" + this.price + "\t" + this.students + (this.price * this.students);
+        return this.name + ", " + this.cost + ", " + this.price + ", " + this.students + (this.price * this.students);
     }
 
     public String reportFooter(double totalExpenditure, double totalEarnings, double totalProfit) {
-        return "Spending: " + totalExpenditure + "\tEarnings: " + totalEarnings + "\tProfits: " + totalProfit;
+        return "Spending:, " + totalExpenditure + ", Earnings:, " + totalEarnings + ", Profits:, " + totalProfit;
     }
 
     public String courseReport(ArrayList<Course> input) {
