@@ -871,36 +871,16 @@ private Scanner inputFileLoadStudent;
             System.out.println("Enter the Name of new course:");
             courseName = input.nextLine();
         }
-        String parseLine = "jfewoij"; //invoke elder god for assistance
         double courseCost = 0.0;
         if (!type.toLowerCase().equals("o")) {
-            while (!isDouble(parseLine)) {
-                System.out.println("enter the cost of " + courseName + " to run");
-                parseLine = input.nextLine();
-            }
-            courseCost = Integer.parseInt(parseLine);
+            courseCost = promptValidDouble("enter the cost of " + courseName + " to run");
         }
-        parseLine = "jfewoij";
-        while (!isDouble(parseLine)) {
-            System.out.println("Enter the price of " + courseName + ":");
-            parseLine = input.nextLine(); 
-        }
-        double coursePrice = Double.parseDouble(parseLine);
-        parseLine = "jfewoij";
+        double coursePrice = promptValidDouble("Enter the price of " + courseName + ":");
         int courseRuntime = -1;
         while (courseRuntime < 0 && courseRuntime > 10) {
-            while (!isInt(parseLine)) {
-                System.out.println("Enter the runtime of " + courseName + ":");
-                parseLine = input.nextLine();
-            }
-            courseRuntime = Integer.parseInt(parseLine);
+            courseRuntime = promptValidInt("Enter the runtime of " + courseName + ":");
         }
-        parseLine = "jfewoij";
-        while (!isInt(parseLine)) {
-            System.out.println("Enter the lecturer's id for " + courseName + ":");
-            parseLine = input.nextLine();
-        }
-        int courseLecturerID = Integer.parseInt(parseLine);
+        int courseLecturerID = promptValidInt("Enter the lecturer's id for " + courseName + ":");
         switch (type.toLowerCase()) {
             case "c":
                 return new Course(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
@@ -925,12 +905,7 @@ private Scanner inputFileLoadStudent;
             for (Person person : pMain.personList) {
                 System.out.println("ID " + person.getPersonID() + ": " + person.getName());
             }
-            String parseLine = "wodjifaris";
-            while (!isInt(parseLine)) {
-                System.out.println("Enter the ID of the student");
-                parseLine = input.nextLine();
-            }
-            studentID = Integer.parseInt(parseLine);
+            studentID = promptValidInt("Enter the ID of the student:");
             if (!cMain.courseList.isEmpty()) {
                 for (Course course : cMain.courseList) {
                     System.out.println("ID: " + course.getID() + " Name: " + course.getName());
