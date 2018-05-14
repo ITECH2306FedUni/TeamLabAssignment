@@ -7,6 +7,8 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 /**
  * MenuDriver
@@ -597,12 +599,30 @@ private Scanner inputFileLoadStudent;
                 break;
             case 10:
                 // expenses from file
-                File file = new File ("penispenispenis");//this shouldn't work but does :(x
+                File file = new File ("penispenispenis");//it doesn't work if you null it out :(
                 while (!file.exists()) {
                     System.out.println("enter name of file to load");
                     try {file = new File (input.nextLine());}catch(Exception e){;}
                 }
-                System.out.println(cMain.courseReport(cMain.loadCourses(file.getName())));
+                ArrayList courses = cMain.loadCourses(file.getName());
+                String report = cMain.courseReport(courses);
+                System.out.println(report);
+                String parseLine = "";
+                while (!parseLine.equalsIgnoreCase("y") && !parseLine.equalsIgnoreCase("n")) {
+                    System.out.println ("would you like to save this report to disk??");
+                    parseLine = input.nextLine();
+                }
+                if (parseLine.equalsIgnoreCase("y")) {
+                    System.out.println("enter filename to save");
+                    File saveLocation = new File (input.nextLine());
+                    try {
+                        PrintWriter output = new PrintWriter (saveLocation);
+                        output.println(report);
+                    } catch (Exception e) {
+                        System.out.println ("file error");
+                    }
+                }
+                menuReturn();
                 break;
             case 0:
                 // return to menu
