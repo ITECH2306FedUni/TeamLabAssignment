@@ -78,7 +78,7 @@ public class Course {
         return runtime;
     }
 
-    private void setRuntime(int runtime) throws IllegalArgumentException {
+    public void setRuntime(int runtime) throws IllegalArgumentException {
         if (runtime > 0 && runtime <= 10) {
             this.runtime = runtime;
                   } else {

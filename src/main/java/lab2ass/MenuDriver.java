@@ -545,16 +545,29 @@ private Scanner inputFileLoadStudent;
                     System.out.println("0.  Cancel");
                     System.out.println();
                     int selectField = getUserSelection(0, 4);
+                    Course course = cMain.courseList.get(selectCourse);
                     switch (selectField) {
                         case 0:
                             break;
                         case 1:
+                            System.out.println("enter new name:");
+                            course.setName(input.nextLine());
                             break;
                         case 2:
+                            System.out.println("enter new price:");
+                            course.setPrice(Double.parseDouble(input.nextLine()));
                             break;
                         case 3:
+                            System.out.println("enter new cost:");
+                            course.setCost(Double.parseDouble(input.nextLine()));
                             break;
                         case 4:
+                            System.out.println("enter new runtime");
+                            course.setRuntime(Integer.parseInt(input.nextLine()));
+                            break;
+                        case 5:
+                            System.out.println("enter new enrollments");
+                            course.setNumStudents(Integer.parseInt(input.nextLine()));
                             break;
                         default:
                             break;
@@ -954,7 +967,7 @@ private Scanner inputFileLoadStudent;
      */
     private boolean isInt(String wint) {
         try {
-            Double.parseDouble(wint);
+            Integer.parseInt(wint);
             return true;
         } catch (Exception e) {
             return false;
