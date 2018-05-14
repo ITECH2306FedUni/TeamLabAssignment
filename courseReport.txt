@@ -1,0 +1,4 @@
+course, expenditure, price, students, earnings
+Spider Husbandry, 300.0, 14.0, 39546.0
+Z-Fighting, 9000.0, 20.0, 480.0
+Spending:, 9300.0, Earnings:, 626.0, Profits:, -8674.0
