@@ -663,10 +663,17 @@ public class MenuDriver {
                     System.out.println("Please enter a Person's ID");
                     //figure out who to give a pet to
                     Person petOwner = pMain.personList.get(getUserSelection(0, pMain.personList.size() - 1));
-                    //add dat pet
-                    petOwner.addAPet(petWizard());
-                    System.out.println("The added pet is: " + petOwner.pet.toString());
-                    System.out.println("For the Person: " + petOwner.getName());
+                    //add the pet
+                    if(petOwner.personPetList.size() < 5){
+                        petOwner.addAPet(petWizard());
+                        Animal petAdded =  petOwner.personPetList.get(petOwner.personPetList.size() - 1);
+                        System.out.println("The added pet is: " + petAdded.getName());
+                        System.out.println("For the Person: " + petOwner.getName());
+                    } else {
+                        System.out.println(petOwner.getName() + " already has 5 pet's listed");
+                        menuReturn();
+                        break;
+                    }
                 } else {
                     System.out.println("Please add a Person first!");
                     menuReturn();

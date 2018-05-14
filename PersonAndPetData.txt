@@ -1,6 +1,7 @@
 Person,Nathan Blaney,31 Nowhere Street,3977,Casey
 Cat,Dim Sim,Tissue,F,05 01 1998,05 01 1998,14
 Dog,Pug,Fido,F,05 01 1998,05 01 1998,13,false,false
+Rabbit,Floppy,Fluffy,M,05 01 1998,05 01 1998,0
 Person,Lachlan Copsey,69 Rangeless Drive,3977,Casey
 Rabbit,Floppy,Fluffy,M,05 01 1998,05 01 1998,0
 Person,Nine Hall,56 Torvald Court,3977,Casey
