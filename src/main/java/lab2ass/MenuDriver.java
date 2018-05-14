@@ -599,7 +599,7 @@ private Scanner inputFileLoadStudent;
                 break;
             case 10:
                 // expenses from file
-                File file = new File ("penispenispenis");//it doesn't work if you null it out :(
+                File file = new File ("expensesFile.txt");//it doesn't work if you null it out :(
                 while (!file.exists()) {
                     System.out.println("enter name of file to load");
                     try {file = new File (input.nextLine());}catch(Exception e){;}
