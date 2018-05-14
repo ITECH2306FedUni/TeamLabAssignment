@@ -25,7 +25,7 @@ public class MenuDriver {
     private boolean subMenu;
     private Scanner input = new Scanner(System.in);
     private String fileName;
-private Scanner inputFileLoadStudent;
+    private Scanner inputFileLoadStudent;
     // PROGRAM ENTRY POINT:
     public static void main(String[] args) {
         MenuDriver theProgram = new MenuDriver();
@@ -1037,11 +1037,13 @@ private Scanner inputFileLoadStudent;
         return Double.parseDouble(parseLine);
     }
 
-    public static void generateStudentInvoice(int ID) {
+    private static void generateStudentInvoice(int ID) {
     	double priceInvoiceGen = 0.00;
         PrintWriter writer = null;
+        Person student = pMain.personList.get(ID);
         try {
-            writer = new PrintWriter("StudentInvoice.txt", "UTF-8");
+            String filename = "StudentInvoice" + student.getName() + ".txt";
+            writer = new PrintWriter(filename.replaceAll("\\s", ""), "UTF-8");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
 
             e.printStackTrace();
@@ -1049,15 +1051,16 @@ private Scanner inputFileLoadStudent;
 
 
         if (!pMain.personList.get(ID).CourseList.isEmpty()) {
-        	writer.println("### Course Invoice For " + pMain.personList.get(ID).getName() + " ###");
-            for (Course course : pMain.personList.get(ID).CourseList) {
-            	priceInvoiceGen += course.getPrice();
-                writer.println("Course ID: "+course.getID() + " Course Name: " +  course.getName() + " Course Price: $" + course.getPrice() +" Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
+            if (writer != null) {
+                writer.println("### Course Invoice For " + student.getName() + " ###");
+                for (Course course : student.CourseList) {
+                    priceInvoiceGen += course.getPrice();
+                    writer.println("Course ID: "+course.getID() + " Course Name: " +  course.getName() + " Course Price: $" + course.getPrice() +" Course Runtime: " + course.getRuntime() + " Course Type: " + course.getClass());
+                }
+                writer.println("Final Total: $" + priceInvoiceGen);
+                writer.close();
             }
-            writer.println("Final Total: $" + priceInvoiceGen);
         }
-
-        writer.close();
 
     }
 

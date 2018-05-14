@@ -1,6 +1,0 @@
-### Course Invoice For Nathan Blaney ###
-Course ID: 1 Course Name: Working hard Course Price: $9.0 Course Runtime: 4 Course Type: class lab2ass.Course
-Course ID: 2 Course Name: Not at all Course Price: $7.0 Course Runtime: 9 Course Type: class lab2ass.Course
-Course ID: 1 Course Name: Working hard Course Price: $9.0 Course Runtime: 4 Course Type: class lab2ass.Course
-Course ID: 2 Course Name: Not at all Course Price: $7.0 Course Runtime: 9 Course Type: class lab2ass.Course
-Final Total: $32.0
