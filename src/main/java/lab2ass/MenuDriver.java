@@ -568,10 +568,12 @@ public class MenuDriver {
                         parseLine = input.nextLine();
                     }
                     if (parseLine.equalsIgnoreCase("y")) {
+                        System.out.println("saving...");
                         File saveLocation = new File("courseReport.txt");
                         try {
                             PrintWriter output = new PrintWriter(saveLocation);
                             output.println(report);
+                            output.close();
                         } catch (Exception e) {
                             System.out.println("file error");
                         }
@@ -662,6 +664,7 @@ public class MenuDriver {
                     try {
                         PrintWriter output = new PrintWriter(saveLocation);
                         output.println(report);
+                        output.close();
                     } catch (Exception e) {
                         System.out.println("file error");
                     }
