@@ -862,6 +862,7 @@ private Scanner inputFileLoadStudent;
      *
      * @return A new course object
      */
+    // many hacks, need to standardize validation, don't care: wiping for ass3 -Nine
     private Course courseWizard() {
         String type = "";
         while (!type.equalsIgnoreCase("c") && !type.equalsIgnoreCase("s") && !type.equalsIgnoreCase("e") && !type.equalsIgnoreCase("o")) {
@@ -874,17 +875,36 @@ private Scanner inputFileLoadStudent;
             System.out.println("Enter the Name of new course:");
             courseName = input.nextLine();
         }
+        String parseLine = "jfewoij"; //invoke elder god for assistance
         double courseCost = 0.0;
         if (!type.toLowerCase().equals("o")) {
-            System.out.println("enter the cost of" + courseName + "to run");
-            courseCost = input.nextDouble();
+            while (!isDouble(parseLine)) {
+                System.out.println("enter the cost of " + courseName + " to run");
+                parseLine = input.nextLine();
+            }
+            courseCost = Integer.parseInt(parseLine);
         }
-        System.out.println("Enter the price of " + courseName + ":");
-        double coursePrice = input.nextDouble();
-        System.out.println("Enter the runtime of " + courseName + ":");
-        int courseRuntime = input.nextInt();
-        System.out.println("Enter the lecturer's id for " + courseName + ":");
-        int courseLecturerID = input.nextInt();
+        parseLine = "jfewoij";
+        while (!isDouble(parseLine)) {
+            System.out.println("Enter the price of " + courseName + ":");
+            parseLine = input.nextLine(); 
+        }
+        double coursePrice = Double.parseDouble(parseLine);
+        parseLine = "jfewoij";
+        int courseRuntime = -1;
+        while (courseRuntime < 0 && courseRuntime > 10) {
+            while (!isInt(parseLine)) {
+                System.out.println("Enter the runtime of " + courseName + ":");
+                parseLine = input.nextLine();
+            }
+            courseRuntime = Integer.parseInt(parseLine);
+        }
+        parseLine = "jfewoij";
+        while (!isInt(parseLine)) {
+            System.out.println("Enter the lecturer's id for " + courseName + ":");
+            parseLine = input.nextLine();
+        }
+        int courseLecturerID = Integer.parseInt(parseLine);
         switch (type.toLowerCase()) {
             case "c":
                 return new Course(courseLecturerID, courseName, courseCost, coursePrice, courseRuntime);
@@ -909,8 +929,12 @@ private Scanner inputFileLoadStudent;
             for (Person person : pMain.personList) {
                 System.out.println("ID " + person.getPersonID() + ": " + person.getName());
             }
-            System.out.println("Enter the ID of the student");
-            studentID = input.nextInt();
+            String parseLine = "wodjifaris";
+            while (!isInt(parseLine)) {
+                System.out.println("Enter the ID of the student");
+                parseLine = input.nextLine();
+            }
+            studentID = Integer.parseInt(parseLine);
             if (!cMain.courseList.isEmpty()) {
                 for (Course course : cMain.courseList) {
                     System.out.println("ID: " + course.getID() + " Name: " + course.getName());
