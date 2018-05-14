@@ -597,7 +597,7 @@ private Scanner inputFileLoadStudent;
                 break;
             case 10:
                 // expenses from file
-                File file = new File ("penispenispenis");//this shouldn't work but does :(
+                File file = new File ("penispenispenis");//this shouldn't work but does :(x
                 while (!file.exists()) {
                     System.out.println("enter name of file to load");
                     try {file = new File (input.nextLine());}catch(Exception e){;}
