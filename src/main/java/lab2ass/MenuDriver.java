@@ -490,7 +490,7 @@ private Scanner inputFileLoadStudent;
                 //FIXME: this should be a method at some point
                 if (!cMain.courseList.isEmpty()) {
                     int index = 0;
-                    for (Course course : cMain.courseList) {
+                    for (Course course : cMain.getAllCourses()) {
                         System.out.println(index+". "+course.getName());
                         index++;
                     }
@@ -515,16 +515,28 @@ private Scanner inputFileLoadStudent;
                 break;
             case 6:
                 // generate expenses report
-                System.out.println (cMain.reportHeader());
-                double totalExpenditure = 0;
-                double totalEarnings = 0;
-                for(Course course:cMain.courseList) {
-                    System.out.println (course.reportLine());
-                    totalExpenditure -= course.getCost();
-                    totalEarnings += course.getEarnings();
+                if (!cMain.getAllCourses().isEmpty()) {
+                    String report = cMain.courseReport(cMain.getAllCourses());
+                    System.out.println (report);
+                    System.out.println ();
+                    String parseLine = "";
+                    while (!parseLine.equalsIgnoreCase("y") && !parseLine.equalsIgnoreCase("n")) {
+                        System.out.println ("would you like to save this report to disk??");
+                        parseLine = input.nextLine();
+                    }
+                    if (parseLine.equalsIgnoreCase("y")) {
+                        File saveLocation = new File ("courseReport.txt");
+                        try {
+                            PrintWriter output = new PrintWriter (saveLocation);
+                            output.println(report);
+                        } catch (Exception e) {
+                            System.out.println ("file error");
+                        }
+                    }
+                } else {
+                    System.out.println("No courses in record");
                 }
-                double netProfit = totalEarnings - totalExpenditure;
-                System.out.println(cMain.reportFooter(totalExpenditure,totalEarnings,netProfit));
+                menuReturn();
                 break;
             case 7:
                 // edit course
@@ -585,6 +597,7 @@ private Scanner inputFileLoadStudent;
                 break;
             case 10:
                 // expenses from file
+                System.out.println(cMain.courseReport(cMain.getAllCourses()));
                 break;
             case 0:
                 // return to menu
@@ -969,6 +982,12 @@ private Scanner inputFileLoadStudent;
         }
     }
 
+   /**
+     * get an integer
+     *
+     * @param message what to hassle them with
+     * @return int
+     */
     private int promptValidInt(String message) {
         String parseLine = "dkjfsjieoj";
         while (!isInt(parseLine)) {
@@ -978,6 +997,12 @@ private Scanner inputFileLoadStudent;
         return Integer.parseInt(parseLine);
     }
 
+   /**
+     * get an double
+     *
+     * @param message what to hassle them with
+     * @return double
+     */
     private double promptValidDouble(String message) {
         String parseLine = "wskajfdlk";
         while (!isInt(parseLine)) {

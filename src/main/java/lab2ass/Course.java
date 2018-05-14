@@ -24,6 +24,7 @@ public class Course {
     private double cost;
     float result;
     int students;
+    
     public Course(int _studentID, String _name, double _cost, double _price, int _runtime) {
         int studentID = _studentID;
         this.name = _name;
@@ -34,7 +35,7 @@ public class Course {
         this.students = 0;
     }
 
-    ArrayList getAllCourses() {
+    ArrayList<Course> getAllCourses() {
         return courseList;
     }
 
@@ -139,6 +140,19 @@ public class Course {
 
     public String reportFooter (double totalExpenditure, double totalEarnings, double totalProfit) {
         return "Spending: "+totalExpenditure+"\tEarnings: "+totalEarnings+"\tProfits: "+totalProfit;
+    }
+
+    public String courseReport (ArrayList<Course> input) {
+        String output = reportHeader();
+        double totalExpenditure = 0;
+        double totalEarnings = 0;
+        for(Course course:input) {
+            output +=("\n"+course.reportLine());
+            totalExpenditure += course.getCost();
+            totalEarnings += course.getEarnings();
+        }
+        double netProfit = totalEarnings - totalExpenditure;
+        return output+"\n"+reportFooter(totalExpenditure,totalEarnings,netProfit);
     }
 
     //load courses from file
