@@ -596,7 +596,7 @@ public class MenuDriver {
                 break;
             case 10:
                 // expenses from file
-                File file = new File ("expensesFile.txt");//it doesn't work if you null it out :(
+                File file = new File ("32283ue9823ueoiurfh");//_needs_ to be a bad file name for validation to work
                 while (!file.exists()) {
                     System.out.println("enter name of file to load");
                     try {file = new File (input.nextLine());}catch(Exception e){;}
